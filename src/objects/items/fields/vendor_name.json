@@ -1,0 +1,9 @@
+{
+  "table": "items",
+  "field": "Vendor (not used)",
+  "internal_name": "vendor_name",
+  "related_to": "vendors",
+  "system": true,
+  "calc": {},
+  "related_to_field": "name"
+}

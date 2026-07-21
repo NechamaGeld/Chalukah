@@ -1,0 +1,11 @@
+{
+  "table": "invoices",
+  "field": "Last Name",
+  "type": "foreign_field",
+  "internal_name": "last_name__c",
+  "calc": {
+    "on_field": "customer",
+    "display_field": "last_name__c"
+  },
+  "format_type": "text"
+}

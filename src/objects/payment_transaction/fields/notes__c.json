@@ -1,0 +1,7 @@
+{
+  "table": "payment_transaction",
+  "field": "Notes",
+  "type": "textArea",
+  "internal_name": "notes__c",
+  "calc": {}
+}

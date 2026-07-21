@@ -1,0 +1,22 @@
+{
+  "table": "custom.customer_confirmation",
+  "field": "Customer",
+  "type": "relationship",
+  "internal_name": "customer__c",
+  "related_to": "customers",
+  "calc": {
+    "show_vals": {}
+  },
+  "related_to_field": "name",
+  "isRef": true,
+  "otherTable": "customers",
+  "otherColumnDisplay": "name",
+  "encryption": {
+    "scope": "user"
+  },
+  "data": {
+    "encryption": {
+      "scope": "user"
+    }
+  }
+}

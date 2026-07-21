@@ -1,0 +1,10 @@
+{
+  "name": "Change Price Range",
+  "url": "change-price-range",
+  "version": 1,
+  "data": {
+    "pageType": "modal"
+  },
+  "access_policy": "internal",
+  "render_type": "in_app"
+}

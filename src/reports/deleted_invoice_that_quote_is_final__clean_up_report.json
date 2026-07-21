@@ -1,0 +1,12 @@
+{
+  "internal_name": "deleted_invoice_that_quote_is_final__clean_up_report",
+  "display_name": "Deleted invoice that quote is final - Clean Up Report",
+  "params": [],
+  "report_type": "list",
+  "deleted_ref": null,
+  "settings": {},
+  "to_users": null,
+  "to_user_roles": null,
+  "created_by": 1,
+  "created_at": "2026-02-03T16:07:44.879Z"
+}

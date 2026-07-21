@@ -1,0 +1,17 @@
+{
+  "action_name": "accept_payment__c",
+  "table_name": "custom.payment_requests",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Accept Payment",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "custom-script",
+  "condition": {
+    "selectedText": "Pending",
+    "useCondition": true,
+    "selectedField": "status__c",
+    "selectedCondition": "IS_EQUALS"
+  }
+}

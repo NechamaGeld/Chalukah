@@ -1,0 +1,10 @@
+{
+  "table": "items",
+  "field": "Pricing",
+  "type": "text",
+  "internal_name": "line",
+  "related_to": "lines",
+  "system": true,
+  "calc": {},
+  "related_to_field": "name"
+}

@@ -1,0 +1,13 @@
+{
+  "action_name": "see_order_details__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": false,
+    "dash": false
+  },
+  "title": "See order details",
+  "icon": "fa-solid fa-eye",
+  "type": "url",
+  "value": "/#/page/order-details?cart_id={{quote}}",
+  "order": 6
+}

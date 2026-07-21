@@ -1,0 +1,14 @@
+{
+  "table": "invoices",
+  "field": "Manual Payment Transaction",
+  "type": "relationship",
+  "internal_name": "payment_transaction__c",
+  "related_to": "payment_transaction",
+  "calc": {},
+  "hide_on_grid": true,
+  "related_to_field": "id",
+  "hide_on_dashbaord": true,
+  "isRef": true,
+  "otherTable": "payment_transaction",
+  "otherColumnDisplay": "id"
+}

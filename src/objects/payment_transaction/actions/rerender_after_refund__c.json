@@ -1,0 +1,11 @@
+{
+  "action_name": "rerender_after_refund__c",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Rerender after Refund",
+  "icon": "fa-solid fa-plus",
+  "type": "custom-script"
+}

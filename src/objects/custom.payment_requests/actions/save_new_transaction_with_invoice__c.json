@@ -1,0 +1,11 @@
+{
+  "action_name": "save_new_transaction_with_invoice__c",
+  "table_name": "custom.payment_requests",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Save new transaction with invoice",
+  "icon": "fa-solid fa-pen-to-square",
+  "type": "custom-script"
+}

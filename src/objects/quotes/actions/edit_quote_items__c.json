@@ -1,0 +1,12 @@
+{
+  "action_name": "edit_quote_items__c",
+  "table_name": "quotes",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Edit quote items",
+  "icon": "fa-solid fa-pen-to-square",
+  "type": "url",
+  "value": "/#/page/edit-order?cart_id={{id}}&line={{ line_id || price_range_id__c }}"
+}

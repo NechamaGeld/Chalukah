@@ -1,0 +1,11 @@
+{
+  "action_name": "rerender_invoice_after_trx_save__c",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "rerender invoice after trx save",
+  "icon": "none",
+  "type": "custom-script"
+}

@@ -1,0 +1,15 @@
+{
+  "action_name": "accept_pay",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Accept payment",
+  "icon": "fas fa-file-invoice-dollar",
+  "type": "url",
+  "value": "#/payments/accept-payment?customer={{customer_id}}&invoice={{id}}",
+  "order": 1,
+  "multiRows": false
+}

@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "instance": {
+    "url": "https://shearis-yisroel.bizmanagecrm.com/",
+    "alias": "default"
+  },
+  "project": {
+    "name": "Chalukah",
+    "description": "Bizmanage customizations for https://shearis-yisroel.bizmanagecrm.com/",
+    "createdAt": "2026-07-21T13:41:43.008Z",
+    "lastPull": "2026-07-21T13:41:43.008Z"
+  }
+}

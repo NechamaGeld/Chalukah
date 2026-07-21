@@ -1,0 +1,14 @@
+{
+  "action_name": "app_to_inv",
+  "action_type": "menu",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Apply To Invoice",
+  "icon": "fas fa-file-invoice-dollar",
+  "type": "url",
+  "value": "/#/payments/apply-payment?id={{id}}",
+  "multiRows": false
+}

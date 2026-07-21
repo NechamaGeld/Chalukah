@@ -1,0 +1,15 @@
+{
+  "action_name": "update_slip",
+  "action_type": "menu",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Update Slip",
+  "icon": "fa fa-edit",
+  "type": "url",
+  "value": "#/delivery?id={{id}}",
+  "order": 4,
+  "multiRows": false
+}

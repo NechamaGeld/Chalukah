@@ -1,0 +1,101 @@
+{
+  "system": true,
+  "display_name": "Draft Orders",
+  "internal_name": "quotes",
+  "search_enabled": false,
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": null,
+  "token": null,
+  "orderBy": null,
+  "filters": [
+    {
+      "key": "archived",
+      "field": {
+        "internal_name": "archived",
+        "field": "Archived",
+        "type": "boolean",
+        "grid_clm_name": "archived",
+        "read_only": false,
+        "system": true,
+        "clm_name": "archived",
+        "orderable": true,
+        "isUniquable": true,
+        "isUnique": false,
+        "parent_type": false
+      },
+      "filter": {
+        "falsy": true
+      }
+    },
+    {
+      "key": "draft",
+      "field": {
+        "internal_name": "draft",
+        "field": "Draft",
+        "type": "boolean",
+        "grid_clm_name": "draft",
+        "read_only": false,
+        "system": true,
+        "clm_name": "draft",
+        "orderable": true,
+        "isUniquable": true,
+        "isUnique": false,
+        "parent_type": false
+      },
+      "filter": {
+        "falsy": true
+      }
+    },
+    {
+      "key": "projects_project.completed",
+      "filter": {
+        "falsy": true
+      }
+    }
+  ],
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": [
+    {
+      "type": "toggle",
+      "text": "Include Archived",
+      "name": "archived",
+      "is_custom": true
+    },
+    {
+      "type": "toggle",
+      "text": "Include Drafts",
+      "name": "draft",
+      "is_custom": true
+    },
+    {
+      "type": "toggle",
+      "text": "Include Completed Projects",
+      "name": "completed",
+      "is_custom": true
+    },
+    {
+      "is_custom": true,
+      "text": "Show only drafts",
+      "name": "final__c",
+      "type": "is_not_checked",
+      "field_internal_name": "final",
+      "field": "final"
+    },
+    {
+      "is_custom": true,
+      "text": "Final Orders",
+      "name": "draft_orders__c",
+      "type": "three-options",
+      "field_internal_name": "final",
+      "field": "final"
+    }
+  ],
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

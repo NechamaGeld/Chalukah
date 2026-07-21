@@ -1,0 +1,8 @@
+{
+  "table": "invoices",
+  "field": "Price Range",
+  "type": "custom_sql",
+  "internal_name": "price_range__c",
+  "calc": {},
+  "raw_sql": "select lines.name from lines where lines.id = quotes_quote.line_id"
+}

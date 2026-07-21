@@ -1,0 +1,17 @@
+{
+  "table": "custom.customer_confirmation",
+  "field": "confirmed",
+  "type": "boolean",
+  "internal_name": "confirmed__c",
+  "calc": {
+    "show_vals": {}
+  },
+  "encryption": {
+    "scope": "user"
+  },
+  "data": {
+    "encryption": {
+      "scope": "user"
+    }
+  }
+}

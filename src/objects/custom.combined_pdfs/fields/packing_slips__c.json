@@ -1,0 +1,13 @@
+{
+  "table": "custom.combined_pdfs",
+  "field": "Packing Slips",
+  "type": "multi-relationship",
+  "internal_name": "packing_slips__c",
+  "related_to": "deliveries",
+  "calc": {},
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "deliveries",
+  "otherColumnDisplay": "id",
+  "multiple": true
+}

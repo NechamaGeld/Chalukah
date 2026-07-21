@@ -1,0 +1,10 @@
+{
+  "name": "Confirmation page",
+  "url": "confirmation-page",
+  "version": 4,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

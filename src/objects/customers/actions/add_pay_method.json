@@ -1,0 +1,14 @@
+{
+  "action_name": "add_pay_method",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Add Payment Method",
+  "icon": "fas fa-credit-card",
+  "type": "url",
+  "value": "#/add/payment_methods?initial_customer={{id}}",
+  "multiRows": false
+}

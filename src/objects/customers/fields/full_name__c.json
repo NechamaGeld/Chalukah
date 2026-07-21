@@ -1,0 +1,12 @@
+{
+  "table": "customers",
+  "field": "Full Name",
+  "type": "calculated_text",
+  "internal_name": "full_name__c",
+  "calc": {
+    "text": "${name} ${last_name__c}"
+  },
+  "format_type": "text",
+  "hide_on_grid": true,
+  "hide_on_dashbaord": true
+}

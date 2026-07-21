@@ -1,0 +1,11 @@
+{
+  "action_name": "create_new_quote_order__c",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Create new quote (order)",
+  "icon": "fa-solid fa-plus",
+  "type": "custom-script"
+}

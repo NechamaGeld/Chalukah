@@ -1,0 +1,329 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+<style>
+  /* styles.css */
+
+  body {
+    margin: 0;
+    width: 100vw;
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f9;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    //width: calc(100vw - 40px);
+    width: 100vw;
+    top: 0;
+    left: 0;
+    min-height: 5vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 99999;
+  }
+
+  .nav-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links li {
+    display: inline;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: #1abc9c;
+  }
+
+  .hamburger {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+  @media (max-width: 981px) {
+    .nav-links {
+      display: none;
+      /* Hide by default on small screens */
+      flex-direction: column;
+      background-color: #2c3e50;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      padding: 10px 20px;
+    }
+
+    .nav-links.active {
+      display: flex !important;
+      /* Ensure it overrides 'display: none' */
+    }
+
+    .nav-links a {
+      font-size: 1.4em;
+    }
+
+    .nav-logo {
+      font-size: 1.2em;
+    }
+
+    .hamburger {
+      display: block !important;
+      /* Ensure visibility */
+      font-size: 2.5em;
+    }
+  }
+
+  #cart-count {
+    background-color: #e74c3c;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 50%;
+    font-size: 0.9em;
+  }
+
+  .season-n {
+    font-size: small;
+    font-weight: normal;
+    padding-left: 2px;
+  }
+
+  .logout-btn:hover {
+    background-color: #6941C6;
+    color: white;
+  }
+
+  .user-dropdown {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #2c3e50;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 120px;
+    z-index: 10000;
+    flex-direction: column;
+  }
+
+  .items-dropdown {
+    position: relative;
+  }
+
+  .items-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2c3e50;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 230px;
+    z-index: 10000;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .items-dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .items-dropdown-menu a:hover {
+    background-color: #1abc9c;
+    color: white;
+  }
+
+  @media (max-width: 981px) {
+    .items-dropdown-menu {
+      position: static;
+      background-color: #34495e;
+      margin-top: 8px;
+      width: 100%;
+      box-shadow: none;
+    }
+  }
+</style>
+
+<div class="navbar">
+  <div class="nav-logo d-flex align-items-baseline">
+    <div>Shearis Yisroel</div>
+    <div id="season-name" class="season-n"></div>
+  </div>
+
+  <ul class="nav-links" id="nav-links">
+    <li>
+      <a href="/pages/prices-landing-page"><i class="fas fa-home"></i> Home</a>
+    </li>
+    <li class="items-dropdown">
+      <a href="#" onclick="toggleItemsDropdown(event)">
+        <i class="fas fa-th-list"></i> View All Items
+      </a>
+
+      <div id="items-dropdown" class="items-dropdown-menu">
+        <a href="https://docs.google.com/document/d/1dkd-yLfJDdIrD7lYM10U0QQ67fx1scButA8c9C8haIw/export?format=pdf" target="_blank">
+          Subsidized
+        </a>
+
+        <a href="https://docs.google.com/document/d/1UjCx263rGekSSR9jeZggH8xUvRW1cWOvCyuXTesPkMA/export?format=pdf" target="_blank">
+          Wholesale
+        </a>
+
+        <a href="https://docs.google.com/document/d/1Z79WrLv0dlL2mWkiaHK9XwbR8vh0S3DojVMjuYcAz5E/export?format=pdf" target="_blank">
+          Co-op
+        </a>
+      </div>
+    </li>
+    <li>
+      <a href="/pages/previous-orders"><i class="fas fa-history"></i> Previous Orders</a>
+    </li>
+    <li class="nav-item dropdown" style="position: relative;">
+      <a href="#" id="customer-name" style="cursor: pointer;" onclick="toggleDropdown()">Hi, User</a>
+      <div id="customer-dropdown" class="user-dropdown">
+        <div style="margin-bottom: 10%;">
+          <a onclick="logoutAndRedirect()" class="logout-btn"
+            style="display: block; color: white; text-decoration: none;"><i class="fas fa-arrow-right-from-bracket"></i>
+            Log out</a>
+        </div>
+        <div class="logout-btn">
+          <a href="/pages/profile">Profile</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("InitDataLoaded",async (e) => {
+            let data = e.detail;
+            let user = data.user;
+            let customer = user.customer;
+            console.log("customer", customer);
+            document.getElementById("customer-name").textContent = `Hi ${customer.name}`
+           
+
+        });
+
+
+  document.getElementById("hamburger").addEventListener("click", function () {
+    document.getElementById("nav-links").classList.toggle("active");
+  });
+
+  getActiveSeason(); // ✅ Call it on page load
+
+  async function getActiveSeason() {
+    try {
+      const response = await fetch('/cust_report/query/2');
+      const data = await response.json();
+      const this_season = data.rows ? data.rows[0] : null;
+
+      if (this_season) {
+        const currentSeasonName = this_season.name__c;logoutAndRedirect
+        console.log("name is", currentSeasonName);
+        document.getElementById('season-name').textContent = currentSeasonName;
+      } else {
+        document.getElementById('season-name').textContent = "No season";
+      }
+    } catch (err) {
+      console.error("Error fetching season:", err);
+      document.getElementById('season-name').textContent = "Error loading season";
+    }
+  }
+
+  function logoutAndRedirect() {
+    fetch('/login/out', {
+      method: 'GET',
+      credentials: 'include'
+    }).finally(() => {
+      document.cookie.split(";").forEach(cookie => {
+        const name = cookie.split("=")[0].trim();
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+      });
+
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.replace('/login');
+    });
+  }
+
+  function toggleDropdown() {
+    const dropdown = document.getElementById('customer-dropdown');
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function toggleItemsDropdown(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const dropdown = document.getElementById('items-dropdown');
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  document.addEventListener('click', function (event) {
+    const dropdown = document.getElementById('items-dropdown');
+    const dropdownWrapper = document.querySelector('.items-dropdown');
+
+    if (dropdown && dropdownWrapper && !dropdownWrapper.contains(event.target)) {
+      dropdown.style.display = 'none';
+    }
+  });
+</script>
+<!-- Full Story -->
+<script>
+window['_fs_host'] = 'fullstory.com';
+window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
+window['_fs_org'] = 'QP48N';
+window['_fs_namespace'] = 'FS';
+!function(m,n,e,t,l,o,g,y){var s,f,a=function(h){
+return!(h in m)||(m.console&&m.console.log&&m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'),!1)}(e)
+;function p(b){var h,d=[];function j(){h&&(d.forEach((function(b){var d;try{d=b[h[0]]&&b[h[0]](h[1])}catch(h){return void(b[3]&&b[3](h))}
+d&&d.then?d.then(b[2],b[3]):b[2]&&b[2](d)})),d.length=0)}function r(b){return function(d){h||(h=[b,d],j())}}return b(r(0),r(1)),{
+then:function(b,h){return p((function(r,i){d.push([b,h,r,i]),j()}))}}}a&&(g=m[e]=function(){var b=function(b,d,j,r){function i(i,c){
+h(b,d,j,i,c,r)}r=r||2;var c,u=/Async$/;return u.test(b)?(b=b.replace(u,""),"function"==typeof Promise?new Promise(i):p(i)):h(b,d,j,c,c,r)}
+;function h(h,d,j,r,i,c){return b._api?b._api(h,d,j,r,i,c):(b.q&&b.q.push([h,d,j,r,i,c]),null)}return b.q=[],b}(),y=function(b){function h(h){
+"function"==typeof h[4]&&h[4](new Error(b))}var d=g.q;if(d){for(var j=0;j<d.length;j++)h(d[j]);d.length=0,d.push=h}},function(){
+(o=n.createElement(t)).async=!0,o.crossOrigin="anonymous",o.src="https://"+l,o.onerror=function(){y("Error loading "+l)}
+;var b=n.getElementsByTagName(t)[0];b&&b.parentNode?b.parentNode.insertBefore(o,b):n.head.appendChild(o)}(),function(){function b(){}
+function h(b,h,d){g(b,h,d,1)}function d(b,d,j){h("setProperties",{type:b,properties:d},j)}function j(b,h){d("user",b,h)}function r(b,h,d){j({
+uid:b},d),h&&j(h,d)}g.identify=r,g.setUserVars=j,g.identifyAccount=b,g.clearUserCookie=b,g.setVars=d,g.event=function(b,d,j){h("trackEvent",{
+name:b,properties:d},j)},g.anonymize=function(){r(!1)},g.shutdown=function(){h("shutdown")},g.restart=function(){h("restart")},
+g.log=function(b,d){h("log",{level:b,msg:d})},g.consent=function(b){h("setIdentity",{consent:!arguments.length||b})}}(),s="fetch",
+f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){return g._w[s].apply(this,arguments)}),g._v="2.0.0")
+}(window,document,window._fs_namespace,"script",window._fs_script);
+</script>
+
+<!-- MS Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "v56bclmd2w");
+</script>

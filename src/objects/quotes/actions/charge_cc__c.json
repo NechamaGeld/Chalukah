@@ -1,0 +1,12 @@
+{
+  "action_name": "charge_cc__c",
+  "table_name": "quotes",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Charge CC",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "url",
+  "value": "/#/page-modal/charge-cc-form?customer={{customer}}"
+}

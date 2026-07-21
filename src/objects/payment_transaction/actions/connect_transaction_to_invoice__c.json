@@ -1,0 +1,11 @@
+{
+  "action_name": "connect_transaction_to_invoice__c",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "connect transaction to invoice",
+  "icon": "fa fa-link",
+  "type": "custom-script"
+}

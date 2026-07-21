@@ -1,0 +1,7 @@
+{
+  "table": "invoices",
+  "field": "Order ID",
+  "internal_name": "quote",
+  "system": true,
+  "calc": {}
+}

@@ -1,0 +1,9 @@
+{
+  "table": "quotes",
+  "internal_name": "salesman_name",
+  "related_to": "employees",
+  "system": true,
+  "calc": {},
+  "related_to_field": "name",
+  "hide_on_dashbaord": true
+}

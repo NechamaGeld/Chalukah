@@ -1,0 +1,484 @@
+<style>
+    .title-bar {
+        background-color: black;
+        color: white;
+        width: 100%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        justify-content: center;
+        display: flex;
+        font-size: larger;
+        border-radius: 10px 10px 0 0
+    }
+
+    .category-tab {
+        background-color: transparent;
+        border: 1px solid #748899 !important;
+        color: #748899;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .category-tab:hover,
+    .category-tab.active {
+        background-color: #748899;
+        color: white;
+    }
+
+    .checkout-btn:hover {
+        background-color: #4d4d4d;
+        /* Slightly darker background */
+        transform: translateY(-1px);
+        /* Slight lift */
+    }
+
+    .checkout-btn:active {
+        background-color: #1a1a1a;
+        /* Lighter purple background */
+        transform: scale(0.98);
+        /* Slightly shrink for a pressed effect */
+    }
+
+    .qty-btn:hover {
+        background-color: #F5F5F5;
+        ;
+        /* Slightly darker background */
+        transform: translateY(-1px);
+        /* Slight lift */
+    }
+
+    .qty-btn:active {
+        background-color: #D6D6D6;
+        /* Lighter purple background */
+        transform: scale(0.98);
+        /* Slightly shrink for a pressed effect */
+    }
+
+    #loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        /* dim the page */
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .fixed-top-container {
+        position: sticky;
+        top: calc(6vh + 10px);
+        width: 100%;
+        background: #f4f4f9;
+        z-index: 1000;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+}
+
+
+  .main-content {
+      padding-top: calc(6vh);
+  }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<include-page url="navigation-bar" />
+<include-page url="pop-up-modal" />
+<div> 
+       <div class="mt-3">
+        <div class="d-flex fixed-top-container" >
+            <div id="category-list"></div>
+            <div class="ml-auto"><h5 id="cart-save-status" class="text-right mr-5" style="color: #2c3e50;"></h5></div>
+            <div class="ml-auto text-right mr-5" id="save-edit-warning" style="color:red; display:none;"></div>
+        </div>
+        <div class="main-content">
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Item Price</th>
+                        <th>Quantity</th>
+                        <th>Item Total</th>
+                    </tr>
+                </thead>
+                <tbody id="items-list"></tbody>
+            </table>
+            
+            <div style="text-align: right;" class="mr-5">
+                <div>Order Subtotal: $<span id="order-total">0</span></div>
+                <!-- <a id="checkout-link" href="">
+                    <button class="checkout-btn" style="background-color: black; color: white; border-radius: 15px" disabled>CHECKOUT <i class="fa-solid fa-arrow-right"></i></button>
+                </a> -->
+                <button class="checkout-btn" style="background-color: black; color: white; border-radius: 15px" disabled>CHECKOUT <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loader-overlay" class="hidden">
+        <div class="loader"></div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+
+<script>
+    <include-page url="shared-functions" />
+        const state = {
+            cart_items : [],
+        };
+        let items = [];
+        let categories = [];
+        let selectedCategory = null;
+        let debounceTimeout;
+        let cartId;
+        let customer;
+        let pendingItems = [];
+        let debounceTimer = null;
+        //this maps the ids of the cabinet lines - price range
+        const PRICE_MAP = {
+            1: 1,
+            2: 3,
+            3: 2
+        };
+        
+        document.addEventListener("InitDataLoaded",async (e) => {
+            let data = e.detail;
+            let user = data.user;
+            customer = user.customer;
+            await loadItems();
+            loadCart();
+        });
+
+        async function loadItems() {
+            showLoader(true);
+            try {
+                const priceParam = HELPER_FUNC.getUrlParam('price');
+                const line = PRICE_MAP[priceParam]; // Get the line id from the PRICE_MAP                
+                items = await CRUD_HELPERS.read('items',  {line: line, discontinued: null});
+                items = _.sortBy(items, item => {
+                    const order = item.sorting_order__c;
+                    return order === null || order === '' || order === undefined ? Infinity : order;
+                });
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }            
+            showLoader(false);
+        }
+
+        async function renderCategoryTabs() {
+            showLoader(true);
+            categories = await CRUD_HELPERS.read('categories', {});//remove query:
+            showLoader(false);
+            const categoryList = document.getElementById('category-list');
+            categoryList.innerHTML = '';
+
+            if (categories.length > 0) {
+                selectedCategory = categories[0].id; // Set the first category as active
+            }
+            // Create buttons for each category fetched from backend
+            categories.forEach((category, index) => {
+                const button = document.createElement('button');
+                button.className = `btn category-tab ${index === 0 ? 'active' : ''}`;
+                button.textContent = category.name;
+                button.addEventListener('click', (event) => {
+                    filterItems(category.id, event.target);
+                });
+                categoryList.appendChild(button);
+            });
+        }
+
+        function filterItems(category, target) {
+            selectedCategory = category;
+            renderItems();
+
+            // Update active button styling
+            document.querySelectorAll('#category-list button').forEach(btn => btn.classList.remove('active'));
+            target.classList.add('active');
+        }
+
+        async function loadCart() {
+            cartId = HELPER_FUNC.getUrlParam('cart_id');
+            const priceParam = HELPER_FUNC.getUrlParam('price');
+            const season = HELPER_FUNC.getUrlParam('season');
+            const line = PRICE_MAP[priceParam]; // Get the line id from the PRICE_MAP
+            
+            //the following can be removed after we test that removing localStorage doesnt mess anything up
+            //if(cartId)            
+                //localStorage.setItem('cart_id', cartId);
+            //cartId = localStorage.getItem('cart_id');
+
+            //continuing order.
+            if (cartId) {
+                try {
+                    
+                    //change this to a function
+                    showLoader(true);
+                    const response = await fetch(`/cust_report/query/3?order_ids={${cartId}}` );
+                    const data = await response.json();
+                    showLoader(false);
+                    const cartData = data.rows[0];
+                    //attache data to state
+                    Object.assign(state, cartData);
+
+                    const orderLocked = await checkIfDeliveryAttached(cartData.invoice_id);
+                    if (orderLocked)
+                        return;
+                        
+                    renderItems();
+                } catch (error) {
+                    console.error("Error fetching cart items:", error);
+                }
+            } else {
+                try {
+                    const data = await CRUD_HELPERS.create('quotes', {customer: customer.id, line_id : line, status__c: 'Unpaid', season__c : season, created_at: new Date()});
+                    //localStorage.setItem('cart_id', data.id);
+                    setCartId(data.id);
+                    renderItems();
+                } catch (error) {
+                    console.error("Error creating cart:", error);
+                }
+            }
+        }
+
+        
+        async function checkIfDeliveryAttached(invoice_id){
+            //checking if the order has a delivery slip attached yet. If yes, he cant order until the slip is deleted.
+            if(invoice_id){                                            
+                const delivery_response = await fetch(`/v2/crud/deliveries/read-one?invoice_id=${invoice_id}`);
+                if(delivery_response.ok){
+                
+                    const delivery = await delivery_response.json();
+                    console.log("delivery is: ", delivery);
+
+                    if (delivery){
+                        alertSystem.show("error", "ERROR: An order can not be edited while there is already a delivery slip attached. Please delete the delivery slip and then retry. Thank you.", 7000);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        async function renderItems() {          
+            if(!selectedCategory){
+                await renderCategoryTabs();
+            }
+            const itemsList = document.getElementById('items-list');
+            itemsList.innerHTML = '';
+            items.forEach(item => {
+                if (item.category == selectedCategory){
+                    itemInCart = state.cart_items?.find(i => i.item_id == item.id);
+                    itemsList.innerHTML += `
+                        <tr>
+                            <th>${item.name}</th>
+                            <td>${item.sale_price ? `$${item.sale_price.toFixed(2)}` : '--'}</td>
+                            <td style="display: flex;">
+                                <i class="qty-btn fa-solid fa-minus circle rounded-circle text-center border p-1 border-dark" style="cursor: pointer;" onclick="addOrRemoveItem(${item?.id}, ${itemInCart?.qty || 0} - 1)"></i>
+                                <div class="mr-1 ml-1">${itemInCart?.qty || '0'}</div>
+                                <i class="qty-btn fa-solid fa-plus circle rounded-circle text-center border p-1 border-dark" style="cursor: pointer;" onclick="addOrRemoveItem(${item?.id}, ${itemInCart?.qty || 0} + 1)"></i>
+                           </td>
+                          <td>$${itemInCart?.total_price?.toFixed(2) || '0'}</td>
+                        </tr>`;
+                    }
+            });
+            
+            //cartId = localStorage.getItem('cart_id');
+            if (!cartId)
+                cartId = HELPER_FUNC.getUrlParam('cart_id');
+
+
+            document.getElementById('order-total').textContent = state.total?.toFixed(2);
+
+
+            //document.getElementById('checkout-link').href = `/pages/checkout-page?cart_id=${cartId}`;
+            const checkoutBtn = document.querySelector(".checkout-btn");
+            
+            if (state.invoice_id){
+                checkoutBtn.innerHTML = "Update Order";
+                var el = document.getElementById("save-edit-warning");
+                el.textContent = "Make sure to press “Update Order” at the bottom of the page when done to save changes.";
+                el.style.display = "block";
+            }
+                
+            //const checkoutLink = document.getElementById('checkout-link');
+
+            if (state.total > 0) {
+                checkoutBtn.removeAttribute("disabled"); // Enable button
+
+                checkoutBtn.onclick = async function () {
+                    const savingStatus = document.getElementById("cart-save-status").textContent.trim().toLowerCase();
+                    if (savingStatus === "saving...") return;
+                    
+                    if(pendingItems.length){
+                        if(checkVoucherExists()){
+                            const proceed = await alertSystem.confirm("Saving changes will remove the voucher. The voucher can be reapplied during checkout. Proceed?");
+                            if(!proceed)
+                                return;
+                        }
+                        await saveItems(true);
+                    }
+                    
+                    window.location.href = `/pages/checkout-page?cart_id=${cartId}`;
+                };
+            } else {
+                checkoutBtn.setAttribute("disabled", "true"); // Disable button
+                //checkoutLink.href = "javascript:void(0);"; // Prevent navigation
+            }
+        }
+
+        
+
+        function addOrRemoveItem(itemId, qty) {
+            if (qty < 0) qty = 0;
+
+            const item = items.find(i => i.id == itemId);
+            if (!item) return;
+
+            // Update or insert into pendingItems
+            pendingItems = pendingItems.filter(i => i.item_id !== itemId);
+            pendingItems.push({ item_id: itemId, qty });
+
+            // Update local state.cart_items for UI reflection
+            let itemInCart = state.cart_items?.find(i => i.item_id == itemId);
+            if (!itemInCart) {
+                state.cart_items.push({
+                    item_id: itemId,
+                    qty,
+                    item_price: item.sale_price,
+                    total_price: item.sale_price * qty,
+                    category: item.category
+                });showSavingText
+            } else {
+                itemInCart.qty = qty;
+                itemInCart.total_price = item.sale_price * qty;
+            }
+
+            state.total = state.cart_items.reduce((sum, i) => sum + (i.item_price * i.qty), 0);
+
+            renderItems();
+
+            if(!state.invoice_id) {
+                if(pendingItems.length) showSavingText('Saving....');
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => saveItems(false), 5000);
+            }
+        }
+
+        async function saveItems(send_confirmation) {
+            if (!pendingItems.length && !send_confirmation) return;
+
+            try {
+                //showLoader(true);
+                if (pendingItems.length) {
+                    const response = await fetch("/scripts/run/edit_cart_items", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            cart_id: cartId,
+                            items: pendingItems
+                        })
+                    });
+
+                    const data = await response.json();
+                    Object.assign(state, data);
+                    pendingItems = [];
+                    showSavingText('Saved');
+                    renderItems();
+
+                    if (send_confirmation) {                
+                        let emails = [];
+                        let message;
+                        if (customer.email) {
+                            emails.push(customer.email);
+                        }
+                        if (customer.her_email__c) {
+                            emails.push(customer.her_email__c);
+                        }
+                        if (emails.length > 0) {
+                            message = `Changes have been Saved to Order #${cartId}. Should an email be sent to: ${emails.join(', ')}?`;
+                        } else {
+                            message = `Changes have been Saved to Order #${cartId}. Confirmation email will not be sent - email not found. Proceed?`;
+                        }
+                        const proceed = await alertSystem.confirm(message);
+                        if (!proceed) return;
+                        
+                        const subject = state.invoice_id
+                            ? `Confirmation: Changes Have Been Saved To Order #${cartId}`
+                            : `Confirmation: Order #${cartId} Has Been Created`;
+
+                        fetch(`/scripts/run/send_order_confirmation_email?order_id=${encodeURIComponent(cartId)}&subject=${encodeURIComponent(subject)}`);
+                    }
+                }
+                
+                
+
+            } catch (err) {
+                console.error("Error saving items:", err);
+            } finally {
+                //showLoader(false);
+            }
+        }
+        function checkVoucherExists(){
+            const voucherPayment =  state.payment_transactions?.find((v) => v.method == "Voucher");
+            if(voucherPayment)
+                return true;
+            return false;
+        }
+
+        function getCartId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get("cart_id");
+        }
+
+        function setCartId(val) {
+            const url = new URL(window.location.href);
+            url.searchParams.set("cart_id", val);
+            window.history.replaceState({}, "", url);
+        }
+
+        window.addEventListener('beforeunload', (e) => {
+            if(pendingItems.length && !state.invoice_id) saveItems();
+        })
+        window.addEventListener('pagehide', (e) => {
+            if(pendingItems.length && !state.invoice_id) saveItems();
+        })
+
+        function showSavingText(text){
+            document.getElementById("cart-save-status").textContent = text;
+        }
+</script>

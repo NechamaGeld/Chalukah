@@ -1,0 +1,14 @@
+{
+  "action_name": "edit_catalog_item",
+  "action_type": "menu",
+  "table_name": "quote_items",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Edit Catalog Item",
+  "icon": "fas fa-edit",
+  "type": "url",
+  "value": "#/update/items/{{item}}",
+  "multiRows": false
+}

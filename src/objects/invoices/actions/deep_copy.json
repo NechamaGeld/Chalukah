@@ -1,0 +1,15 @@
+{
+  "action_name": "deep_copy",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Deep Copy",
+  "icon": "fas fa-copy",
+  "type": "url",
+  "value": "#/clone-record/invoices/{{id}}",
+  "order": 16,
+  "multiRows": false
+}

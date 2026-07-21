@@ -1,0 +1,7 @@
+{
+  "table": "payment_transaction",
+  "field": "Payment Date",
+  "internal_name": "payment_date",
+  "system": true,
+  "calc": {}
+}

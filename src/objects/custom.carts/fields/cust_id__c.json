@@ -1,0 +1,11 @@
+{
+  "table": "custom.carts",
+  "field": "Cust_id",
+  "type": "foreign_field",
+  "internal_name": "cust_id__c",
+  "calc": {
+    "on_field": "customer_id__c",
+    "display_field": "id"
+  },
+  "format_type": "number"
+}

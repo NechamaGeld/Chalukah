@@ -1,0 +1,13 @@
+{
+  "table": "custom.combined_pdfs",
+  "field": "Invoices",
+  "type": "multi-relationship",
+  "internal_name": "invoices__c",
+  "related_to": "invoices",
+  "calc": {},
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "invoices",
+  "otherColumnDisplay": "id",
+  "multiple": true
+}

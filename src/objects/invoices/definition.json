@@ -1,0 +1,45 @@
+{
+  "system": true,
+  "display_name": "Invoices",
+  "internal_name": "invoices",
+  "search_enabled": false,
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": null,
+  "token": null,
+  "orderBy": [
+    {
+      "order": "desc",
+      "column": "created_at"
+    }
+  ],
+  "filters": null,
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": [
+    {
+      "type": "toggle",
+      "text": "Include Archived",
+      "name": "archived"
+    },
+    {
+      "type": "toggle",
+      "text": "Include Canceled",
+      "name": "canceled"
+    },
+    {
+      "is_custom": true,
+      "text": "Last Name Starts with",
+      "name": "last_name_starts_with__c",
+      "type": "is_between_text_range",
+      "field_internal_name": "last_name__c",
+      "field": "last_name__c"
+    }
+  ],
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

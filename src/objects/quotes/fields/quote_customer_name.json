@@ -1,0 +1,16 @@
+{
+  "table": "quotes",
+  "type": "text",
+  "internal_name": "quote_customer_name",
+  "related_to": "customers",
+  "system": true,
+  "calc": {},
+  "hide_on_grid": false,
+  "related_to_field": "name",
+  "dashboard_section": 1,
+  "in_dashboard_section": 1,
+  "data": {
+    "dashboard_section": 1,
+    "in_dashboard_section": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "action_name": "add_con",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Add Contact",
+  "icon": "far fa-address-book",
+  "type": "url",
+  "value": "#/contact?custid={{id}}",
+  "order": 7,
+  "multiRows": false
+}

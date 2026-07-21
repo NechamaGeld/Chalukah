@@ -1,0 +1,7 @@
+{
+  "table": "invoices",
+  "field": "Invoice #",
+  "internal_name": "display_id",
+  "system": true,
+  "calc": {}
+}

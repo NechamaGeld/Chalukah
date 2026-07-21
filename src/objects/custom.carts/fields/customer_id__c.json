@@ -1,0 +1,12 @@
+{
+  "table": "custom.carts",
+  "field": "Customer ID",
+  "type": "relationship",
+  "internal_name": "customer_id__c",
+  "related_to": "customers",
+  "calc": {},
+  "related_to_field": "name",
+  "isRef": true,
+  "otherTable": "customers",
+  "otherColumnDisplay": "name"
+}

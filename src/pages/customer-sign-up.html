@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Signup</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 20px;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .required::after {
+      content: "*";
+      color: red;
+      margin-left: 5px;
+    }
+
+    .form-label {
+      margin-bottom: 4px;
+    }
+
+    .form-control {
+      margin-bottom: 12px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #loadingOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      padding-top: 20%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <div class="card">
+      <h4 class="mb-4">Customer Signup</h4>
+      <form id="signupForm">
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label required">First Name</label>
+            <input type="text" class="form-control" name="first_name__c" required />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label required">Last Name</label>
+            <input type="text" class="form-control" name="last_name__c" required />
+          </div>
+          <input type="hidden" name="name" id="fullName" />
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label required">Primary Email</label>
+            <input type="email" class="form-control" name="email" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Secondary Email</label>
+            <input type="email" class="form-control" name="her_email__c" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">Amount of Family Members</label>
+            <input type="number" class="form-control" name="amount_of_family_members__c" min="0" step="1" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label class="form-label required">Address Line 1</label>
+            <input type="text" class="form-control" name="address1" required />
+          </div>
+          <div class="col-md-12">
+            <label class="form-label">Address Line 2</label>
+            <input type="text" class="form-control" name="address2" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label class="form-label required">City</label>
+            <input type="text" class="form-control" name="city" required />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label required">State</label>
+            <input type="text" class="form-control" name="state" required />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label required">Zip</label>
+            <input type="text" class="form-control" name="zip" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label required">Primary Cell</label>
+            <input
+              type="tel"
+              class="form-control"
+              name="his_cell__c"
+              required
+              pattern="[0-9]+"
+              title="Cell number can only contain digits 0-9"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Secondary Cell</label>
+            <input
+              type="tel"
+              class="form-control"
+              name="her_cell__c"
+              pattern="[0-9]+"
+              title="Cell number can only contain digits 0-9"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 " id="otherAffiliationWrapper">
+            <label class="form-label required">Affiliation</label>
+            <input type="text" class="form-control" name="other_affiliations__moisdes__c" id="other_affiliations__moisdes__c" required />
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <label class="form-label">Internal Notes</label>
+            <textarea class="form-control" name="internal_notes__c" rows="3"></textarea>
+          </div>
+        </div>
+        <div id="formMessage" class="text-danger fw-bold text-center"></div>
+
+        <div class="mt-3 text-end">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </form>
+
+      <div id="loadingOverlay">Saving customer...</div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      //getAffiliationList();
+      //const affiliationSelect = document.getElementById('affiliations__moisdes__c');
+      //const otherWrapper = document.getElementById('otherAffiliationWrapper');
+      //const otherInput = document.getElementById('other_affiliations__moisdes__c');
+
+      //affiliationSelect.addEventListener('change', function () {
+      //  if (this.value === 'Other') {
+      //    otherWrapper.classList.remove('hidden');
+      //    otherInput.setAttribute('required', 'required');
+      //  } else {
+      //    otherWrapper.classList.add('hidden');
+      //    otherInput.removeAttribute('required');
+      //  }
+      //});
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        //if (key === 'affiliations__moisdes__c' && value !== 'Other') {
+        //  data[key] = parseInt(value, 10);
+        //} else if (key === 'name') {
+        if (key === 'name') {
+          data[key] = `${data.first_name__c} ${data.last_name__c}`;
+        } else{
+          data[key] = value;
+        }
+      });
+      
+      const payload = {
+        data: data
+      };
+
+      console.log('data is: ', payload);
+      document.getElementById("loadingOverlay").style.display = "block";
+      try {
+        const response = await fetch('/restapi/crud/customers/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Api-Key': 'MW8mV:PceCDhIjokfxP];=aG7a83WiVCZkJo25C`]YT7BUTHB5'
+          },
+          body: JSON.stringify(payload)
+        });
+        const resultText = await response.text();
+
+        if (!response.ok) {
+          if (resultText.includes("uniq_customers_email__c")) {
+            throw new Error("uniq_customers_email__c");
+          } else {
+            throw new Error("An error occurred while saving. Please try again.");
+          }
+        }
+
+        const result = JSON.parse(resultText);
+
+        await fetch("https://shearis-yisroel.bizmanagecrm.com/restapi/users/invite-user/" + result.id, {
+          headers: {
+            "Content-Type": "application/json",
+            'X-Api-Key': 'MW8mV:PceCDhIjokfxP];=aG7a83WiVCZkJo25C`]YT7BUTHB5'
+          },
+        });
+        
+        window.location.href = "https://shearis-yisroel.bizmanagecrm.com/public/ext-page/thank-you";
+      } catch (error) {
+          const messageEl = document.getElementById("formMessage");
+
+          if (error && error.message) {
+              if (error.message.includes("uniq_customers_email__c")) {
+                  messageEl.innerHTML = `
+                      There is an account already associated with this email. 
+                      Please sign in <a href="https://shearis-yisroel.bizmanagecrm.com/" target="_blank">here</a>
+                  `;
+              } else {
+                  messageEl.textContent = error.message;
+              }
+          } else {
+              messageEl.textContent = "Network error. Please try again later.";
+          }
+        } finally {
+          document.getElementById("loadingOverlay").style.display = "none";
+        }
+    });
+
+    
+  </script>
+</body>
+
+</html>

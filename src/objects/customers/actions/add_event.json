@@ -1,0 +1,14 @@
+{
+  "action_name": "add_event",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Add Event",
+  "icon": "far fa-calendar-alt",
+  "type": "function",
+  "order": 9,
+  "multiRows": false
+}

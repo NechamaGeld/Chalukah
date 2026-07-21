@@ -1,0 +1,13 @@
+{
+  "action_name": "printout_invoices__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true
+  },
+  "title": "Printout Invoices",
+  "icon": "fa-solid fa-print",
+  "type": "custom-script",
+  "order": 3,
+  "multiRowOnly": true,
+  "multiRows": true
+}

@@ -1,0 +1,15 @@
+{
+  "action_name": "edit",
+  "action_type": "menu",
+  "table_name": "vendors",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Edit",
+  "icon": "far fa-edit",
+  "type": "url",
+  "value": "#/update/vendors/{{id}}",
+  "order": 1,
+  "multiRows": false
+}

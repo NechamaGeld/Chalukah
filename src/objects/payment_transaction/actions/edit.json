@@ -1,0 +1,21 @@
+{
+  "action_name": "edit",
+  "action_type": "menu",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Edit",
+  "icon": "far fa-edit",
+  "type": "url",
+  "value": "#/update/payment_transaction/{{id}}",
+  "order": 4,
+  "condition": {
+    "selectedText": "credit_card",
+    "useCondition": true,
+    "selectedField": "method",
+    "selectedCondition": "IS_NOT_EQUALS"
+  },
+  "multiRows": false
+}

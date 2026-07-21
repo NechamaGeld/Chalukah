@@ -1,0 +1,10 @@
+{
+  "name": "Thank you",
+  "url": "thank-you",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "external",
+  "render_type": "standalone"
+}

@@ -1,0 +1,13 @@
+{
+  "action_name": "edit_quote",
+  "action_type": "menu",
+  "table_name": "quotes",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Edit Quote",
+  "icon": "far fa-edit",
+  "type": "function",
+  "multiRows": false
+}

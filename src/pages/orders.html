@@ -1,0 +1,28 @@
+<input type="hidden" ng-init="executeActionByName('quotes', 'get_orders_grid__c')" />
+<h2>Orders</h2>
+<div ng-if="orderIds">
+    <div
+        ng-if="gridOptions"
+        ui-grid="gridOptions"
+        class="myGrid"
+        ui-grid-selection
+        ui-grid-edit
+        ui-grid-cellnav
+        ui-grid-resize-columns
+        ui-grid-move-columns
+        ui-grid-exporter
+        ui-grid-draggable-rows
+        ui-grid-save-state
+        ui-grid-importer
+        ui-grid-grouping
+        ui-grid-infinite-scroll>
+    </div>
+    
+    <div>
+        Showing {{gridOptions.data.length}} records out of {{count}}.
+        <button class="btn btn-default" ng-click="loadAll()" ng-if="gridOptions.data.length < count">
+            Load All
+        </button>
+        <span ng-if="gridOptions.loading"><i class="fas fa-spinner fa-spin"></i></span>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "table": "quotes",
+  "internal_name": "ext_units_qty",
+  "system": true,
+  "calc": {},
+  "hide_on_dashbaord": true
+}

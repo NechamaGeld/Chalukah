@@ -1,0 +1,12 @@
+{
+  "table": "custom.order_logs",
+  "field": "Cart ID",
+  "type": "relationship",
+  "internal_name": "cart_id__c",
+  "related_to": "quotes",
+  "calc": {},
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "quotes",
+  "otherColumnDisplay": "id"
+}

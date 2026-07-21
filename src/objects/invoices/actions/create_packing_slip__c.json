@@ -1,0 +1,13 @@
+{
+  "action_name": "create_packing_slip__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Create Packing Slip",
+  "icon": "fa-solid fa-truck-ramp-box",
+  "type": "custom-script",
+  "order": 15,
+  "multiRows": true
+}

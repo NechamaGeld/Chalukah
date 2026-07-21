@@ -1,0 +1,12 @@
+{
+  "table": "items",
+  "field": "Sorting Order",
+  "type": "numeric",
+  "internal_name": "sorting_order__c",
+  "calc": {},
+  "bulk_change": true,
+  "allow_edit_on_grid": true,
+  "data": {
+    "allow_edit_on_grid": true
+  }
+}

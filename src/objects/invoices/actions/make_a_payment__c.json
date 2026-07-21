@@ -1,0 +1,12 @@
+{
+  "action_name": "make_a_payment__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": false,
+    "dash": false
+  },
+  "title": "Make A Payment",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "url",
+  "value": "#/page/checkout?cart_id={{quote}}"
+}

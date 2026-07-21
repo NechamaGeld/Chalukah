@@ -1,0 +1,11 @@
+{
+  "table": "custom.combined_pdfs",
+  "field": "File Name",
+  "type": "foreign_field",
+  "internal_name": "file_name__c",
+  "calc": {
+    "on_field": "file_id__c",
+    "display_field": "display_name"
+  },
+  "format_type": "text"
+}

@@ -1,0 +1,13 @@
+{
+  "action_name": "cancel_in",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Cancel Invoice",
+  "icon": "fa fa-times",
+  "type": "http",
+  "order": 10
+}

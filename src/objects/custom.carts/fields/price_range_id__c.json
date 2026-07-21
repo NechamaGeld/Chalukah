@@ -1,0 +1,11 @@
+{
+  "table": "custom.carts",
+  "field": "price_range_id",
+  "type": "foreign_field",
+  "internal_name": "price_range_id__c",
+  "calc": {
+    "on_field": "price_range__c",
+    "display_field": "id"
+  },
+  "format_type": "number"
+}

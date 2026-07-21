@@ -1,0 +1,12 @@
+{
+  "action_name": "item_report__c",
+  "table_name": "items",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Item Report",
+  "icon": "fa-solid fa-info-circle",
+  "type": "url",
+  "value": "/custom-reports?report_id=9&params={\"item_id\":{{id}}}&auto_exe=true"
+}

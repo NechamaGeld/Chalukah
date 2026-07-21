@@ -1,0 +1,7 @@
+{
+  "table": "items",
+  "field": "Cost Price",
+  "type": "currency",
+  "internal_name": "cost_price_custom__c",
+  "calc": {}
+}

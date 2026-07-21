@@ -1,0 +1,10 @@
+{
+  "table": "deliveries",
+  "field": "Last Name",
+  "type": "custom_sql",
+  "internal_name": "customer_last_name__c",
+  "calc": {},
+  "hide_on_grid": true,
+  "hide_on_dashbaord": true,
+  "raw_sql": "select last_name__c from customers where customers.id = invoices_invoice_id.customer"
+}

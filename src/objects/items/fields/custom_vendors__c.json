@@ -1,0 +1,12 @@
+{
+  "table": "items",
+  "field": "Vendor",
+  "type": "relationship",
+  "internal_name": "custom_vendors__c",
+  "related_to": "vendors",
+  "calc": {},
+  "related_to_field": "name",
+  "isRef": true,
+  "otherTable": "vendors",
+  "otherColumnDisplay": "name"
+}

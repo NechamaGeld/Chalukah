@@ -1,0 +1,29 @@
+{
+  "display_name": "Payment Requests",
+  "internal_name": "custom.payment_requests",
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": null,
+  "token": null,
+  "system": false,
+  "orderBy": null,
+  "filters": null,
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": [
+    {
+      "is_custom": true,
+      "type": "is_equals",
+      "text": "Status",
+      "name": "status__c",
+      "field_internal_name": "status__c",
+      "field": "status__c"
+    }
+  ],
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

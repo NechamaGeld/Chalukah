@@ -1,0 +1,15 @@
+{
+  "action_name": "view_in",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": false,
+    "dash": false
+  },
+  "title": "View Invoice",
+  "icon": "far fa-eye",
+  "type": "ext-url",
+  "value": "/public/{{url}}",
+  "order": 0,
+  "multiRows": false
+}

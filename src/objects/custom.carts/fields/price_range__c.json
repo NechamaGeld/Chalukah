@@ -1,0 +1,12 @@
+{
+  "table": "custom.carts",
+  "field": "Price Range",
+  "type": "relationship",
+  "internal_name": "price_range__c",
+  "related_to": "lines",
+  "calc": {},
+  "related_to_field": "name",
+  "isRef": true,
+  "otherTable": "lines",
+  "otherColumnDisplay": "name"
+}

@@ -1,0 +1,12 @@
+{
+  "table": "invoices",
+  "field": "Season ID",
+  "type": "foreign_field",
+  "internal_name": "season__c",
+  "calc": {
+    "on_field": "quote_name",
+    "display_field": "season__c"
+  },
+  "hide_on_grid": true,
+  "hide_on_dashbaord": true
+}

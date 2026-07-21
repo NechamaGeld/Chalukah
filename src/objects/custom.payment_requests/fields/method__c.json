@@ -1,0 +1,8 @@
+{
+  "table": "custom.payment_requests",
+  "field": "Method",
+  "type": "text",
+  "internal_name": "method__c",
+  "calc": {},
+  "format_type": "text"
+}

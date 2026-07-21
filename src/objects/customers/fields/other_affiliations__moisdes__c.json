@@ -1,0 +1,14 @@
+{
+  "table": "customers",
+  "field": "Affiliation",
+  "type": "text",
+  "internal_name": "other_affiliations__moisdes__c",
+  "calc": {},
+  "format_type": "text",
+  "dashboard_section": 3,
+  "in_dashboard_section": 2,
+  "data": {
+    "dashboard_section": 3,
+    "in_dashboard_section": 2
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "action_name": "see_order_details__c",
+  "table_name": "quotes",
+  "is_hidden": {
+    "grid": false,
+    "dash": false
+  },
+  "title": "See order details",
+  "icon": "fa-solid fa-list",
+  "type": "url",
+  "value": "/#/page/order-details?cart_id={{id}}"
+}

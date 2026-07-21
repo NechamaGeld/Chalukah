@@ -1,0 +1,10 @@
+{
+  "name": "Charge CC form",
+  "url": "charge-cc-form",
+  "version": 1,
+  "data": {
+    "pageType": "modal"
+  },
+  "access_policy": "internal",
+  "render_type": "in_app"
+}

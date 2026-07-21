@@ -1,0 +1,12 @@
+{
+  "internal_name": "invoices_with_specific_static_items",
+  "display_name": "Invoices with specific (static) items",
+  "params": [],
+  "report_type": "list",
+  "deleted_ref": null,
+  "settings": {},
+  "to_users": null,
+  "to_user_roles": null,
+  "created_by": 2,
+  "created_at": "2026-03-18T01:02:37.052Z"
+}

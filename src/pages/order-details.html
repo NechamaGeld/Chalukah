@@ -1,0 +1,290 @@
+
+<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        margin-top: calc(6vh + 20px);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    #loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        /* dim the page */
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .category-tab {
+        background-color: transparent;
+        border: 1px solid #748899 !important;
+        color: #748899;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .category-tab:hover,
+    .category-tab.active {
+        background-color: #748899;
+        color: white;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<!--The following styles are instead of using bootstrap. bootstrap was overriding system left nav styling><-->
+<style>
+  /* Minimal Bootstrap-style Grid */
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .col-md-10, .col-md-9, .col-md-7, .col-md-11{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  @media (min-width: 768px) {
+    .col-md-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-md-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-md-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-md-9  { flex: 0 0 75%;         max-width: 75%; }
+
+  }
+
+  .justify-content-center {
+    justify-content: center !important;
+  }
+
+  /* Table */
+  .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+    color: #212529;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Buttons
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out,
+                background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
+  }*/ 
+
+  /* Utility */
+  .text-right {
+    text-align: right !important;
+  }
+
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+
+  .border {
+    border: 1px solid #dee2e6 !important;
+  }
+
+  .rounded-3 {
+    border-radius: 0.3rem !important;
+  }
+
+  .shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.075) !important;
+  }
+</style>
+
+
+
+<div ng-init="executeActionByName('quotes', 'order_details__c')">
+    <div class="text-right">
+        <button class="btn category-tab">
+            <a href="/#/page/edit-order?cart_id={{$urlParams.cart_id}}&line={{order.line_id}}">Edit Order Items</a>
+        </button>
+        <button class="btn category-tab">
+            <a href="/#/view/quotes">Go Back To All Orders</a>
+        </button>
+    </div>
+    <div class="center-div" style="color:#6941C6;">
+
+
+        <div>
+            <h2 style=" display: flex; justify-content: center;">Order Details</h2>
+        </div>
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-11">
+                    <table class="table mt-3 table-striped border rounded-3 shadow-sm">
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Date</th>
+                                <th>Season</th>
+                                <th>Price Range</th>
+                                <th>Status</th>
+                                <th>Order Total</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-info">
+                            <tr>
+                                <td>{{ order.quote_id }}</td>
+                                <td>{{ order.created_at | date:'MMM dd, yyyy' }}</td>
+                                <td>{{ order.season_name }}</td>
+                                <td>{{ order.line_name }}</td>
+                                <td>{{ order.status }}</td>
+                                <td>${{ order.total }}</td>
+                                <td>${{ order.balance }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <h2 style=" display: flex; justify-content: center;">Order Transactions</h2>
+        </div>
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <table class="table mt-3 table-striped border rounded-3 shadow-sm">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Payment Date</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-transactions">
+                            <tr ng-repeat="trans in order.payment_transactions">
+                                <td>${{ trans.amount }}</td>
+                                <td>{{ trans.method == 'credit_card' ? (trans.amount > 0 ? 'Credit Card' : 'Refund') : trans.method }}</td>
+                                <td>{{ trans.created_at | date:'MMM dd, yyyy' }}</td>
+                                <td>{{ trans.status || '--' }}</td>
+                                <td ng-if="trans.method=='credit_card' && trans.amount>0">
+                                    <a class="btn btn-default" ng-href="#/payments/refund/{{trans.id}}/{{trans.amount}}?post_refund_action=rerender_after_refund__c">
+                                        Refund Charge
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2 style=" display: flex; justify-content: center;">Order Items</h2>
+        </div>
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <table class="table mt-3 table-striped border rounded-3 shadow-sm">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Item name</th>
+                                <th>Price</th>
+                                <th>Qantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items-list">
+                            <tr ng-repeat="item in order.cart_items">
+                                <td>{{ item.category_name }}</td>
+                                <td>{{ item.item_name }}</td>
+                                <td>{{ item.item_price ? ('$' + item.item_price) : '--' }}</td>
+                                <td>{{ item.qty }}</td>
+                                <td>${{ item.total_price }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div id="loader-overlay" ng-show="showLoader">
+        <div class="loader"></div>
+    </div>
+</div>

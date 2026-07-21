@@ -1,0 +1,14 @@
+{
+  "action_name": "print_packing_slips__c",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Print Packing Slips",
+  "icon": "fa-solid fa-print",
+  "type": "custom-script",
+  "order": 0,
+  "multiRowOnly": true,
+  "multiRows": true
+}

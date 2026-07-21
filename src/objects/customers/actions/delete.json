@@ -1,0 +1,14 @@
+{
+  "action_name": "delete",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Move to Trash",
+  "icon": "far fa-trash-alt",
+  "type": "http",
+  "order": 21,
+  "multiRows": false
+}

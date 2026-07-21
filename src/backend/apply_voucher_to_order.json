@@ -1,0 +1,20 @@
+{
+  "name": "apply_voucher_to_order",
+  "description": "Applies A Voucher To An Order",
+  "method": "GET",
+  "created_at": null,
+  "updated_at": null,
+  "created_by": null,
+  "updated_by": null,
+  "is_public": true,
+  "token": "14741FDC219FFC0E0178CA0E5A9C95B862E83C84",
+  "crontab": null,
+  "active": true,
+  "version": 27,
+  "timeout": null,
+  "modules": [
+    "db",
+    "callScript",
+    "callReport"
+  ]
+}

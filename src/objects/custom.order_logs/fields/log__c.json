@@ -1,0 +1,8 @@
+{
+  "table": "custom.order_logs",
+  "field": "Log",
+  "type": "text",
+  "internal_name": "log__c",
+  "calc": {},
+  "format_type": "text"
+}

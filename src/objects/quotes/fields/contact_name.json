@@ -1,0 +1,10 @@
+{
+  "table": "quotes",
+  "type": "text",
+  "internal_name": "contact_name",
+  "related_to": "contacts",
+  "system": true,
+  "calc": {},
+  "related_to_field": "name",
+  "hide_on_dashbaord": true
+}

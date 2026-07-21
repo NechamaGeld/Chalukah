@@ -1,0 +1,12 @@
+{
+  "table": "quotes",
+  "field": "season",
+  "type": "relationship",
+  "internal_name": "season__c",
+  "related_to": "custom.seasons",
+  "calc": {},
+  "related_to_field": "name__c",
+  "isRef": true,
+  "otherTable": "custom.seasons",
+  "otherColumnDisplay": "name__c"
+}

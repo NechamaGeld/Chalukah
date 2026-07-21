@@ -1,0 +1,15 @@
+{
+  "action_name": "edit_delivery",
+  "action_type": "menu",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Edit Delivery data",
+  "icon": "fas fa-edit",
+  "type": "url",
+  "value": "#/update/deliveries/{{id}}?custom_only=true",
+  "order": 6,
+  "multiRows": false
+}

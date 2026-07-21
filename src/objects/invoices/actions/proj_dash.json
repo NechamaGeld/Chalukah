@@ -1,0 +1,15 @@
+{
+  "action_name": "proj_dash",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Project Dashboard",
+  "icon": "fas fa-chart-pie",
+  "type": "url",
+  "value": "#/project-dashboard/{{project}}",
+  "order": 13,
+  "multiRows": false
+}

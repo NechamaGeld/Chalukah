@@ -1,0 +1,10 @@
+{
+  "name": "Prices - landing page",
+  "url": "prices-landing-page",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

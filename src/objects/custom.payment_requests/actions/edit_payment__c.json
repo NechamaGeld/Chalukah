@@ -1,0 +1,20 @@
+{
+  "action_name": "edit_payment__c",
+  "table_name": "custom.payment_requests",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Edit payment",
+  "icon": "fa-solid fa-pen-to-square",
+  "type": "url",
+  "value": "#/update/payment_transaction/{{payment_transaction__c}}",
+  "condition": {
+    "advanced": "",
+    "useAdvanced": false,
+    "selectedText": "Accepted",
+    "useCondition": true,
+    "selectedField": "status__c",
+    "selectedCondition": "IS_EQUALS"
+  }
+}

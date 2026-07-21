@@ -1,0 +1,20 @@
+{
+  "display_name": "Carts",
+  "internal_name": "custom.carts",
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": null,
+  "token": null,
+  "system": null,
+  "orderBy": null,
+  "filters": null,
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": null,
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

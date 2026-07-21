@@ -1,0 +1,33 @@
+{
+  "table": "custom.voucher",
+  "field": "Code",
+  "type": "selection",
+  "vals": [
+    "Test Code",
+    "Another Code",
+    "Anhsy",
+    "Test10",
+    "YTT86",
+    "BYHS26",
+    "ACHD26",
+    "HSGC26",
+    "FYHS26",
+    "LMMC26",
+    "YNNC26",
+    "MOFC26",
+    "TYAP26",
+    "YNYC26",
+    "YECC26",
+    "YOBC26",
+    "YTTC26",
+    "NSES26",
+    "SYKtest",
+    "YKYC26"
+  ],
+  "internal_name": "code__c",
+  "calc": {},
+  "allow_add_in_regular_portal": true,
+  "data": {
+    "allow_add_in_regular_portal": true
+  }
+}

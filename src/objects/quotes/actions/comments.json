@@ -1,0 +1,14 @@
+{
+  "action_name": "comments",
+  "action_type": "menu",
+  "table_name": "quotes",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Comments (0)",
+  "icon": "far fa-comment-alt",
+  "type": "url",
+  "value": "#/comments/quotes/{{id}}",
+  "multiRows": false
+}

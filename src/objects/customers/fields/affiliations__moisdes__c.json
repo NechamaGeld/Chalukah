@@ -1,0 +1,14 @@
+{
+  "table": "customers",
+  "field": "Affiliations / Moisdes (Not in use)",
+  "type": "relationship",
+  "internal_name": "affiliations__moisdes__c",
+  "related_to": "custom.affiliations",
+  "calc": {},
+  "hide_on_grid": true,
+  "related_to_field": "name__c",
+  "hide_on_dashbaord": true,
+  "isRef": true,
+  "otherTable": "custom.affiliations",
+  "otherColumnDisplay": "name__c"
+}

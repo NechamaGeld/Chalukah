@@ -1,0 +1,7 @@
+{
+  "table": "custom.voucher",
+  "field": "Description",
+  "type": "textArea",
+  "internal_name": "description__c",
+  "calc": {}
+}

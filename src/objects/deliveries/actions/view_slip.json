@@ -1,0 +1,14 @@
+{
+  "action_name": "view_slip",
+  "action_type": "menu",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "grid": false,
+    "dash": false
+  },
+  "title": "View Slip",
+  "icon": "far fa-eye",
+  "type": "function",
+  "order": 1,
+  "multiRows": false
+}

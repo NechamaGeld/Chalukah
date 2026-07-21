@@ -1,0 +1,14 @@
+{
+  "table": "payment_transaction",
+  "vals": [
+    "Check",
+    "Cash",
+    "Credit Card",
+    "Zelle",
+    "Write Off",
+    "Other"
+  ],
+  "internal_name": "method",
+  "system": true,
+  "calc": {}
+}

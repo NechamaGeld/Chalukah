@@ -1,0 +1,12 @@
+{
+  "action_name": "change_price_range__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Change Price Range",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "url",
+  "value": "/#/page-modal/change-price-range?quote_id={{quote}}&invoice={{id}}"
+}

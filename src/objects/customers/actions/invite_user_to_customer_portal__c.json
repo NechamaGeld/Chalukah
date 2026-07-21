@@ -1,0 +1,12 @@
+{
+  "action_name": "invite_user_to_customer_portal__c",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Invite User to Customer Portal",
+  "type": "url",
+  "value": "#/invite-user/cust/{{id}}",
+  "order": 19
+}

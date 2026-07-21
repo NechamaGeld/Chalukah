@@ -1,0 +1,8 @@
+{
+  "table": "quote_items",
+  "type": "text",
+  "internal_name": "item",
+  "system": true,
+  "calc": {},
+  "hide_on_grid": false
+}

@@ -1,0 +1,13 @@
+{
+  "action_name": "remove_from_group",
+  "action_type": "menu",
+  "table_name": "quote_items",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Remove from combination group",
+  "icon": "fa fa-archive",
+  "type": "http",
+  "multiRows": false
+}

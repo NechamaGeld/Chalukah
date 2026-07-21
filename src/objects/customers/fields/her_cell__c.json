@@ -1,0 +1,14 @@
+{
+  "table": "customers",
+  "field": "Secondary Cell",
+  "type": "text",
+  "internal_name": "her_cell__c",
+  "calc": {},
+  "format_type": "phone",
+  "dashboard_section": 2,
+  "in_dashboard_section": 4,
+  "data": {
+    "dashboard_section": 2,
+    "in_dashboard_section": 4
+  }
+}

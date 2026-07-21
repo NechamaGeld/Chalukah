@@ -1,0 +1,15 @@
+{
+  "action_name": "create_deliv_slip",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Create Delivery Slip",
+  "icon": "fa fa-truck",
+  "type": "url",
+  "value": "#/delivery/{{id}}",
+  "order": 6,
+  "multiRows": false
+}

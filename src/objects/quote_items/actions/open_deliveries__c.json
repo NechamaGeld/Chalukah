@@ -1,0 +1,11 @@
+{
+  "action_name": "open_deliveries__c",
+  "table_name": "quote_items",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Open Deliveries",
+  "icon": "fa-solid fa-eye",
+  "type": "custom-script"
+}

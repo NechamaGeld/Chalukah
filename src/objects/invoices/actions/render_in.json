@@ -1,0 +1,14 @@
+{
+  "action_name": "render_in",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Render Invoice",
+  "icon": "fa fa-file-text",
+  "type": "function",
+  "order": 21,
+  "multiRows": false
+}

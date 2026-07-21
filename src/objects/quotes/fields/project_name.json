@@ -1,0 +1,9 @@
+{
+  "table": "quotes",
+  "internal_name": "project_name",
+  "related_to": "projects",
+  "system": true,
+  "calc": {},
+  "related_to_field": "name",
+  "hide_on_dashbaord": true
+}

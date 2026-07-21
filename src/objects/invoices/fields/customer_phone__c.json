@@ -1,0 +1,10 @@
+{
+  "table": "invoices",
+  "field": "Customer Phone",
+  "type": "foreign_field",
+  "internal_name": "customer_phone__c",
+  "calc": {
+    "on_field": "customer",
+    "display_field": "his_cell__c"
+  }
+}

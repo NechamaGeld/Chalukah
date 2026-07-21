@@ -1,0 +1,15 @@
+{
+  "action_name": "charge_cc",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Charge Credit-Card",
+  "icon": "far fa-credit-card",
+  "type": "url",
+  "value": "#/payments/charge-cc?invoice={{id}}&amount={{amount}}&gateway=1",
+  "order": 8,
+  "multiRows": false
+}

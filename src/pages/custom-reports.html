@@ -1,0 +1,108 @@
+<style>
+    .reports-container {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 20px auto;
+    }
+
+    .section-title {
+        color: #333;
+        border-bottom: 2px solid;
+        padding-bottom: 10px;
+    }
+
+    .section-title.primary {
+        border-bottom-color: #007bff;
+    }
+
+    .section-title.temporary {
+        border-bottom-color: #dc3545;
+        margin-top: 40px;
+    }
+
+    .report-card {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-left: 4px solid;
+        border-radius: 4px;
+    }
+
+    .report-card.primary {
+        border-left-color: #007bff;
+    }
+
+    .report-card.temporary {
+        border-left-color: #dc3545;
+    }
+
+    .report-link {
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .report-link.primary {
+        color: #007bff;
+    }
+
+    .report-link.temporary {
+        color: #dc3545;
+    }
+
+    .report-description {
+        margin: 8px 0 0 0;
+        color: #666;
+        font-size: 14px;
+    }
+</style>
+
+<div class="reports-container">
+    <div>
+        <h2 class="section-title primary">Custom Reports</h2>
+        <div class="report-card primary">
+            <a href="/#/custom-reports?report_id=16" class="report-link primary">Billing Summary</a>
+            <p class="report-description">View total sales by category with breakdown of paid and outstanding amounts</p>
+        </div>
+        <div class="report-card primary">
+            <a href="/#/custom-reports?report_id=24" class="report-link primary">Negative billing Summary</a>
+            <p class="report-description">View total sales by category with breakdown of paid and outstanding amounts of customers that have credit (overpaid)</p>
+        </div>
+        <div class="report-card primary">
+            <a href="/#/custom-reports?report_id=12" class="report-link primary">Item Count by Customer</a>
+            <p class="report-description">See quantities purchased by each customer, you can group by category and item</p>
+        </div>
+        <div class="report-card primary">
+            <a href="/#/custom-reports?report_id=15" class="report-link primary">Item Count Summary</a>
+            <p class="report-description">View total quantities ordered for each item, you can group by category</p>
+        </div>
+        <div class="report-card primary">
+            <a href="/#/custom-reports?report_id=19" class="report-link primary">Coupon Usage Report</a>
+            <p class="report-description">Track which customers used each coupon code and the discount amounts applied</p>
+        </div>
+        <div class="report-card primary">
+            <a href="/#/custom-reports?report_id=9" class="report-link primary">Customers by Item</a>
+            <p class="report-description">Find all customers who ordered a specific item</p>
+        </div>
+            
+    </div>
+    <div>
+        <h2 class="section-title temporary">Temporary Reports</h2>
+        <div class="report-card temporary">
+            <a href="/#/custom-reports?report_id=20" class="report-link temporary">Deleted Invoices with Finalized Quotes</a>
+            <p class="report-description">Find invoices that were deleted where the corresponding quote is marked as final</p>
+        </div>
+        <div class="report-card temporary">
+            <a href="/#/custom-reports?report_id=21" class="report-link temporary">Deleted Quotes with Active Invoices</a>
+            <p class="report-description">Find quotes that were deleted where invoices have been created</p>
+        </div>
+        <div class="report-card temporary">
+            <a href="/#/custom-reports?report_id=22" class="report-link temporary">Customers with Multiple Invoices</a>
+            <p class="report-description">List customers who have more than one invoice</p>
+        </div>
+        <div class="report-card temporary">
+            <a href="/#/custom-reports?report_id=23" class="report-link temporary">Deleted Invoices with Payments</a>
+            <p class="report-description">Find deleted invoices that have received payments</p>
+        </div>
+    </div>
+</div>

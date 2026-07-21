@@ -1,0 +1,10 @@
+{
+  "name": "Previous Orders",
+  "url": "previous-orders",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

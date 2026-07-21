@@ -1,0 +1,8 @@
+{
+  "table": "deliveries",
+  "internal_name": "customer_id",
+  "related_to": "invoices",
+  "system": true,
+  "calc": {},
+  "related_to_field": "customer"
+}

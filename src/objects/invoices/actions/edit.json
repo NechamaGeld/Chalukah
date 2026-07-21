@@ -1,0 +1,15 @@
+{
+  "action_name": "edit",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Edit",
+  "icon": "far fa-edit",
+  "type": "url",
+  "value": "#/update/invoices/{{id}}",
+  "order": 17,
+  "multiRows": false
+}

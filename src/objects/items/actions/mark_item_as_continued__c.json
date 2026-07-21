@@ -1,0 +1,19 @@
+{
+  "action_name": "mark_item_as_continued__c",
+  "table_name": "items",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Mark Item as continued",
+  "icon": "fa-solid fa-list",
+  "type": "custom-script",
+  "condition": {
+    "advanced": "discontinued IS_EQUALS true",
+    "useAdvanced": true,
+    "selectedText": "",
+    "useCondition": true,
+    "selectedField": "discontinued",
+    "selectedCondition": "IS_EQUALS"
+  }
+}

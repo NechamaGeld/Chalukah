@@ -1,0 +1,7 @@
+{
+  "table": "custom.voucher",
+  "field": "Max Percent",
+  "type": "numeric",
+  "internal_name": "max_percent__c",
+  "calc": {}
+}

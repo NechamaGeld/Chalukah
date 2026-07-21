@@ -1,0 +1,10 @@
+{
+  "action_name": "apply_voucher__c",
+  "table_name": "custom.carts",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Apply Voucher",
+  "type": "custom-script"
+}

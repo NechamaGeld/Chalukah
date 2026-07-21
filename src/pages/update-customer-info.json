@@ -1,0 +1,10 @@
+{
+  "name": "update customer info",
+  "url": "update-customer-info",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

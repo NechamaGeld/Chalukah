@@ -1,0 +1,12 @@
+{
+  "table": "custom.payment_requests",
+  "field": "Invoice ID",
+  "type": "relationship",
+  "internal_name": "invoice_id__c",
+  "related_to": "invoices",
+  "calc": {},
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "invoices",
+  "otherColumnDisplay": "id"
+}

@@ -1,0 +1,14 @@
+{
+  "action_name": "copy_as",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Copy as Proposal",
+  "icon": "far fa-copy",
+  "type": "function",
+  "order": 9,
+  "multiRows": false
+}

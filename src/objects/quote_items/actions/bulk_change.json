@@ -1,0 +1,15 @@
+{
+  "action_name": "bulk_change",
+  "action_type": "menu",
+  "table_name": "quote_items",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Bulk Change",
+  "icon": "fas fa-list",
+  "type": "function",
+  "order": 11,
+  "multiRowOnly": false,
+  "multiRows": false
+}

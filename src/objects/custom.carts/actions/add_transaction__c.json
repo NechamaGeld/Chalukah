@@ -1,0 +1,11 @@
+{
+  "action_name": "add_transaction__c",
+  "table_name": "custom.carts",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Add Transaction",
+  "type": "url",
+  "value": "/#/add/payment_transaction?pre_data_customer={{cust_id__c}}&pre_data_cart_id__c={{id}}"
+}

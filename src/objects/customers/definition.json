@@ -1,0 +1,41 @@
+{
+  "system": true,
+  "display_name": "Customers",
+  "internal_name": "customers",
+  "search_enabled": true,
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": null,
+  "token": null,
+  "orderBy": {
+    "clm": "updated_at",
+    "order": "desc"
+  },
+  "filters": null,
+  "desc": null,
+  "bcg_color": "customer_group_color",
+  "grids": null,
+  "available_filters": [
+    {
+      "type": "toggle",
+      "text": "Include Archived",
+      "name": "archived",
+      "is_custom": true,
+      "hide": true
+    },
+    {
+      "is_custom": true,
+      "text": "Accepted Invite",
+      "name": "accepted_invite__c",
+      "type": "toggle",
+      "field_internal_name": "accepted_invite",
+      "field": "accepted_invite",
+      "hide": true
+    }
+  ],
+  "has_comments": true,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

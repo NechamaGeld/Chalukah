@@ -1,0 +1,11 @@
+{
+  "action_name": "manual_refund__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Manual Refund",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "custom-script"
+}

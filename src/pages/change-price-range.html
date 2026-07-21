@@ -1,0 +1,21 @@
+<div class="container mt-4 mb-4" ng-init="executeActionByName('invoices', 'save_price_range__c')">
+    <form name="priceRangeForm" ng-submit="savePriceRange()" class="card p-4 shadow-sm">
+        <h5 class="mb-3">Select Price Range</h5>
+
+        <div class="mb-3">
+            <select id="priceSelect" 
+                    class="form-select form-control w-25" 
+                    ng-model="state.newLine" 
+                    ng-options="price.id as price.name for price in prices" 
+                    required>
+                <option value="">-- Select --</option>
+            </select>
+        </div>
+
+        <button type="submit" 
+                class="btn btn-primary"
+                ng-disabled="!state.newLine">
+            Save Price Range
+        </button>
+    </form>
+</div>

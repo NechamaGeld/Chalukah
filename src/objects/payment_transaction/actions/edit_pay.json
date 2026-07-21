@@ -1,0 +1,14 @@
+{
+  "action_name": "edit_pay",
+  "action_type": "menu",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Edit payment",
+  "icon": "far fa-edit",
+  "type": "url",
+  "value": "#/payments/accept-payment?id={{id}}",
+  "multiRows": false
+}

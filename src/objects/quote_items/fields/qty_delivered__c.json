@@ -1,0 +1,8 @@
+{
+  "table": "quote_items",
+  "field": "Qty Delivered",
+  "type": "custom_sql",
+  "internal_name": "qty_delivered__c",
+  "calc": {},
+  "raw_sql": "SELECT SUM(qty)\n  FROM item_deliveries\n  WHERE quote_item_id = quote_items.id"
+}

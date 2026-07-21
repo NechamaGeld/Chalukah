@@ -1,0 +1,16 @@
+{
+  "action_name": "invite_cust_to_bzmng",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Invite To Customer Portal",
+  "icon": "fa-solid fa-user-plus",
+  "type": "url",
+  "value": "#/invite-user/cust/{{id}}",
+  "order": 11,
+  "multiRowOnly": false,
+  "multiRows": true
+}

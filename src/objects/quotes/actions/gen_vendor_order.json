@@ -1,0 +1,14 @@
+{
+  "action_name": "gen_vendor_order",
+  "action_type": "menu",
+  "table_name": "quotes",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Generate Vendor Order",
+  "icon": "fas fa-cash-register",
+  "type": "url",
+  "value": "#/order/{{project}}?quoteId={{id}}",
+  "multiRows": false
+}

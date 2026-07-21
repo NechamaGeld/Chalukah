@@ -1,0 +1,68 @@
+{
+  "system": true,
+  "display_name": "Items",
+  "internal_name": "items",
+  "search_enabled": true,
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": null,
+  "token": null,
+  "orderBy": {
+    "clm": "category",
+    "order": "asc"
+  },
+  "filters": [
+    {
+      "key": "discontinued",
+      "field": {
+        "internal_name": "discontinued",
+        "field": "Discontinued",
+        "type": "boolean",
+        "grid_clm_name": "discontinued",
+        "read_only": false,
+        "system": true,
+        "clm_name": "discontinued",
+        "orderable": true,
+        "bulk_change": true,
+        "isUniquable": true,
+        "isUnique": false,
+        "parent_type": false
+      },
+      "filter": {
+        "falsy": true
+      }
+    }
+  ],
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": [
+    {
+      "type": "three-options",
+      "text": "Discontinued",
+      "name": "discontinued_3"
+    },
+    {
+      "type": "search_match",
+      "text": "Category",
+      "otherTable": "categories",
+      "name": "cat",
+      "otherColumnDisplay": "name",
+      "field": "category",
+      "field_internal_name": "category"
+    },
+    {
+      "is_custom": true,
+      "type": "starts_with",
+      "text": "Pricing",
+      "name": "pricing__c",
+      "field_internal_name": "line",
+      "field": "line"
+    }
+  ],
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

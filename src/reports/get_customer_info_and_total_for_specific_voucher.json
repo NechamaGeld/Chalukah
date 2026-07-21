@@ -1,0 +1,19 @@
+{
+  "internal_name": "get_customer_info_and_total_for_specific_voucher",
+  "display_name": "List of customers who used specific voucher",
+  "params": [
+    {
+      "internal_name": "voucher_code",
+      "display_name": "Voucher Code",
+      "required": true,
+      "input_type": "text"
+    }
+  ],
+  "report_type": "list",
+  "deleted_ref": null,
+  "settings": null,
+  "to_users": null,
+  "to_user_roles": null,
+  "created_by": 2,
+  "created_at": "2025-08-15T01:10:55.998Z"
+}

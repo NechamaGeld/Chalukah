@@ -1,0 +1,11 @@
+{
+  "table": "custom.seasons",
+  "field": "Start Date",
+  "type": "date",
+  "internal_name": "start_date__c",
+  "calc": {},
+  "grid_filter": "date_text_serach",
+  "data": {
+    "grid_filter": "date_text_serach"
+  }
+}

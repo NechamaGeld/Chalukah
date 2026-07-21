@@ -1,0 +1,10 @@
+{
+  "name": "Customer Sign up",
+  "url": "customer-sign-up",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "external",
+  "render_type": "standalone"
+}

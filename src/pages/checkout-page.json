@@ -1,0 +1,10 @@
+{
+  "name": "Checkout Page",
+  "url": "checkout-page",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

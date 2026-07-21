@@ -1,0 +1,11 @@
+{
+  "table": "custom.payment_requests",
+  "field": "Customer",
+  "type": "foreign_field",
+  "internal_name": "customer__c",
+  "calc": {
+    "on_field": "customer_id__c",
+    "display_field": "id"
+  },
+  "format_type": "number"
+}

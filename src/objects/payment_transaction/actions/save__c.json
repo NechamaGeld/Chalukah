@@ -1,0 +1,10 @@
+{
+  "action_name": "save__c",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Save",
+  "type": "custom-script"
+}

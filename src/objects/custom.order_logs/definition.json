@@ -1,0 +1,31 @@
+{
+  "display_name": "Order Logs",
+  "internal_name": "custom.order_logs",
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": null,
+  "token": null,
+  "system": false,
+  "orderBy": [],
+  "filters": null,
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": [
+    {
+      "is_custom": true,
+      "text": "Cart ID",
+      "name": "cart_id__c",
+      "type": "search_match",
+      "otherTable": "quotes",
+      "otherColumnDisplay": "id",
+      "field": "cart_id__c",
+      "field_internal_name": "cart_id__c"
+    }
+  ],
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

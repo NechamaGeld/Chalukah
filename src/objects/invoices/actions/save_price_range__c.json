@@ -1,0 +1,11 @@
+{
+  "action_name": "save_price_range__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "save price range",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "custom-script"
+}

@@ -1,0 +1,268 @@
+<!--div id="alertSystem">
+  <style>
+    /*#alertSystem .alert {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      min-width: 250px;
+      padding: 15px 20px;
+      margin-top: calc(6vh + 20px);
+      border-radius: 6px;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 99999;
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: slideIn 0.3s forwards;
+    }*/
+
+    #alertSystem .alert {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%, -10px);
+      min-width: 250px;
+      padding: 15px 20px;
+      margin-top: calc(6vh + 20px);
+      border-radius: 6px;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 99999;
+      opacity: 0;
+      animation: slideIn 0.3s forwards;
+    }
+
+    /*@keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }*/
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    #alertSystem .success {
+      background-color: #2ecc71;
+    }
+
+    #alertSystem .error {
+      background-color: #e74c3c;
+    }
+
+    #alertSystem .warning {
+      background-color: #f39c12;
+    }
+
+    @media (max-width: 600px) {
+      #alertSystem .alert {
+        right: 10px;
+        left: 10px;
+      }
+    }
+  </style>
+
+
+
+  <script>
+    (function () {
+    const container = document.getElementById('alertSystem');
+
+    function showAlert(type, message, timeout = 5000) {
+      const el = document.createElement('div');
+      el.className = 'alert ' + type;
+      el.textContent = message;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        setTimeout(() => el.remove(), 300);
+      }, timeout);
+    }
+
+    function showConfirm(message) {
+      return new Promise((resolve) => {
+        const el = document.createElement('div');
+        el.className = 'alert warning';
+        el.innerHTML = `
+          <div style="margin-bottom: 10px;">${message}</div>
+          <button id="confirmYes">Yes</button>
+          <button id="confirmNo">No</button>
+        `;
+        container.appendChild(el);
+
+        // Styling the buttons (optional)
+        el.querySelectorAll('button').forEach(btn => {
+          btn.style.margin = '0 5px';
+          btn.style.padding = '4px 10px';
+        });
+
+        document.getElementById('confirmYes').onclick = () => {
+          el.remove();
+          resolve(true);
+        };
+
+        document.getElementById('confirmNo').onclick = () => {
+          el.remove();
+          resolve(false);
+        };
+      });
+    }
+
+    window.alertSystem = {
+      show: showAlert,
+      confirm: showConfirm
+    };
+  })();
+  </script>
+
+</div-->
+
+<div id="alertSystem">
+  <style>
+    #alertSystem .alert {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%, -10px);
+      min-width: 250px;
+      max-width: 90%;
+      padding: 20px;
+      margin-top: calc(6vh + 20px);
+      border-radius: 8px;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 99999;
+      opacity: 0;
+      animation: slideIn 0.3s forwards;
+      text-align: center;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    #alertSystem .success {
+      background-color: #2ecc71;
+    }
+
+    #alertSystem .error {
+      background-color: #e74c3c;
+    }
+
+    #alertSystem .warning {
+      background-color: #f39c12;
+    }
+
+    /* Confirm-specific styles */
+    #alertSystem .confirm-popup {
+      padding: 20px;
+      max-width: 320px;
+    }
+
+    #alertSystem .confirm-message {
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    #alertSystem .confirm-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #alertSystem .btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+
+    #alertSystem .btn-yes {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    #alertSystem .btn-yes:hover {
+      background-color: #27ae60;
+    }
+
+    #alertSystem .btn-no {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    #alertSystem .btn-no:hover {
+      background-color: #c0392b;
+    }
+
+    @media (max-width: 600px) {
+      #alertSystem .alert {
+        left: 10px;
+        right: 10px;
+        transform: none;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const container = document.getElementById('alertSystem');
+
+      function showAlert(type, message, timeout = 5000) {
+        const el = document.createElement('div');
+        el.className = 'alert ' + type;
+        el.textContent = message;
+        container.appendChild(el);
+        setTimeout(() => {
+          el.style.opacity = '0';
+          setTimeout(() => el.remove(), 300);
+        }, timeout);
+      }
+
+      function showConfirm(message) {
+        return new Promise((resolve) => {
+          const el = document.createElement('div');
+          el.className = 'alert warning confirm-popup';
+          el.innerHTML = `
+            <div class="confirm-message">${message}</div>
+            <div class="confirm-buttons">
+              <button class="btn btn-yes">Yes</button>
+              <button class="btn btn-no">No</button>
+            </div>
+          `;
+          container.appendChild(el);
+
+          el.querySelector('.btn-yes').onclick = () => {
+            el.remove();
+            resolve(true);
+          };
+
+          el.querySelector('.btn-no').onclick = () => {
+            el.remove();
+            resolve(false);
+          };
+        });
+      }
+
+      window.alertSystem = {
+        show: showAlert,
+        confirm: showConfirm
+      };
+    })();
+  </script>
+</div>

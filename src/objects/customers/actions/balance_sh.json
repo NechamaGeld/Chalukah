@@ -1,0 +1,15 @@
+{
+  "action_name": "balance_sh",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Balance Sheet",
+  "icon": "fa fa-link",
+  "type": "ext-url",
+  "value": "http:///payments/balance-sheet/customers/{{id}}",
+  "order": 2,
+  "multiRows": false
+}

@@ -1,0 +1,14 @@
+{
+  "action_name": "cancel_slip",
+  "action_type": "menu",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Cancel Slip",
+  "icon": "far fa-trash-alt",
+  "type": "function",
+  "order": 5,
+  "multiRows": false
+}

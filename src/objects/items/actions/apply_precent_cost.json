@@ -1,0 +1,13 @@
+{
+  "action_name": "apply_precent_cost",
+  "action_type": "menu",
+  "table_name": "items",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Apply Cost Factor By Percent",
+  "icon": "fas fa-percentage",
+  "type": "function",
+  "multiRows": false
+}

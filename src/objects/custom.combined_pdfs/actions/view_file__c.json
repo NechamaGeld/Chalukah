@@ -1,0 +1,12 @@
+{
+  "action_name": "view_file__c",
+  "table_name": "custom.combined_pdfs",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "View File",
+  "icon": "fa fa-link",
+  "type": "ext-url",
+  "value": "https://shearis-yisroel.bizmanagecrm.com/files/view-pdf/{{file_id__c}}"
+}

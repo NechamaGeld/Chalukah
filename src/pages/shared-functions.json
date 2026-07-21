@@ -1,0 +1,10 @@
+{
+  "name": "Shared Functions",
+  "url": "shared-functions",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

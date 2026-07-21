@@ -1,0 +1,7 @@
+{
+  "table": "custom.carts",
+  "field": "Total",
+  "type": "numeric",
+  "internal_name": "total__c",
+  "calc": {}
+}

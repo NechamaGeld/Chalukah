@@ -1,0 +1,12 @@
+{
+  "table": "custom.cart_items",
+  "field": "Cart ID",
+  "type": "relationship",
+  "internal_name": "cart_id__c",
+  "related_to": "custom.carts",
+  "calc": {},
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "custom.carts",
+  "otherColumnDisplay": "id"
+}

@@ -1,0 +1,8 @@
+{
+  "table": "deliveries",
+  "field": "Customer Primary Cell",
+  "type": "custom_sql",
+  "internal_name": "customer_primary_cell__c",
+  "calc": {},
+  "raw_sql": "select his_cell__c from customers where customers.id = invoices_invoice_id.customer"
+}

@@ -1,0 +1,8 @@
+{
+  "table": "quotes",
+  "internal_name": "total_installation",
+  "system": true,
+  "calc": {},
+  "hide_on_grid": true,
+  "hide_on_dashbaord": true
+}

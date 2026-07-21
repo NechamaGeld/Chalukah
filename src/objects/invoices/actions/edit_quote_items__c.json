@@ -1,0 +1,12 @@
+{
+  "action_name": "edit_quote_items__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Edit Quote items",
+  "icon": "fa-solid fa-pen-to-square",
+  "type": "custom-script",
+  "order": 4
+}

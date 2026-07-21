@@ -1,0 +1,10 @@
+{
+  "action_name": "connect_transaction_to_cart__c",
+  "table_name": "payment_transaction",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Connect transaction to cart",
+  "type": "custom-script"
+}

@@ -1,0 +1,8 @@
+{
+  "table": "custom.seasons",
+  "field": "Name",
+  "type": "text",
+  "internal_name": "name__c",
+  "calc": {},
+  "format_type": "text"
+}

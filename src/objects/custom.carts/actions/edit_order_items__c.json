@@ -1,0 +1,11 @@
+{
+  "action_name": "edit_order_items__c",
+  "table_name": "custom.carts",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Edit Order Items",
+  "type": "url",
+  "value": "/#/page/edit-order?cart_id={{id}}&line={{price_range_id__c}}"
+}

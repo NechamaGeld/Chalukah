@@ -1,0 +1,9 @@
+{
+  "table": "customers",
+  "field": "Using other affiliation (not in use)",
+  "type": "boolean",
+  "internal_name": "using_other_affiliation__c",
+  "calc": {},
+  "hide_on_grid": true,
+  "hide_on_dashbaord": true
+}

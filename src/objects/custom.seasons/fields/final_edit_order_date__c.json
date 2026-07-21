@@ -1,0 +1,11 @@
+{
+  "table": "custom.seasons",
+  "field": "Final edit order date",
+  "type": "date",
+  "internal_name": "final_edit_order_date__c",
+  "calc": {},
+  "grid_filter": "date_text_serach",
+  "data": {
+    "grid_filter": "date_text_serach"
+  }
+}

@@ -1,0 +1,474 @@
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 2.2em;
+        font-weight: bold;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #7f8c8d;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    .hebrew {
+        text-align: center;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        color: #34495e;
+        direction: rtl;
+    }
+
+    .description {
+        text-align: center;
+        font-size: 1.1em;
+        margin-bottom: 30px;
+        color: #2c3e50;
+        font-weight: 500;
+    }
+
+    h2 {
+        color: #2980b9;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 5px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .contact-section {
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 30px;
+    }
+
+    .footer-note {
+        text-align: center;
+        font-style: italic;
+        color: #7f8c8d;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #bdc3c7;
+    }
+
+    .agreement-section {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        border: 1px solid #dee2e6;
+    }
+
+    .checkbox-container {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+
+    .continue-btn {
+        display: block;
+        margin: 0 auto;
+        padding: 12px 30px;
+        font-size: 1.1em;
+        background-color: #95a5a6;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: not-allowed;
+        transition: all 0.3s ease;
+    }
+
+    .continue-btn.enabled {
+        background-color: #27ae60;
+        cursor: pointer;
+    }
+
+    .continue-btn.enabled:hover {
+        background-color: #219a52;
+        transform: translateY(-1px);
+    }
+
+    .important-notice {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .confirm-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.55);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .confirm-modal {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            text-align: left;
+        }
+
+        .confirm-modal h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: none;
+        }
+
+        .customer-info-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .confirm-modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .edit-info-btn,
+        .confirm-info-btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .edit-info-btn {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .confirm-info-btn {
+            background: #27ae60;
+            color: white;
+        }
+
+        .confirm-info-btn:hover {
+            background: #219a52;
+        }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align:left; margin-bottom:0;">SHEARIS YISROEL PESACH</h1>
+        <hr style="border:0; height:6px; background:#000; width:100%; margin-top:10px; margin-bottom:20px; border-radius:3px;">
+        <div class="subtitle">A project of Yeshiva Ohr Boruch</div>
+        <div class="hebrew" style="font-size:0.9em; line-height:1.05; margin-bottom:8px;">לז"נ אלטער גרשון חנוך העניך בן שלמה זלמן צבי הכהן וביילא צירל בת עזריאל לעמל<br>לז"נ  שלום יהודה בן יחיאל דוב ויהודית בת דוד</div>
+
+        <h1 style="text-align:left; margin-top:0; margin-bottom:0;">Succos תשפ”ז-2026</h1>
+
+        <p class="description">
+            We are pleased to once again offer an opportunity to order select food and paper goods for Succos,
+            with two separate pricing tracks.
+        </p>
+
+        <h2>Programs</h2>
+
+        <ul>
+            <li>
+                <strong>Shearis Yisroel Succos Fund</strong><br>
+                This program is for mechanchim, klei kodesh, and individuals working in a Chicago mossad.
+                You may choose <strong>subsidized</strong> or <strong>wholesale</strong> pricing,
+                selectable at the start of the order.
+            </li>
+            <li>
+                <strong>Shearis Yisroel Co-op</strong><br>
+                This co-op is for the general public, non-klei kodesh, and offers
+                <strong>wholesale pricing</strong> for Yom Tov items.
+            </li>
+        </ul>
+
+        <div class="important-notice">
+             A confirmation email from <strong>no-reply@bizmanagecrm.com</strong> will be sent after you place your order.
+            Please check your spam folder.
+            <br><br>
+            If you do not receive a confirmation within <strong>one hour</strong> of placing your order,
+            please email <strong>pesachfund@gmail.com</strong>.
+        </div>
+
+        <h2>Payment Details</h2>
+        <ul>
+            <li><strong>Credit Card:</strong> Charged at the time of ordering.</li>
+            <li><strong>Zelle:</strong> Must be sent within 24 hours to <strong>pesachfund@gmail.com</strong>.</li>
+            <li>
+                <strong>Check — Full Payment:</strong> Payment should be dropped off at Katz,
+                5814 N St Louis Ave.
+                <br>
+                Please place it in the mailbox. <strong>Do NOT ring the bell.</strong>
+            </li>
+            <li>
+                For any questions regarding payment, please
+                <strong>TEXT Rabbi Katz at 773-406-4966</strong>.
+            </li>
+            <li>
+                Orders may be canceled if full payment is not received.
+            </li>
+        </ul>
+
+        <h2>Important Points</h2>
+        <ul>
+            <li>You can print the list of available items from the top right of the ordering site.</li>
+            <li>Food items are for <strong>Yom Tov use</strong>. You may round up to a case.</li>
+            <li>Paper goods may be ordered for <strong>year-round use</strong>.</li>
+            <li>Orders are for <strong>your family only</strong>, not organizations or shuls.</li>
+            <li>
+                Pick-up emails will be sent to the address provided.
+                Pick-up appointments must be scheduled using the link in that email.
+            </li>
+        </ul>
+
+        <h2>Fine Print</h2>
+        <ul>
+            <li>Prices are subject to change without notice.</li>
+            <li>
+                We reserve the right to substitute items and edit quantities based on product availability.
+            </li>
+            <li>No refunds or billing for errors under $10.</li>
+            <li>
+                Check your order before leaving — we are not responsible for errors after pickup.
+            </li>
+            <li><strong>NO REFUNDS</strong> for items not picked up.</li>
+        </ul>
+
+        <div class="contact-section">
+            <h2>Contact</h2>
+            <ul>
+                <li>For questions or to volunteer, email <strong>pesachfund@gmail.com</strong>.</li>
+            </ul>
+        </div>
+
+        <h2>Distribution Information</h2>
+        <ul>
+            <li>Tentative pickup date is <strong>Tuesday, September 1st</strong>. (Self-serve only)</li>
+            <li>Look out for the email with updated pickup information.</li>
+        </ul>
+
+        <div class="footer-note">
+            This is a volunteer-based community service; your patience is valued.
+        </div>
+        
+        <div class="agreement-section">
+            <label class="checkbox-container">
+                <input type="checkbox" id="agreeCheckbox" onchange="toggleContinueButton()">
+                <span class="checkmark"></span>
+                I agree to the terms and conditions
+            </label>
+            <button id="continueButton" class="continue-btn" disabled onclick="handleContinue()">Continue</button>
+        </div>
+
+        <div class="footer-note">
+            2828 W Pratt Blvd · Chicago IL · 60645 · pesachfund@gmail.com
+        </div>
+
+        <div id="customerConfirmModal" class="confirm-modal-overlay" style="display:none;">
+            <div class="confirm-modal">
+                <h2>Please Confirm Your Information</h2>
+
+                <p>Please confirm that the information below is correct before continuing.</p>
+
+                <div class="customer-info-box">
+                    <div><strong>Name:</strong> <span id="confirm-name"></span></div>
+                    <div><strong>Address:</strong> <span id="confirm-address"></span></div>
+                    <div><strong>Email:</strong> <span id="confirm-email"></span></div>
+                    <div><strong>Phone:</strong> <span id="confirm-phone"></span></div>
+                    <div><strong>Affiliation:</strong> <span id="confirm-affiliation"></span></div>
+                </div>
+
+                <div class="confirm-modal-buttons">
+                    <button type="button" class="edit-info-btn" onclick="editCustomerInfo()">
+                        Edit Info
+                    </button>
+
+                    <button type="button" class="confirm-info-btn" onclick="confirmCustomerInfo()">
+                        Confirm and Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let customer;
+        let activeSeason;
+
+        document.addEventListener("InitDataLoaded", async (e) => {
+            const data = e.detail;
+            const user = data.user;
+            customer = user.customer;
+            activeSeason = await getActiveSeason();
+        });
+
+        function toggleContinueButton() {
+            const checkbox = document.getElementById('agreeCheckbox');
+            const button = document.getElementById('continueButton');
+            
+            if (checkbox.checked) {
+                button.disabled = false;
+                button.classList.add('enabled');
+            } else {
+                button.disabled = true;
+                button.classList.remove('enabled');
+            }
+        }
+
+        async function handleContinue() {
+            if (!customer) {
+                alert("Customer information is still loading. Please try again.");
+                return;
+            }
+
+            if (!activeSeason) {
+                activeSeason = await getActiveSeason();
+            }
+
+            if (!activeSeason) {
+                alert("Active season could not be found. Please try again.");
+                return;
+            }
+
+            const alreadyConfirmed = await checkIfCustomerConfirmedForSeason();
+
+            if (alreadyConfirmed) {
+                window.location.href = '/pages/prices-landing-page';
+                return;
+            }
+
+            showCustomerConfirmPopup();
+        }
+
+        async function getActiveSeason() {
+            try {
+                const response = await fetch('/cust_report/query/2');
+                const data = await response.json();
+
+                return data.rows ? data.rows[0] : null;
+            } catch (err) {
+                console.error("Error fetching active season:", err);
+                return null;
+            }
+        }
+
+        async function checkIfCustomerConfirmedForSeason() {
+            try {
+                const response = await fetch(`/v2/crud/custom.customer_confirmation/read-one?customer__c=${customer.id}&season__c=${activeSeason.id}&confirmed__c=true`);
+
+                if (!response.ok) return false;
+
+                const record = await response.json();
+                return !!record;
+            } catch (err) {
+                console.error("Error checking customer confirmation:", err);
+                return false;
+            }
+        }
+
+        function showCustomerConfirmPopup() {
+            document.getElementById('confirm-name').textContent =
+                customer.name || '';
+
+            document.getElementById('confirm-address').textContent =
+                formatCustomerAddress(customer);
+
+            document.getElementById('confirm-email').textContent =
+                customer.email || '';
+
+            document.getElementById('confirm-phone').textContent =
+                customer.his_cell__c || '';
+
+            document.getElementById('confirm-affiliation').textContent = 
+                customer.other_affiliations__moisdes__c || customer.affiliations__moisdes__c ||  '';
+
+            document.getElementById('customerConfirmModal').style.display = 'flex';
+        }
+
+        function formatCustomerAddress(customer) {
+            const address = customer.address1 || '';
+            const city = customer.city || '';
+            const state = customer.state || '';
+            const zip = customer.zip || '';
+
+            return [address, city, state, zip].filter(Boolean).join(', ');
+        }
+
+        async function confirmCustomerInfo() {
+            try {
+               await fetch(`/v2/crud/custom.customer_confirmation/create`, {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        data: {
+                            customer__c: customer.id,
+                            season__c: activeSeason.id,
+                            confirmed__c: true
+                        }
+                    })
+                });
+
+                window.location.href = '/pages/prices-landing-page';
+            } catch (err) {
+                console.error("Error saving customer confirmation:", err);
+                alert("Could not save confirmation. Please try again.");
+            }
+        }
+
+        function editCustomerInfo() {
+            window.location.href = '/pages/update-customer-info';
+        }
+
+    </script>
+</body>

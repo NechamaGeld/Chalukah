@@ -1,0 +1,8 @@
+{
+  "table": "custom.carts",
+  "field": "Status",
+  "type": "text",
+  "internal_name": "status__c",
+  "calc": {},
+  "format_type": "text"
+}

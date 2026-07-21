@@ -1,0 +1,8 @@
+{
+  "table": "customers",
+  "field": "Last name",
+  "type": "text",
+  "internal_name": "last_name__c",
+  "calc": {},
+  "format_type": "text"
+}

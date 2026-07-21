@@ -1,0 +1,7 @@
+{
+  "table": "custom.voucher",
+  "field": "Max Value",
+  "type": "currency",
+  "internal_name": "max_value__c",
+  "calc": {}
+}

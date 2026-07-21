@@ -1,0 +1,15 @@
+{
+  "action_name": "comments",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Comments (0)",
+  "icon": "fas fa-chart-pie",
+  "type": "url",
+  "value": "#/comments/customers/{{id}}",
+  "order": 22,
+  "multiRows": false
+}

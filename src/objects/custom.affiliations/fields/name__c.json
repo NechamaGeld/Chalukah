@@ -1,0 +1,8 @@
+{
+  "table": "custom.affiliations",
+  "field": "Name",
+  "type": "text",
+  "internal_name": "name__c",
+  "calc": {},
+  "format_type": "text"
+}

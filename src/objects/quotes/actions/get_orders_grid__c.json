@@ -1,0 +1,10 @@
+{
+  "action_name": "get_orders_grid__c",
+  "table_name": "quotes",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "get orders grid",
+  "type": "custom-script"
+}

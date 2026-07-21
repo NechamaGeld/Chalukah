@@ -1,0 +1,15 @@
+{
+  "action_name": "bulk_change",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Bulk Change",
+  "icon": "fas fa-list",
+  "type": "function",
+  "order": 23,
+  "multiRowOnly": true,
+  "multiRows": false
+}

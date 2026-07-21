@@ -1,0 +1,12 @@
+{
+  "action_name": "order_dashboard__c",
+  "table_name": "quotes",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Order Dashboard",
+  "icon": "fa-solid fa-list",
+  "type": "url",
+  "value": "#/general-dashboard/quotes/{{id}}"
+}

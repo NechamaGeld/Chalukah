@@ -1,0 +1,13 @@
+{
+  "action_name": "send_invoices__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Send Invoices",
+  "icon": "fa-regular fa-paper-plane",
+  "type": "url",
+  "value": "#/open-email?from=system&to={{id}}&template_id=4&override_send_action=bulk_send_email_with_attachment__c&hide_fields=to,template",
+  "multiRows": true
+}

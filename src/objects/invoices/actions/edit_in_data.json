@@ -1,0 +1,15 @@
+{
+  "action_name": "edit_in_data",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Edit Invoice data",
+  "icon": "fas fa-edit",
+  "type": "url",
+  "value": "#/update/invoices/{{id}}?title=Invoice",
+  "order": 14,
+  "multiRows": false
+}

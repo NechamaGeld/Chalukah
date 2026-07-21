@@ -1,0 +1,12 @@
+{
+  "internal_name": "invoices_with_multiple_pricings",
+  "display_name": "Invoices With multiple Pricings",
+  "params": [],
+  "report_type": "list",
+  "deleted_ref": null,
+  "settings": {},
+  "to_users": null,
+  "to_user_roles": null,
+  "created_by": 1,
+  "created_at": "2026-01-27T02:31:24.594Z"
+}

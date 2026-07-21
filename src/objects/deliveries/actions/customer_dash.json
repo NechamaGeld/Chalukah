@@ -1,0 +1,15 @@
+{
+  "action_name": "customer_dash",
+  "action_type": "menu",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "grid": false,
+    "dash": false
+  },
+  "title": "Customer Dashboard",
+  "icon": "fas fa-chart-pie",
+  "type": "url",
+  "value": "#/general-dashboard/customers/{{customer_id}}",
+  "order": 3,
+  "multiRows": false
+}

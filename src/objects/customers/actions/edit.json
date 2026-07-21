@@ -1,0 +1,15 @@
+{
+  "action_name": "edit",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "grid": false,
+    "dash": false
+  },
+  "title": "Edit",
+  "icon": "far fa-edit",
+  "type": "url",
+  "value": "#/update/customers?id={{id}}",
+  "order": 3,
+  "multiRows": false
+}

@@ -1,0 +1,14 @@
+{
+  "action_name": "archive",
+  "action_type": "menu",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "dash": true,
+    "grid": false
+  },
+  "title": "Archive",
+  "icon": "fa fa-archive",
+  "type": "http",
+  "order": 7,
+  "multiRows": false
+}

@@ -1,0 +1,10 @@
+{
+  "action_name": "order_details__c",
+  "table_name": "custom.carts",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "order details",
+  "type": "custom-script"
+}

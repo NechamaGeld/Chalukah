@@ -1,0 +1,10 @@
+{
+  "action_name": "edit_order__c",
+  "table_name": "quotes",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Edit Order",
+  "type": "custom-script"
+}

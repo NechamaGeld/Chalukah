@@ -1,0 +1,12 @@
+{
+  "table": "payment_transaction",
+  "field": "Voucher",
+  "type": "relationship",
+  "internal_name": "voucher__c",
+  "related_to": "custom.voucher",
+  "calc": {},
+  "related_to_field": "code__c",
+  "isRef": true,
+  "otherTable": "custom.voucher",
+  "otherColumnDisplay": "code__c"
+}

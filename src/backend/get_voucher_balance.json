@@ -1,0 +1,20 @@
+{
+  "name": "get_voucher_balance",
+  "description": "Get Voucher Info And Remaining Balance",
+  "method": "GET",
+  "created_at": null,
+  "updated_at": null,
+  "created_by": null,
+  "updated_by": null,
+  "is_public": false,
+  "token": null,
+  "crontab": null,
+  "active": true,
+  "version": 6,
+  "timeout": null,
+  "modules": [
+    "db",
+    "callScript",
+    "callReport"
+  ]
+}

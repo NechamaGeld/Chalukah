@@ -1,0 +1,19 @@
+{
+  "action_name": "mark_item_as_sold_out__c",
+  "table_name": "items",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Mark all 3 pricings for this item as sold out",
+  "icon": "fa-solid fa-list",
+  "type": "custom-script",
+  "condition": {
+    "advanced": "discontinued IS_NOT_EQUALS true",
+    "useAdvanced": true,
+    "selectedText": "",
+    "useCondition": true,
+    "selectedField": "discontinued",
+    "selectedCondition": "IS_NOT_EQUALS"
+  }
+}

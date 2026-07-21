@@ -1,0 +1,7 @@
+{
+  "table": "customers",
+  "field": "Internal Notes",
+  "type": "textArea",
+  "internal_name": "internal_notes__c",
+  "calc": {}
+}

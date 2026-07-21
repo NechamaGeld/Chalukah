@@ -1,0 +1,89 @@
+<style>
+    .cust-info {
+        margin-top: calc(6vh + 20px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: larger;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+</style>
+
+<include-page url="navigation-bar" />
+
+<div class="cust-info">
+
+    <h2 id="header-name">
+        Hi, User
+    </h2>
+    <div class="main-content">
+
+        <div id="cust-name">Name: --</div>
+        <div id="cust-email"> Email: --</div>
+        <div id="cust-address">Address: --</div>
+        <div id="cust-address-second"></div>
+        <div id="cust-city"> City: --</div>
+        <div id="cust-zip"> Zip: --</div>
+        <div id="cust-phone">Phone Number: --</div>
+        <div id="cust-phone-his"></div>
+        <div id="cust-phone-her"></div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+    document.addEventListener("InitDataLoaded",async (e) => {
+            let data = e.detail;
+            let user = data.user;
+            let customer = user.customer;
+
+            if(customer.name){
+                document.getElementById("header-name").innerText = `Hi ${customer.name}`
+                document.getElementById("cust-name").textContent = `Name: ${customer.name}`
+            }
+
+            if(customer.email)
+                document.getElementById("cust-email").textContent = `Email: ${customer.email}`
+            
+            if(customer.address1)
+                document.getElementById("cust-address").textContent = `Address: ${customer.address1}`
+            
+            if(customer.address2){
+                document.getElementById("cust-address-second").textContent = `Secondary Address: ${customer.address2}`
+            }else{
+                document.getElementById("cust-address-second").style.display = 'none';
+            }
+            
+            if(customer.city)
+                document.getElementById("cust-city").textContent = `City: ${customer.city}`
+            
+            if(customer.zip)
+                document.getElementById("cust-zip").textContent = `Zip: ${customer.zip}`
+            
+            if(customer.phone)
+                document.getElementById("cust-phone").textContent = `Phone Number: ${customer.phone}`
+            
+            if(customer.his_cell__c){
+                document.getElementById("cust-phone-his").textContent = `Husband's Number: ${customer.his_cell__c}`
+            }else{
+                document.getElementById("cust-phone-his").style.display = 'none';
+            }
+            
+            if(customer.her_cell__c){
+                document.getElementById("cust-phone-her").textContent = `Wife's Number: ${customer.her_cell__c}`
+            }else{
+                document.getElementById("cust-phone-her").style.display = 'none';
+            }
+
+           
+
+        });
+</script>

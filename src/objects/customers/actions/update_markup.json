@@ -1,0 +1,14 @@
+{
+  "action_name": "update_markup",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Update Default Markup",
+  "icon": "fas fa-chart-pie",
+  "type": "function",
+  "order": 15,
+  "multiRows": true
+}

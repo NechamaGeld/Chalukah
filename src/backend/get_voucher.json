@@ -1,0 +1,20 @@
+{
+  "name": "get_voucher",
+  "description": "get a voucher record from the db by id",
+  "method": "GET",
+  "created_at": null,
+  "updated_at": null,
+  "created_by": null,
+  "updated_by": null,
+  "is_public": false,
+  "token": null,
+  "crontab": null,
+  "active": true,
+  "version": 2,
+  "timeout": null,
+  "modules": [
+    "db",
+    "callScript",
+    "callReport"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "table": "quotes",
+  "field": "Status",
+  "type": "text",
+  "internal_name": "status__c",
+  "calc": {}
+}

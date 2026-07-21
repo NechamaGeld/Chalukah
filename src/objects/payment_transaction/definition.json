@@ -1,0 +1,37 @@
+{
+  "system": true,
+  "display_name": "Transactions",
+  "internal_name": "payment_transaction",
+  "search_enabled": false,
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": {
+    "dblClickAction": "no_action"
+  },
+  "token": null,
+  "orderBy": [
+    {
+      "column": "id",
+      "order": "desc"
+    }
+  ],
+  "filters": null,
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": [
+    {
+      "is_custom": true,
+      "text": "Method",
+      "name": "method__c",
+      "type": "is_equals",
+      "field_internal_name": "method",
+      "field": "method"
+    }
+  ],
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

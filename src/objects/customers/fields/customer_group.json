@@ -1,0 +1,10 @@
+{
+  "table": "customers",
+  "internal_name": "customer_group",
+  "related_to": "customer_group",
+  "system": true,
+  "calc": {},
+  "hide_on_grid": true,
+  "related_to_field": "name",
+  "hide_on_dashbaord": true
+}

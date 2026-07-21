@@ -1,0 +1,8 @@
+{
+  "table": "invoices",
+  "field": "Season",
+  "type": "custom_sql",
+  "internal_name": "season_name__c",
+  "calc": {},
+  "raw_sql": "select name__c from custom.seasons where custom.seasons.id = season__c"
+}

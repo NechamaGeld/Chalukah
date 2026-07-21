@@ -1,0 +1,7 @@
+{
+  "table": "custom.order_logs",
+  "field": "Change Object",
+  "type": "json",
+  "internal_name": "change_object__c",
+  "calc": {}
+}

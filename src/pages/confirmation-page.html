@@ -1,0 +1,68 @@
+<style>
+    .main-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: calc(6vh + 20px);
+    }
+    .navbar{
+        width: calc(100vw - 40px) !important;
+    }
+    .payment-info {
+        max-width: 50vw;
+        text-align: left;
+    }
+    @media (max-width: 768px) {
+        .payment-info {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+    }
+</style>
+<include-page url="navigation-bar" />
+<div class="main-div">
+    <div class="cc-payment" style="display: none; flex-direction: column; align-items: center;">
+        <h3>Payment Successful!</h3>
+        <p>Thank you for your payment. Your order has been successfully processed.</p>
+    </div>
+
+    <div class="voucher-payment" style="display: none; flex-direction: column; align-items: center;">
+        <h3>Voucher processed successfully</h3>
+        <p>Thank you for your order. Your order has been processed and saved.
+            If You still need to complete your payment, please return to <a href="/pages/previous-orders">previous orders</a>
+        </p>
+    </div>
+
+    <div class ="other-payment-method" style="display: none; flex-direction: column; align-items: center;">
+        <h3>Order saved successfully</h3>
+        <p>Your order has been saved.</p>
+        <div class="payment-info">
+            <p>
+                <b>Zelle:</b> Must be sent within 24 hours to pesachfund@gmail.com<br>
+                <b>Check: Full</b> payment should be dropped off at Katz,<br>
+                5814 N St Louis Ave. Please place in mailbox. Do NOT ring the bell.<br>
+                <br>
+                For any questions regarding payment, please TEXT Rabbi Katz at 773-406-4966.<br>
+                <br>
+                Orders may be canceled if full payment is not received.
+            </p>
+        </div>
+    </div>
+
+    <div><a href="/pages/prices-landing-page">Return to home</a></div>
+    
+</div>
+
+<script>
+    const paymentMethod = new URLSearchParams(window.location.search).get('method');
+
+    // Show the relevant div based on the payment method
+    if (paymentMethod === '1') {
+        document.querySelector('.cc-payment').style.display = 'flex';
+    } else if (paymentMethod === '2') {
+        document.querySelector('.voucher-payment').style.display = 'flex';
+    } else {
+        document.querySelector('.other-payment-method').style.display = 'flex';
+    }
+</script>
+

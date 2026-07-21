@@ -1,0 +1,14 @@
+{
+  "action_name": "edit_qi_data",
+  "action_type": "menu",
+  "table_name": "quote_items",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Edit Quote-items data",
+  "icon": "fas fa-edit",
+  "type": "url",
+  "value": "#/update/quote_items/{{id}}?custom_only=true",
+  "multiRows": false
+}

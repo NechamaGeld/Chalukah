@@ -1,0 +1,15 @@
+{
+  "action_name": "express_invoice",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Express Invoice",
+  "icon": "fa-solid fa-jet-fighter",
+  "type": "url",
+  "value": "#/express_invoice?source=customers&display=Customer&name={{name}}&id={{id}}",
+  "order": 12,
+  "multiRows": false
+}

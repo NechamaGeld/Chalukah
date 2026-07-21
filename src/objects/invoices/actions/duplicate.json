@@ -1,0 +1,15 @@
+{
+  "action_name": "duplicate",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Duplicate",
+  "icon": "far fa-copy",
+  "type": "url",
+  "value": "#/duplicate/invoices/{{id}}",
+  "order": 16,
+  "multiRows": false
+}

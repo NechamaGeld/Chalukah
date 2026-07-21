@@ -1,0 +1,12 @@
+{
+  "table": "custom.payment_requests",
+  "field": "Payment Transaction",
+  "type": "relationship",
+  "internal_name": "payment_transaction__c",
+  "related_to": "payment_transaction",
+  "calc": {},
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "payment_transaction",
+  "otherColumnDisplay": "id"
+}

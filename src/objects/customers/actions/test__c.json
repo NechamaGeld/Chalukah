@@ -1,0 +1,11 @@
+{
+  "action_name": "test__c",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "TEst",
+  "type": "custom-script",
+  "order": 18
+}

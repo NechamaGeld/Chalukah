@@ -1,0 +1,13 @@
+{
+  "table": "deliveries",
+  "field": "Selected Categories",
+  "type": "multi-relationship",
+  "internal_name": "selected_categories__c",
+  "related_to": "categories",
+  "calc": {},
+  "related_to_field": "name",
+  "isRef": true,
+  "otherTable": "categories",
+  "otherColumnDisplay": "name",
+  "multiple": true
+}

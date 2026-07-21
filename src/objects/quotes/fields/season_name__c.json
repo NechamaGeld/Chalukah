@@ -1,0 +1,11 @@
+{
+  "table": "quotes",
+  "field": "Season Name",
+  "type": "foreign_field",
+  "internal_name": "season_name__c",
+  "calc": {
+    "on_field": "season__c",
+    "display_field": "name__c"
+  },
+  "format_type": "text"
+}

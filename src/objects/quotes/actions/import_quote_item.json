@@ -1,0 +1,14 @@
+{
+  "action_name": "import_quote_item",
+  "action_type": "menu",
+  "table_name": "quotes",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Import Quote Items",
+  "icon": "fas fa-upload",
+  "type": "url",
+  "value": "#/import-data-form?redirect=%2Fgeneral-dashboard%2Fquotes%2F{{id}}&import_presets={\"view_name\" : \"quote_items\", \"display_name\" : \"Quote : {{name}}\", \"prefilledFields\" : [{ \"key\": \"quote\", \"value\": \"{{id}}\" }] }",
+  "multiRows": false
+}

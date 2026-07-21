@@ -1,0 +1,9 @@
+{
+  "table": "customers",
+  "field": "Primary Email",
+  "internal_name": "email",
+  "system": true,
+  "calc": {},
+  "bulk_change": false,
+  "uniq_name": "uniq_customers_email__c"
+}

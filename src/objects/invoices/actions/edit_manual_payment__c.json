@@ -1,0 +1,13 @@
+{
+  "action_name": "edit_manual_payment__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Edit Manual Payment",
+  "icon": "fa-solid fa-pen-to-square",
+  "type": "url",
+  "value": "#/update/payment_transaction/{{payment_transaction__c}}",
+  "order": 2
+}

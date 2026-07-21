@@ -1,0 +1,11 @@
+{
+  "action_name": "charge_cc__c",
+  "table_name": "custom.carts",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Charge CC",
+  "type": "url",
+  "value": "#/payments/charge-cc/{{cust_id__c}}?cart_id={{id}}"
+}

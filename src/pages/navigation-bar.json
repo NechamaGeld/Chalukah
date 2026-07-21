@@ -1,0 +1,10 @@
+{
+  "name": "Navigation Bar",
+  "url": "navigation-bar",
+  "version": 2,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

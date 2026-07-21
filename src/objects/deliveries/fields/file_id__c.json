@@ -1,0 +1,10 @@
+{
+  "table": "deliveries",
+  "field": "File ID",
+  "type": "custom_sql",
+  "internal_name": "file_id__c",
+  "calc": {},
+  "hide_on_grid": true,
+  "hide_on_dashbaord": true,
+  "raw_sql": "select deliveries.file_id"
+}

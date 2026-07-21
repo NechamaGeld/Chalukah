@@ -1,0 +1,15 @@
+{
+  "action_name": "stand_alone_invoice",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Stand-Alone Invoice!",
+  "icon": "fa-solid fa-jet-fighter",
+  "type": "url",
+  "value": "#/create_invoice?source=customers&display=Customer&name={{name}}&cust_id={{id}}",
+  "order": 13,
+  "multiRows": false
+}

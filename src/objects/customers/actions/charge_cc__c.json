@@ -1,0 +1,11 @@
+{
+  "action_name": "charge_cc__c",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Charge CC",
+  "type": "custom-script",
+  "order": 24
+}

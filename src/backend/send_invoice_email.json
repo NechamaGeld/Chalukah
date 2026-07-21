@@ -1,0 +1,20 @@
+{
+  "name": "send_invoice_email",
+  "description": null,
+  "method": "POST",
+  "created_at": null,
+  "updated_at": null,
+  "created_by": 1,
+  "updated_by": null,
+  "is_public": false,
+  "token": null,
+  "crontab": null,
+  "active": true,
+  "version": 9,
+  "timeout": null,
+  "modules": [
+    "db",
+    "proposalHelper",
+    "_"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "system": true,
+  "display_name": "Deliveries",
+  "internal_name": "deliveries",
+  "search_enabled": false,
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": {
+    "dblClickAction": "view_slip"
+  },
+  "token": null,
+  "orderBy": null,
+  "filters": [
+    {
+      "key": "archived",
+      "field": {
+        "internal_name": "archived",
+        "field": "Archived",
+        "type": "boolean",
+        "grid_clm_name": "archived",
+        "read_only": false,
+        "system": true,
+        "clm_name": "archived",
+        "orderable": true,
+        "isUniquable": true,
+        "isUnique": false,
+        "parent_type": false
+      },
+      "filter": {
+        "falsy": true
+      }
+    }
+  ],
+  "desc": null,
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": [
+    {
+      "type": "toggle",
+      "text": "Include Archived",
+      "name": "archived"
+    },
+    {
+      "is_custom": true,
+      "type": "search_match_multi_any",
+      "text": "rows containing at least one of the selected categories",
+      "name": "selected_caegory__c",
+      "otherTable": "categories",
+      "otherColumnDisplay": "name",
+      "field": "selected_categories__c",
+      "field_internal_name": "selected_categories__c"
+    },
+    {
+      "is_custom": true,
+      "text": "rows containing all of the selected categories",
+      "name": "only_category__c",
+      "type": "search_match_multi_all",
+      "otherTable": "categories",
+      "otherColumnDisplay": "name",
+      "field": "selected_categories__c",
+      "field_internal_name": "selected_categories__c"
+    }
+  ],
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

@@ -1,0 +1,15 @@
+{
+  "action_name": "add_pay",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Add Payment",
+  "icon": "fas fa-money-bill",
+  "type": "url",
+  "value": "#/payments/accept-payment?customer={{id}}",
+  "order": 1,
+  "multiRows": false
+}

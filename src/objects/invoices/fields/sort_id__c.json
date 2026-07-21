@@ -1,0 +1,8 @@
+{
+  "table": "invoices",
+  "field": "sort_id",
+  "type": "text",
+  "internal_name": "sort_id__c",
+  "calc": {},
+  "format_type": "text"
+}

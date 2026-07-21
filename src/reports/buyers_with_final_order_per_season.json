@@ -1,0 +1,21 @@
+{
+  "internal_name": "buyers_with_final_order_per_season",
+  "display_name": "Buyers with FINAL order per season",
+  "params": [
+    {
+      "internal_name": "this_season",
+      "input_type": "ref",
+      "display_name": "Season",
+      "otherColumnDisplay": "name__c",
+      "otherTable": "custom.seasons",
+      "reqired": true
+    }
+  ],
+  "report_type": "list",
+  "deleted_ref": null,
+  "settings": {},
+  "to_users": null,
+  "to_user_roles": null,
+  "created_by": 2,
+  "created_at": "2026-06-16T21:23:42.672Z"
+}

@@ -1,0 +1,9 @@
+{
+  "table": "quote_items",
+  "field": "Deliveries",
+  "type": "custom_sql",
+  "internal_name": "deliveries__c",
+  "related_to": "delivery_items",
+  "calc": {},
+  "raw_sql": "SELECT string_agg(delivery_value, ', ')\n  FROM (\n    SELECT unnest(string_to_array(delivery::text, ',')) AS delivery_value\n    FROM item_deliveries\n    WHERE quote_item_id = quote_items.id\n  ) AS expanded"
+}

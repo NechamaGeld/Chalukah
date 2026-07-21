@@ -1,0 +1,14 @@
+{
+  "action_name": "go_to_map",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Go To Map",
+  "icon": "fas fa-map-location-dot",
+  "type": "url",
+  "value": "#/map-view/customers?center={{address_location}}",
+  "order": 25
+}

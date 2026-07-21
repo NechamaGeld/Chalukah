@@ -1,0 +1,14 @@
+{
+  "action_name": "assign_group",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Assign to Customer Group",
+  "icon": "fas fa-chart-pie",
+  "type": "function",
+  "order": 14,
+  "multiRows": true
+}

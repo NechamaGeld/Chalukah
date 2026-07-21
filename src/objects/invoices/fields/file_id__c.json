@@ -1,0 +1,10 @@
+{
+  "table": "invoices",
+  "field": "File ID",
+  "type": "custom_sql",
+  "internal_name": "file_id__c",
+  "calc": {},
+  "hide_on_grid": false,
+  "hide_on_dashbaord": true,
+  "raw_sql": "select invoices.file_id"
+}

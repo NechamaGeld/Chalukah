@@ -1,0 +1,12 @@
+{
+  "table": "custom.payment_requests",
+  "field": "Status",
+  "type": "selection",
+  "vals": [
+    "Pending",
+    "Accepted",
+    "Rejected"
+  ],
+  "internal_name": "status__c",
+  "calc": {}
+}

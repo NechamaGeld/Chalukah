@@ -1,0 +1,20 @@
+{
+  "display_name": "Customer Confirmation",
+  "internal_name": "custom.customer_confirmation",
+  "icon": null,
+  "show_on_menu": null,
+  "related_to": null,
+  "data": {},
+  "token": null,
+  "system": null,
+  "orderBy": [],
+  "filters": null,
+  "desc": "view will track if a customer confirmed their information this season",
+  "bcg_color": null,
+  "grids": null,
+  "available_filters": null,
+  "has_comments": null,
+  "table_name": null,
+  "set_filters": null,
+  "deleted_ref": null
+}

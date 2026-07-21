@@ -1,0 +1,11 @@
+{
+  "table": "items",
+  "field": "cat-order",
+  "type": "foreign_field",
+  "internal_name": "catorder__c",
+  "calc": {
+    "on_field": "category",
+    "display_field": "order_idx"
+  },
+  "format_type": "number"
+}

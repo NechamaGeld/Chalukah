@@ -1,0 +1,560 @@
+<style>
+    .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        margin-top: calc(6vh + 20px);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+
+    .payment-details {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        gap: 20px;
+        margin-top: 2rem;
+    }
+
+    .payment-section {
+        flex: 1;
+    }
+
+    .payment-method {
+        display: none;
+    }
+
+    .active-method {
+        display: block;
+    }
+
+    .voucher {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: 1px solid #ced4da;
+        padding-left: 1rem;
+    }
+
+    .voucher input {
+        width: 200px;
+        margin-bottom: 10px;
+    }
+
+    .voucher-code {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .payment-options button {
+        margin-right: 10px;
+    }
+
+    .btn-outline-secondary.active {
+        background-color: #6941C6;
+        color: white;
+    }
+
+    .form-control {
+        margin-bottom: 1rem;
+    }
+
+    .date-box {
+        color: #495057;
+        border: 1px solid #ced4da;
+        padding: .375rem .75rem;
+        height: calc(1.5em + .75rem + 2px);
+        border-radius: .25rem;
+    }
+
+    .flex-column {
+        gap: 1rem;
+    }
+
+    .apply-btn {
+        color: #fff;
+        background-color: #5959b3;
+        border-color: #5959b3;
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .apply-btn:hover {
+        background-color: #4b4ba3;
+        border-color: #4b4ba3;
+    }
+
+    .apply-btn:active {
+        background-color: #3a3a92;
+        border-color: #3a3a92;
+    }
+
+    .btn-group {
+        gap: 1rem;
+    }
+
+    .payment-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn-disable {
+        background-color: #ccc !important;
+        border-color: #aaa !important;
+        color: #666 !important;
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.65;
+    }
+
+    .error-message {
+        display: none;
+        color: red;
+    }
+
+    #loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        /* dim the page */
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+<include-page url="navigation-bar" />
+<include-page url="pop-up-modal" />
+<div class="center-div" style="color:#6941C6;">
+
+    <div>
+        <h3>Order Details - Your order has been saved</h3>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
+                <table class="table mt-3 table-striped border rounded-3 shadow-sm">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Date</th>
+                            <th>Season</th>
+                            <th>Order Group</th>
+                            <th>Status</th>
+                            <th>Order Total</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-info"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment-details">
+        <div class="payment-container">
+            <div class="w-100 text-center mb-2">
+                <h5>Payment Method</h5>
+                <div class="payment-section">
+                    <div class="btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
+
+                        <label class="btn btn-outline-secondary" onclick="selectPaymentMethod('credit-card')">
+                            <input type="radio" name="payment-option" id="credit-card-option" autocomplete="off"> Credit
+                            Card
+                        </label>
+                        <label class="btn btn-outline-secondary" onclick="selectPaymentMethod('alternative')">
+                            <input type="radio" name="payment-option" id="alternative-option" autocomplete="off">
+                            Alternative
+                            Payment
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-section w-50">
+                <div id="credit-card" class="payment-method">
+                    <h5 class="text-center">Pay with Credit Card</h5>
+                    <form class="cc-form">
+                        <div class="d-flex flex-column">
+                            <input class="form-control" type="number" name="amount" placeholder="Amount" required>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <input class="form-control" type="text" name="card_number" placeholder="Card Number"
+                                required>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <input class="form-control" type="text" name="zip" placeholder="Zip Code" required>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <select name="exp_month" required class="date-box">
+                                <option value="" disabled selected>Expiration Month</option>
+                            </select>
+                            <select name="exp_year" required class="date-box mb-3">
+                                <option value="" disabled selected>Expiration Year</option>
+                            </select>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <input class="form-control" type="text" name="cvc" placeholder="CVC" required>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="button" class="apply-btn process-payment">Process Payment</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="alternative" class="payment-method">
+                    <h5 class="text-center">Alternative Payment Methods</h5>
+                    <!-- <p>You will be contacted to complete your payment.</p> -->
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-outline-secondary mr-2"
+                            onclick="paymentType = 'Cash'">Cash</button>
+                        <button class="btn btn-outline-secondary mr-2"
+                            onclick="paymentType = 'Zelle'">Zelle</button>
+                        <button class="btn btn-outline-secondary" onclick="paymentType = 'Check'">Check</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class=" apply-btn " onclick="submitPaymentRequest()">Confirm Payment Option</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="voucher">
+            <h5>Apply Voucher</h5>
+            <div class="voucher-code">Voucher Code</div>
+            <div class="error-message" id="voucherError">Error applying voucher. Please try again.</div>
+            <input type="text" id="voucherCode" class="form-control" placeholder="Voucher Code" required>
+            <button class=" apply-btn" id="voucher-btn" onclick="applyVoucher()">Apply Voucher</button>
+            <div id="voucherAppliedMessage" style="display:none; margin-top:10px;">
+                <p>Voucher Applied: $<span id="voucherAmount"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loader-overlay" class="hidden">
+    <div class="loader"></div>
+</div>
+
+<script>
+  let customer;
+var monthSelect, yearSelect;
+let selectedMethod = "";
+let paymentType = "";
+//TODO:: Removed reading cartId from localStorage. We need to test that this didnt break anything
+let cartId = new URLSearchParams(window.location.search).get('cart_id');
+if(!cartId)
+  alertSystem.show("warning", "Cart ID not found");
+let voucherApplied = false;
+let voucherAmount = 0;
+let invoice;
+const GATEWAY_ID = 1;
+
+<include-page url="shared-functions" />;
+
+document.addEventListener("InitDataLoaded", (e) => {
+  let data = e.detail;
+  let user = data.user;
+  customer = user.customer;
+  loadOrder();
+  populateDate();
+});
+
+document
+  .querySelector(".process-payment")
+  .addEventListener("click", function () {
+    processCCPayment();
+  });
+
+async function loadOrder() {
+  showLoader(true);
+  try {
+    let invoice_res = await generateInvoice(cartId);
+    invoice= await invoice_res.json();
+    const response = await fetch(
+      `/cust_report/query/3?order_ids={${cartId}}`
+    );
+    const data = await response.json();
+    const order = data.rows[0];
+    renderCartHtml(order, order.season__c, false);
+    checkIfVoucherApplied(order.payment_transactions);
+  } catch (error) {
+    console.error("Error reading details of order", error);
+  }
+  showLoader(false);
+}
+
+async function generateInvoice(quote_id) {
+  try {
+    const response = await fetch(
+      `/invoices/create-by-quote-id/${quote_id}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        //we set update_if_exists - it will not create a new one for the same quote id
+        body: JSON.stringify({ update_if_exists: true }),
+      }
+    );
+    return response;
+  } catch (error) {
+    console.error("Error generating invoice", error);
+  }
+}
+
+function populateDate() {
+  var currentYear = new Date().getFullYear();
+  var months = Array.from({ length: 12 }, (_, i) =>
+    String(i + 1).padStart(2, "0")
+  );
+  var years = Array.from({ length: 15 }, (_, i) => String(currentYear + i));
+
+  monthSelect = document.querySelector("select[name='exp_month']");
+  yearSelect = document.querySelector("select[name='exp_year']");
+
+  months.forEach((month) => {
+    var option = document.createElement("option");
+    option.value = month;
+    option.textContent = month;
+    monthSelect.appendChild(option);
+  });
+
+  years.forEach((year) => {
+    var option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
+  });
+}
+
+async function processCCPayment(event) {
+  // event.preventDefault();
+
+  var payment = {
+    amount: Number(document.querySelector("input[name='amount']").value),
+    number: document.querySelector("input[name='card_number']").value,
+    exp_month: monthSelect.value,
+    exp_year: yearSelect.value,
+    avs_postalcode: document.querySelector("input[name='zip']").value,
+    cvv: document.querySelector("input[name='cvc']").value,
+  };
+
+  try {
+    showLoader(true);
+    const response = await fetch("/payments/charge-cc", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...payment, customer: customer.id  , invoice: invoice.id, gateway_id: GATEWAY_ID}),
+    });
+
+    if (!response.ok) {
+      const errorPayload = await response.json();
+      throw errorPayload;
+    }
+
+    const data = await response.json();
+    await updateTransaction(data.id);
+
+    if (data.status === "Declined") {
+      //alert(`Card Declined. Error Code: ${data.error_code}`);
+      alertSystem.show("warning", `Card Declined. Error Code: ${data.error_code}`);
+    } else if (data.status !== "Approved") {
+      //alert(`${data.status}. Error Code: ${data.error_code}`);
+      alertSystem.show("warning", `${data.status}. Error Code: ${data.error_code}`);
+    } else if (data.status === "Approved") {
+      await fetch("/invoices/full-rerender/" + invoice.id);
+      await sendConfirmationEmail();
+      window.location.href = `/pages/confirmation-page?&method=1`;
+    }
+  } catch (error) {
+    showLoader(false);
+    alertSystem.show("warning", `Error: ${
+        error?.payload?.message || "Invalid Request. Please check card details"
+      }`);
+  } finally {
+    showLoader(false);
+  }
+}
+
+async function updateTransaction(trans_id) {
+  try {
+  // do we still need it?
+    await CRUD_HELPERS.update("payment_transaction", {
+      id: trans_id,
+      cart_id__c: cartId,
+    });
+  } catch (error) {
+    console.error("Error adding cart_id to transaction:", error);
+  }
+}
+
+async function applyVoucher(event) {
+  if (event) event.preventDefault();
+  const voucherCode = document.getElementById("voucherCode").value;
+
+  if (voucherCode) {
+    try {
+      showLoader(true);
+      const response = await fetch(
+        `/scripts/run/apply_voucher_to_order?voucher_code=${encodeURIComponent(voucherCode)}&order_id=${encodeURIComponent(cartId)}`
+      );
+      if (!response.ok) {
+        const errorHtml = await response.text();
+        throw new Error(getBackendErrorMessage(errorHtml));
+      }
+      const data = await response.json();
+      showLoader(false);
+      const voucherOnOrders = data.orders;
+      const orderPayments = data.payments;
+      const voucherPayment =  orderPayments.find((v) => v.method == "Voucher")
+      //const voucherInfo = voucherOnOrders.find((v) => v.id == cartId);
+      //if (voucherInfo) voucherApplied = true;
+      if(voucherPayment) voucherApplied = true;
+      voucherAmount = voucherPayment.amount;
+      const btn = document.getElementById("voucher-btn");
+      btn.disabled = true;
+      btn.classList.add("btn-disable");
+      document.getElementById("voucherError").style.display = "none";
+      document.getElementById("voucherAppliedMessage").style.display = "block";
+      document.getElementById("voucherAmount").textContent = voucherAmount;
+      await loadOrder();
+    } catch (error) {
+      showLoader(false);
+      console.error("Error applying voucher", error);
+      const errorElement = document.getElementById("voucherError");
+      errorElement.textContent = error.message || "Error applying voucher. Please try again.";
+      errorElement.style.display = "block";
+    }
+  } else {
+    //alert("Please enter a valid voucher code.");
+    alertSystem.show("warning", "Please enter a valid voucher code.");
+  }
+}
+
+function getBackendErrorMessage(errorHtml) {
+  const errorDocument = new DOMParser().parseFromString(errorHtml, "text/html");
+  return errorDocument.querySelector("#error-msg, h2")?.textContent?.trim()
+    || "Error applying voucher. Please try again.";
+}
+
+async function submitPaymentRequest() {
+  if (!paymentType) {
+    //alert("Please select a payment method.");
+    alertSystem.show("Please select a payment method.");
+    return;
+  }
+  if (!voucherApplied ) {//&& !confirm("Are you sure you don't want to apply a voucher?")
+    const proceed = await alertSystem.confirm("Are you sure you don't want to apply a voucher?");
+    if(!proceed)
+    return; // Prevent form submission if the user opts to apply a voucher
+  }
+
+  response = await CRUD_HELPERS.create("custom.payment_requests", {
+    customer_id__c: customer.id,
+    cart_id__c: cartId,
+    method__c: paymentType,
+    invoice_id__c: invoice.id,
+    status__c: 'Pending'
+  });
+  window.location.href = `/pages/confirmation-page?&method=3`;
+}
+
+function selectPaymentMethod(method) {
+  selectedMethod = method;
+  document.querySelectorAll(".btn-outline-secondary").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  event.target.classList.add("active");
+
+  // Toggle visibility of payment methods
+  document.querySelectorAll(".payment-method").forEach((method) => {
+    method.classList.remove("active-method");
+  });
+  if (method === "credit-card") {
+    document.getElementById("credit-card").classList.add("active-method");
+  } else if (method === "alternative") {
+    document.getElementById("alternative").classList.add("active-method");
+  }
+}
+
+function checkIfVoucherApplied(transactions) {
+  if (Array.isArray(transactions)) {
+    const t = transactions.find((t) => t.method=="Voucher");
+    if (t) {
+      const btn = document.getElementById("voucher-btn");
+      if (btn) {
+        btn.disabled = true;
+        btn.classList.add("btn-disable");
+      }
+      document.getElementById("voucherAppliedMessage").style.display = "block";
+      const amountEl = document.getElementById("voucherAmount");
+      voucherApplied = true;
+      if (amountEl) amountEl.textContent = t.amount;
+    }
+  }
+}
+
+async function sendConfirmationEmail(){
+  const emails = [customer.email, customer.her_email__c].filter(Boolean);
+
+  const alert = emails.length ? `A charge was made to Order #${cartId}. An email will be sent to: ${emails.join(', ')}` : ``;
+
+  if (alert) alertSystem.show("success", alert, 7000);
+
+  const subject = `Confirmation: A charge was made to Order #${cartId}`
+
+  let data = await fetch(
+    `/scripts/run/send_order_confirmation_email?order_id=${encodeURIComponent(cartId)}&subject=${encodeURIComponent(subject)}}`
+  );
+
+  console.log("email response", data);
+
+}
+
+</script>

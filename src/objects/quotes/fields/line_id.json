@@ -1,0 +1,10 @@
+{
+  "table": "quotes",
+  "field": "Price Range",
+  "internal_name": "line_id",
+  "related_to": "lines",
+  "system": true,
+  "calc": {},
+  "hide_on_grid": false,
+  "related_to_field": "name"
+}

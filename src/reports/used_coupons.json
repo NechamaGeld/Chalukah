@@ -1,0 +1,21 @@
+{
+  "internal_name": "used_coupons",
+  "display_name": "Used Coupons",
+  "params": [
+    {
+      "internal_name": "season_id",
+      "input_type": "ref",
+      "display_name": "Season",
+      "otherColumnDisplay": "name__c",
+      "otherTable": "custom.seasons",
+      "on_empty": -1
+    }
+  ],
+  "report_type": "list",
+  "deleted_ref": null,
+  "settings": null,
+  "to_users": null,
+  "to_user_roles": null,
+  "created_by": 2,
+  "created_at": "2025-08-12T22:55:45.309Z"
+}

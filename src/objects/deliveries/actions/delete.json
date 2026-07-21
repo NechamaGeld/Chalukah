@@ -1,0 +1,14 @@
+{
+  "action_name": "delete",
+  "action_type": "menu",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Delete",
+  "icon": "far fa-trash-alt",
+  "type": "http",
+  "order": 8,
+  "multiRows": false
+}

@@ -1,0 +1,8 @@
+{
+  "table": "custom.cart_items",
+  "field": "Qty",
+  "type": "number",
+  "internal_name": "qty__c",
+  "calc": {},
+  "format_type": "number"
+}

@@ -1,0 +1,14 @@
+{
+  "table": "customers",
+  "field": "Amount of Family members",
+  "type": "numeric",
+  "internal_name": "amount_of_family_members__c",
+  "calc": {},
+  "format_type": "number",
+  "dashboard_section": 3,
+  "in_dashboard_section": 1,
+  "data": {
+    "dashboard_section": 3,
+    "in_dashboard_section": 1
+  }
+}

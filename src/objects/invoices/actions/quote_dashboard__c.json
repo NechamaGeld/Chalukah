@@ -1,0 +1,13 @@
+{
+  "action_name": "quote_dashboard__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Quote Dashboard",
+  "icon": "fas fa-chart-pie",
+  "type": "url",
+  "value": "/general-dashboard/quotes/{{quote}}",
+  "order": 5
+}

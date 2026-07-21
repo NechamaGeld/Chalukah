@@ -1,0 +1,11 @@
+{
+  "action_name": "checkout__c",
+  "table_name": "quotes",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "checkout",
+  "icon": "fa-solid fa-calculator",
+  "type": "custom-script"
+}

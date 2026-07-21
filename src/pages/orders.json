@@ -1,0 +1,10 @@
+{
+  "name": "Orders",
+  "url": "orders",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "internal",
+  "render_type": "in_app"
+}

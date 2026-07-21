@@ -1,0 +1,14 @@
+{
+  "action_name": "edit_q_v2",
+  "action_type": "menu",
+  "table_name": "quotes",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Edit Quote (V2)",
+  "icon": "fas fa-calculator",
+  "type": "url",
+  "value": "#/quote-v2/{{id}}",
+  "multiRows": false
+}

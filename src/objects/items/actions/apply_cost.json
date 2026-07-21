@@ -1,0 +1,13 @@
+{
+  "action_name": "apply_cost",
+  "action_type": "menu",
+  "table_name": "items",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Apply Cost Factor",
+  "icon": "fas fa-industry",
+  "type": "function",
+  "multiRows": false
+}

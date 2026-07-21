@@ -1,0 +1,36 @@
+
+
+
+
+function renderCartHtml(cart, season, line){
+const cartInfo = document.getElementById('cart-info');
+cartInfo.innerHTML = '';
+const formattedDate = new Date(cart.created_at).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year:
+'numeric' });
+cartInfo.innerHTML += `
+<tr>
+    <th>${cart.quote_id}</th>
+    <td>${formattedDate}</td>
+    <td>${cart.season_name}</td>
+    <td>${cart.line_name}</td>
+    <td>${cart.status}</td>
+    <td>${"$" + (cart.total || 0)}</td>
+    <td>${"$" + (cart.balance|| 0)}</td>
+    ${line? `
+    <td>
+        ${new Date(cart.final_edit_date) >= new Date()? `<a href="/pages/shopping-list?cart_id=${cart.quote_id}&price=${line}"
+            class="btn" style="color:#6941C6;">Edit Order</a>`: ''}
+    </td>
+    <td>
+        ${cart.balance > 0 ? `<a href="/pages/checkout-page?cart_id=${cart.quote_id}" class="btn"
+            style="color:#6941C6;">Finish Payment</a>`: ''}
+    </td> ` : ''}
+
+</tr>`;//remove balance from the links
+}
+
+function showLoader(show, msg) {
+    const loader = document.getElementById('loader-overlay');
+    if (loader) 
+        loader.style.display = show ? "flex" : "none";
+}

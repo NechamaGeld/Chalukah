@@ -1,0 +1,14 @@
+{
+  "action_name": "auto_add_proj",
+  "action_type": "form",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Auto Add Project",
+  "icon": "fas fa-project-diagram",
+  "type": "function",
+  "order": 10,
+  "multiRows": false
+}

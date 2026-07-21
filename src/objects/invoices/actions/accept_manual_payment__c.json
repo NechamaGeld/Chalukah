@@ -1,0 +1,13 @@
+{
+  "action_name": "accept_manual_payment__c",
+  "table_name": "invoices",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Accept Manual Payment",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "url",
+  "value": "/#/add/payment_transaction?pre_data_trx_invoice_id={{id}}&pre_data_customer={{customer_id}}&pre_data_cart_id__c={{quote}}&pre_data_type=Payment&pre_data_invoice_record={{id}}&initial_amount={{amount}}",
+  "order": 7
+}

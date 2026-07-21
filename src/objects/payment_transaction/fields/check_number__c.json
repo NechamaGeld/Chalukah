@@ -1,0 +1,8 @@
+{
+  "table": "payment_transaction",
+  "field": "Check Number",
+  "type": "text",
+  "internal_name": "check_number__c",
+  "calc": {},
+  "format_type": "text"
+}

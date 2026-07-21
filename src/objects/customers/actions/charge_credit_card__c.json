@@ -1,0 +1,13 @@
+{
+  "action_name": "charge_credit_card__c",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Charge Credit Card",
+  "icon": "fa-solid fa-money-bill-1-wave",
+  "type": "url",
+  "value": "/#/page-modal/charge-cc-form?customer={{id}}",
+  "order": 0
+}

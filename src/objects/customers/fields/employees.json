@@ -1,0 +1,10 @@
+{
+  "table": "customers",
+  "internal_name": "employees",
+  "related_to": "employees",
+  "system": true,
+  "calc": {},
+  "hide_on_grid": true,
+  "related_to_field": "name",
+  "hide_on_dashbaord": true
+}

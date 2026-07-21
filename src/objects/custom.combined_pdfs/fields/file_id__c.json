@@ -1,0 +1,12 @@
+{
+  "table": "custom.combined_pdfs",
+  "field": "File ID",
+  "type": "relationship",
+  "internal_name": "file_id__c",
+  "related_to": "files",
+  "calc": {},
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "files",
+  "otherColumnDisplay": "id"
+}

@@ -1,0 +1,11 @@
+{
+  "action_name": "bulk_send_email_with_attachment__c",
+  "table_name": "cust_templates",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Bulk Send Email With Attachment",
+  "icon": "none",
+  "type": "custom-script"
+}

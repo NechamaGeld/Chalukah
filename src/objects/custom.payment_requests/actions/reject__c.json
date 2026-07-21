@@ -1,0 +1,17 @@
+{
+  "action_name": "reject__c",
+  "table_name": "custom.payment_requests",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Reject",
+  "icon": "fa-solid fa-x",
+  "type": "custom-script",
+  "condition": {
+    "selectedText": "Pending",
+    "useCondition": true,
+    "selectedField": "status__c",
+    "selectedCondition": "IS_EQUALS"
+  }
+}

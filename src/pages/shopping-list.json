@@ -1,0 +1,10 @@
+{
+  "name": "Shopping List",
+  "url": "shopping-list",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

@@ -1,0 +1,92 @@
+<!-- Updated Bootstrap-styled Credit Card Form -->
+<style>
+  .cc-input-group {
+    display: flex;
+  }
+  .cc-card-type {
+    font-size: 35px;
+    margin-left: 10px;
+    max-height: 10px;
+    position: relative;
+    bottom: 8px;
+  }
+  .cc-close {
+    display: block;
+    height: 0;
+    width: 0;
+    float: inline-end;
+    position: relative;
+    bottom: 10px;
+    font-size: x-large;
+    right: 10px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="payment-container" ng-init="executeActionByName('customers', 'charge_cc__c', {customer: $urlParams.customer})">
+  <div class="card">
+    <div class="card-body">
+      <span class="cc-close" ng-click="$close()"><i class="fa-solid fa-xmark"></i></span>
+      <h3 class="card-title text-center">Credit Card Details</h3>
+      <form name="ccForm" autocomplete="off" novalidate class="p-4 border rounded bg-light">
+        <div class="form-row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Amount</label>
+            <input type="number" class="form-control" ng-model="payment.amount" placeholder="Enter amount"
+              autocomplete="off" required/>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Card Number</label>
+            <div class="cc-input-group">
+              <input id="cardNumberInput" type="text" class="form-control" ng-model="payment.number"
+                placeholder="1234 5678 9012 3456" autocomplete="off" maxlength="19"
+                ng-change="formatCardNumber(); autoTab(payment.number, cardType === 'amex' ? 17 : 19, 'expInput')"
+                required />
+              <span class="cc-card-type" ng-show="cardType === 'visa'">
+                <i class="fa-brands fa-cc-visa"></i>
+              </span>
+              <span class="cc-card-type" ng-show="cardType === 'mastercard'">
+                <i class="fa-brands fa-cc-mastercard"></i>
+              </span>
+              <span class="cc-card-type" ng-show="cardType === 'amex'">
+                <i class="fa-brands fa-cc-amex"></i>
+              </span>
+              <span class="cc-card-type" ng-show="cardType === 'discover'">
+                <i class="fa-brands fa-cc-discover"></i>
+              </span>
+              <span class="cc-card-type" ng-show="!cardType || cardType === 'unknown'">
+                <i class="fa-solid fa-credit-card"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="col-md-4">
+            <label class="form-label">Expiration Date</label>
+            <input type="text" id="expInput" class="form-control" ng-model="payment.exp" placeholder="MM/YY"
+              autocomplete="off" maxlength="5" ng-change="formatExp(); autoTab(payment.exp, 5, 'cvvInput')" required />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">CVV</label>
+            <input type="text" id="cvvInput" class="form-control" ng-model="payment.cvv" placeholder="CVC" maxlength="4"
+              autocomplete="off" required ng-change="autoTab(payment.cvv, cardType === 'amex' ? 4 : 3, 'zipInput')" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Zip Code</label>
+            <input type="text" id="zipInput" class="form-control" ng-model="payment.zip" placeholder="ZIP" maxlength="5"
+              autocomplete="off" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-12">
+            <button type="button" class="btn btn-outline-secondary w-100" ng-click="process(ccForm)">
+              Process Payment
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

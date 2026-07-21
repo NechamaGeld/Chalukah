@@ -1,0 +1,14 @@
+{
+  "action_name": "archive",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Archive",
+  "icon": "fa fa-archive",
+  "type": "http",
+  "order": 17,
+  "multiRows": false
+}

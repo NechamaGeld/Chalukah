@@ -1,0 +1,10 @@
+{
+  "name": "Profile",
+  "url": "profile",
+  "version": 1,
+  "data": {
+    "pageType": "any"
+  },
+  "access_policy": "customer",
+  "render_type": "standalone"
+}

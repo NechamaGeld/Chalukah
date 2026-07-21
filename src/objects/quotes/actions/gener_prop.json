@@ -1,0 +1,14 @@
+{
+  "action_name": "gener_prop",
+  "action_type": "menu",
+  "table_name": "quotes",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Generate Proposal",
+  "icon": "fas fa-receipt",
+  "type": "url",
+  "value": "#/proposal/{{project}}?quotes={{id}}",
+  "multiRows": false
+}

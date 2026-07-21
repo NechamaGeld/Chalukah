@@ -1,0 +1,295 @@
+<style>
+    .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        margin-top: calc(6vh + 20px);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+
+    .payment-details {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        gap: 20px;
+        margin-top: 2rem;
+    }
+
+    .table {
+        color: black;
+    }
+
+    .payment-section {
+        flex: 1;
+    }
+
+
+    .active-method {
+        display: block;
+    }
+
+    .voucher {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: 1px solid #ced4da;
+        padding-left: 1rem;
+    }
+
+    .voucher input {
+        width: 200px;
+        margin-bottom: 10px;
+    }
+
+    .voucher-code {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .payment-options button {
+        margin-right: 10px;
+    }
+
+    .btn-outline-secondary.active {
+        background-color: #6941C6;
+        color: white;
+    }
+
+
+    .flex-column {
+        gap: 1rem;
+    }
+
+    .apply-btn {
+        color: #fff;
+        background-color: #5959b3;
+        border-color: #5959b3;
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .apply-btn:hover {
+        background-color: #4b4ba3;
+        border-color: #4b4ba3;
+    }
+
+    .apply-btn:active {
+        background-color: #3a3a92;
+        border-color: #3a3a92;
+    }
+
+    .btn-group {
+        gap: 1rem;
+    }
+
+    .payment-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn-disable {
+        background-color: #ccc !important;
+        border-color: #aaa !important;
+        color: #666 !important;
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.65;
+    }
+
+    .error-message {
+        color: red;
+    }
+
+    #loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        /* dim the page */
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+    }
+
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+
+<div class="center-div" style="color:#6941C6;" ng-init="executeActionByName('quotes', 'checkout__c')">
+
+    <div>
+        <h3>Order Details - Your order has been saved</h3>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
+                <table class="table mt-3 table-striped border rounded-3 shadow-sm">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Date</th>
+                            <th>Season</th>
+                            <th>Status</th>
+                            <th>Order Total</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-info">
+                        <tr>
+                            <td>{{ order.quote_id }}</td>
+                            <td>{{ order.created_at | date:'MMM dd, yyyy' }}</td>
+                            <td>{{ order.season_name }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>${{ order.total }}</td>
+                            <td>${{ order.balance }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment-details">
+        <div class="payment-container">
+            <div class="w-100 text-center mb-2">
+                <h5>Payment Method</h5>
+                <div class="payment-section">
+                    <div class="btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
+
+                        <label class="btn btn-outline-secondary" ng-click ="selectPaymentMethod('credit-card')" ng-class="{ 'active': state.selectedMethod === 'credit-card' }">
+                            <input type="radio" name="payment-option" id="credit-card-option" autocomplete="off"> Credit
+                            Card
+                        </label>
+                        <label class="btn btn-outline-secondary" ng-click ="selectPaymentMethod('alternative')" ng-class="{ 'active': state.selectedMethod === 'alternative' }">
+                            <input type="radio" name="payment-option" id="alternative-option" autocomplete="off">
+                            Alternative
+                            Payment
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-section w-50">
+                <div id="credit-card" ng-show="state.ccMethod">
+                    <h5 class="text-center">Pay with Credit Card</h5>
+                    
+                    <form name="ccForm" class=" needs-validation" novalidate
+                        ng-submit="proccessCCPayment(ccForm)">
+                        <div class="mb-3">
+                            <input class="form-control" type="number" name="amount"
+                            ng-class="{'is-invalid': ccForm.amount.$touched && ccForm.amount.$invalid}"
+                             placeholder="Amount" ng-model="state.cc.amount" required min="0.01" step="0.01">
+                            <div class="invalid-feedback">Please enter a valid amount.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="card_number" ng-class="{'is-invalid': ccForm.card_number.$touched && ccForm.card_number.$invalid}" 
+                            placeholder="Card Number" ng-model="state.cc.card_number" required minlength="13" maxlength="16" pattern="\d{13,16}">
+                            <div class="invalid-feedback">Enter a valid card number (13–16 digits).</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="zip" placeholder="Zip Code" ng-model="state.cc.zip" maxlength="5" ng-class="{'is-invalid': ccForm.zip.$touched && ccForm.zip.$invalid}"
+                             pattern="\d{5}">
+                            <div class="invalid-feedback">Zip code must be 5 digits.</div>
+                        </div>
+
+                        <div class="mb-3 d-flex gap-2">
+                            <select name="exp_month" required class="form-control" ng-model="state.cc.exp_month" ng-options="month for month in months" 
+                            ng-class="{'is-invalid': ccForm.exp_month.$touched && ccForm.exp_month.$invalid}">
+                                <option value="" disabled selected>Exp Month</option>
+                            </select>
+                            <select name="exp_year" required class="form-control" ng-model="state.cc.exp_year" ng-options="year for year in years"
+                            ng-class="{'is-invalid': ccForm.exp_year.$touched && ccForm.exp_year.$invalid}">
+                                <option value="" disabled selected>Exp Year</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="cvc" placeholder="CVC" ng-model="state.cc.cvc" ng-class="{'is-invalid': ccForm.cvc.$touched && ccForm.cvc.$invalid}"
+                             required pattern="\d{3,4}" maxlength="4">
+                            <div class="invalid-feedback">CVC must be 3 or 4 digits.</div>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary w-100">Process Payment</button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div id="alternative" ng-show="state.altMethod">
+                    <h5 class="text-center">Alternative Payment Methods</h5>
+                    <p>You will be contacted to complete your payment.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-outline-secondary mr-2"
+                            ng-click ="paymentType = 'Cash'">Cash</button>
+                        <button class="btn btn-outline-secondary mr-2"
+                            ng-click ="paymentType = 'Zelle'">Zelle</button>
+                        <button class="btn btn-outline-secondary" ng-click ="paymentType = 'Check'">Check</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class=" apply-btn btn" ng-click ="submitPaymentRequest()">Request Payment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="voucher">
+            <h5>Apply Voucher</h5>
+            <div class="voucher-code">Voucher Code</div>
+            <div class="error-message" id="voucherError" ng-show="voucherError">{{voucherError}}</div>
+            <input type="text" ng-model="voucherCode" class="form-control" placeholder="Voucher Code" required>
+            <button
+                class="apply-btn btn"
+                id="voucher-btn"
+                ng-click="applyVoucher()"
+                ng-disabled="voucherApplied"
+                ng-class="{'btn-disable': voucherApplied}">
+                Apply Voucher
+            </button>
+            <div ng-show="voucherApplied" style="margin-top:10px;">
+                <p>Voucher Applied: $<span>{{voucherAmount}}</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loader-overlay" ng-show="showLoader">
+    <div class="loader"></div>
+</div>

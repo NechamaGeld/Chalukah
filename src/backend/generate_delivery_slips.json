@@ -1,0 +1,19 @@
+{
+  "name": "generate_delivery_slips",
+  "description": null,
+  "method": "POST",
+  "created_at": null,
+  "updated_at": null,
+  "created_by": 1,
+  "updated_by": null,
+  "is_public": false,
+  "token": null,
+  "crontab": null,
+  "active": true,
+  "version": 13,
+  "timeout": 1800000,
+  "modules": [
+    "db",
+    "deliveriesHelper"
+  ]
+}

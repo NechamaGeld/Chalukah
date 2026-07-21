@@ -1,0 +1,13 @@
+{
+  "action_name": "is_discontinue",
+  "action_type": "menu",
+  "table_name": "items",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Mark Item Discontinued",
+  "icon": "fa fa-hourglass-end",
+  "type": "function",
+  "multiRows": false
+}

@@ -1,0 +1,20 @@
+{
+  "name": "remove_vouchers_from_order",
+  "description": "removes all vouchers from a specific order",
+  "method": "GET",
+  "created_at": null,
+  "updated_at": null,
+  "created_by": null,
+  "updated_by": null,
+  "is_public": false,
+  "token": null,
+  "crontab": null,
+  "active": true,
+  "version": 16,
+  "timeout": null,
+  "modules": [
+    "db",
+    "callReport",
+    "callScript"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "action_name": "delete_slips__c",
+  "table_name": "deliveries",
+  "is_hidden": {
+    "dash": false,
+    "grid": false
+  },
+  "title": "Delete Slips",
+  "icon": "far fa-trash-alt",
+  "type": "custom-script",
+  "order": 9,
+  "multiRows": true
+}

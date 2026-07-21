@@ -1,0 +1,15 @@
+{
+  "action_name": "open_files",
+  "action_type": "menu",
+  "table_name": "customers",
+  "is_hidden": {
+    "dash": true,
+    "grid": true
+  },
+  "title": "Open Files",
+  "icon": "fas fa-file",
+  "type": "url",
+  "value": "#/files/?table=customers&table_id={{id}}",
+  "order": 8,
+  "multiRows": false
+}

@@ -1,0 +1,13 @@
+{
+  "action_name": "change_l_price",
+  "action_type": "menu",
+  "table_name": "quote_items",
+  "is_hidden": {
+    "grid": true,
+    "dash": true
+  },
+  "title": "Change List Price",
+  "icon": "far fa-edit",
+  "type": "function",
+  "multiRows": false
+}

@@ -1,0 +1,243 @@
+
+
+<style>
+  .center-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-top: calc(7vh + 20px);
+    color: #6941C6;
+    font-family: "Arial", sans-serif !important;
+  }
+
+  .price-btn {
+    background-color: #6941C6;
+    border-radius: 8px;
+    color: white;
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+    font-size: large;
+    margin-bottom: 5%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .link-btn {
+    border: 1px solid #6941C6;
+    border-radius: 8px;
+    color: #6941C6;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+    font-size: large;
+    margin-right: 2%;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .link-btn:active {
+    background-color: #d9c7f2;
+    color: #5633a8;
+    transform: scale(0.98);
+  }
+
+  .price-btn:active {
+    background-color: #5633a8;
+    transform: scale(0.98);
+  }
+
+  .link-btn:hover {
+    background-color: #e5d8f6;
+    color: #5633a8;
+    transform: translateY(-2px);
+  }
+
+  .price-btn:hover {
+    background-color: #8762e2;
+    transform: translateY(-2px);
+  }
+
+  .navbar {
+    width: calc(100vw - 40px) !important;
+  }
+
+  .button-stl{
+    width: 50%;
+    text-align: center;
+    margin-top: 5%;
+  }
+
+  .kli-btn{
+        font-size: small;
+        width: min-content;
+  }
+  .btn-subtext {
+    display: block;
+    font-size: 0.85em;
+    opacity: 0.9;
+    margin-top: 4px;
+  }
+  .customer-inactive{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    display: none;
+  }
+</style>
+
+<div class="center-div">
+  <include-page url="navigation-bar" />
+
+  <div id="customer-deleted" class="customer-inactive" >
+    <div><b>Your user is inactive</b></div>
+    <div>Please contact Shearis Yisroel at pesachfund@gmail.com</div>
+  </div>
+
+  <div id="old-customer" class="button-stl" style=" margin-bottom: 5%; display: none;">
+    <h2>Welcome back <span id="cust-name"></span></h2>
+    <div id="old-customer-buttons" style="display: flex; flex-direction: column;">
+      
+      <a id="edit-link" href="#"><button class="price-btn">Edit Current Order</button></a>
+      <a href="/pages/previous-orders"><button class="price-btn">Go to previous Orders</button></a>
+      <button id="start-new-order-btn" class="price-btn">Create New Order</button>
+    </div>
+  </div>
+
+    <div id="new-order" style="margin-bottom: 5%; display: none;">
+      <h2 style="justify-content: center;">Please select your order group to start a new order.</h2>
+    
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <a id="coop-link-new" href="#" style="width: 100%;">
+        <button class="price-btn">Shearis Yisroel Co-op<br><span class="btn-subtext">Wholesale Ordering for the General Community</span></button>
+      </a>
+
+      <button id="klei-kodesh-btn" class="link-btn kli-btn ">
+        For Klei Kodesh Press Here
+      </button>
+
+      <div id="klei-kodesh-options" style="display: none; flex-direction: column; width: 100%;">
+        <a id="subsidized-link" href="#">
+          <button class="price-btn">Shearis Yisroel Subsidized<br><span class="btn-subtext">Subsidized for Klei Kodesh of the Community</span></button>
+        </a>
+        <a id="wholesale-link" href="#">
+          <button class="price-btn">Shearis Yisroel Wholesale<br><span class="btn-subtext">Wholesale for Klei Kodesh</span></button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="out-of-season" style="justify-content: center; display: none;">
+    <h2>An order can only be started in season</h2>
+  </div>
+</div>
+
+<script>
+  const state = {
+    season : null
+  };
+  const PRICE_MAP = {
+            1: 1,
+            2: 3,
+            3: 2
+        };
+  
+
+  document.addEventListener("InitDataLoaded", async (e) => {
+    const data = e.detail;
+    const user = data.user;
+    const customer = user.customer;
+    state.customer = customer;
+
+    if(window.clarity){
+      console.log("got in")
+      window.clarity("set", "customer_id", String(customer.id));
+      window.clarity("set", "customer_name", customer.name);
+    }
+    if(FS.identify){
+      console.log("in fullstory")
+      FS.identify(String(customer.id));
+    }
+    
+
+
+
+
+    const inactiveCustomerDiv = document.getElementById('customer-deleted');
+    if(!customer){      
+        inactiveCustomerDiv.style.display = "block";
+    }    
+
+    document.getElementById('cust-name').textContent = customer.name || "";
+
+    await checkSeason(customer.id);
+    //emptyLocalStorage();
+  });
+
+  async function checkSeason(cust_id) {
+    try {
+      const response = await fetch('/cust_report/query/2');
+      const data = await response.json();
+      const this_season = data.rows ? data.rows[0] : null;
+
+      if (this_season) {
+        state.season = this_season.id;
+
+        // Set new order links
+        document.getElementById('coop-link-new').href = `/pages/shopping-list?price=1&season=${state.season}`;
+        document.getElementById('subsidized-link').href = `/pages/shopping-list?price=2&season=${state.season}`;
+        document.getElementById('wholesale-link').href = `/pages/shopping-list?price=3&season=${state.season}`;
+        document.getElementById('klei-kodesh-btn').addEventListener('click', function () {
+          document.getElementById('klei-kodesh-options').style.display = 'flex';
+          this.style.display = 'none';
+        });
+
+        await checkIfUserHasOpenOrders(cust_id);
+      } else {
+        document.getElementById('out-of-season').style.display = "block";
+      }
+
+    } catch (error) {
+      console.error("Error fetching seasons:", error);
+    }
+  }
+
+  async function checkIfUserHasOpenOrders(cust_id) {
+    try {
+      const response = await fetch(`/cust_report/query/3?order_ids={}&cust_id=${cust_id}`);
+      const data = await response.json();
+      const orders = data.rows || [];
+      const current_orders = orders.filter(o => o.season__c == state.season);
+
+      const oldCustomerDiv = document.getElementById('old-customer');
+      const newOrderDiv = document.getElementById('new-order');
+      const editLink = document.getElementById('edit-link');
+
+      // Always hide first
+      oldCustomerDiv.style.display = "none";
+      newOrderDiv.style.display = "none";
+
+      if (current_orders.length === 0) {
+        newOrderDiv.style.display = "block";
+      } else if (current_orders.length === 1) {
+        oldCustomerDiv.style.display = "block";
+        editLink.href = `/pages/shopping-list?cart_id=${current_orders[0].quote_id}&price=${PRICE_MAP[current_orders[0].line_id]}&season=${state.season}`;
+      } else {
+        oldCustomerDiv.style.display = "block";
+        editLink.style.display = "none"; // Hide edit button for >1 orders
+      }
+
+      // Setup "Create New Order" button logic
+      document.getElementById('start-new-order-btn').addEventListener("click", () => {
+        oldCustomerDiv.style.display = "none";
+        newOrderDiv.style.display = "block";
+      });
+
+    } catch (err) {
+      console.error("Error loading previous orders", err);
+    }
+  }
+</script>

@@ -1,0 +1,14 @@
+{
+  "table": "customers",
+  "field": "Secondary Email",
+  "type": "text",
+  "internal_name": "her_email__c",
+  "calc": {},
+  "format_type": "text",
+  "dashboard_section": 2,
+  "in_dashboard_section": 2,
+  "data": {
+    "dashboard_section": 2,
+    "in_dashboard_section": 2
+  }
+}
