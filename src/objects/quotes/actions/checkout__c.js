@@ -192,7 +192,7 @@ scope.applyVoucher = function () {
 
   scope.toggleLoader(true);
 
-  fetch(`/scripts/run/apply_voucher_to_order?voucher_code=${encodeURIComponent(scope.voucherCode)}&order_id=${encodeURIComponent(cartId)}&user_id=${encodeURIComponent(scope.order.user_id)}`)
+  fetch(`/scripts/run/apply_voucher_to_order?voucher_code=${scope.voucherCode}&order_id=${cartId}&user_id=${scope.order.user_id}`)
     .then(function (response) {
       if (!response.ok) {
         return response.text().then(function (errorHtml) {

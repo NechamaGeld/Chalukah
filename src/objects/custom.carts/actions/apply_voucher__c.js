@@ -1,6 +1,6 @@
 Modal.prompt("Enter Voucher Code")
     .then(code => {
-        $http.get(`scripts/run/apply_voucher_to_order?order_id=${encodeURIComponent(record.id)}&voucher_code=${encodeURIComponent(code)}`)
+        $http.get(`scripts/run/apply_voucher_to_order?order_id=${record.id}&voucher_code=${code}`)
             .then(({data}) => {
                 notify({
                     message: "Voucher has been applied.",
@@ -16,7 +16,7 @@ Modal.prompt("Enter Voucher Code")
                     || tempDiv.querySelector('h2');
                     
                 notify({
-                    message: errorElement?.innerText || "Something went wrong",
+                    message: errorElement.innerText || "Something went wrong",
                     classes: "alert-danger",
                 });
             })

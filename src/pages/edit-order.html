@@ -375,7 +375,7 @@
         <div ng-show="applyVoucherFlag" class="voucher-wrapper text-center">
             <!--div ng-show = "voucherCode">Voucher code applied before editing was: <b>{{voucherCode}}</b></div-->
             <h3>Voucher Code</h3>
-            <div class="voucher-warning" ng-show = "voucherError">{{voucherError}}</div>
+            <div class="voucher-warning" ng-show = "showErrorMessage">Error applying voucher. Please check the voucher and try again</div>
             <input type="text" ng-model="voucher.code" class="form-control mb-3" placeholder="Enter voucher code" />
             <button class="btn btn-success" ng-click="submitVoucher()">Submit Voucher & Return to Orders</button>
             <button class="btn btn-secondary" ng-click="applyVoucherFlag = !applyVoucherFlag">Cancel</button>

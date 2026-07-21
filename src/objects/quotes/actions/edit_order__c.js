@@ -7,7 +7,6 @@ scope.showLoader = false;
 scope.voucher = {};
 scope.applyVoucherFlag = false;
 scope.showErrorMessage = false;
-scope.voucherError = "";
 scope.voucherRemoved = false;
 scope.voucherCode;
 
@@ -234,7 +233,7 @@ scope.submitVoucher = function () {
 
 
     scope.toggleLoader(true);
-    $http.get(`scripts/run/apply_voucher_to_order?voucher_code=${encodeURIComponent(scope.voucher.code)}&order_id=${encodeURIComponent(cartId)}`)
+    $http.get(`scripts/run/apply_voucher_to_order?voucher_code=${scope.voucher.code}&order_id=${cartId}`)
         .then(({ data }) => {
             let invoice = generateOrUpdateInvoice();
             console.log("new invoice is: ", invoice);
@@ -246,17 +245,11 @@ scope.submitVoucher = function () {
         })
         .catch(err => {
             scope.toggleLoader(false);
-            scope.voucherError = getBackendErrorMessage(err.data);
+            scope.showErrorMessage = true;
             console.error("Error applying voucher", err);
 
         })
 };
-
-function getBackendErrorMessage(errorHtml) {
-    const errorDocument = new DOMParser().parseFromString(errorHtml || "", "text/html");
-    return errorDocument.querySelector("#error-msg, h2")?.textContent?.trim()
-        || "Error applying voucher. Please check the voucher and try again.";
-}
 
 scope.addVoucher = function () {
     Modal.confirm("Are you sure you finished editing the order and want to apply a voucher?")

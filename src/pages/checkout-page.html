@@ -442,7 +442,7 @@ async function applyVoucher(event) {
     try {
       showLoader(true);
       const response = await fetch(
-        `/scripts/run/apply_voucher_to_order?voucher_code=${encodeURIComponent(voucherCode)}&order_id=${encodeURIComponent(cartId)}`
+        `/scripts/run/apply_voucher_to_order?voucher_code=${voucherCode}&order_id=${cartId}`
       );
       if (!response.ok) {
         const errorHtml = await response.text();
