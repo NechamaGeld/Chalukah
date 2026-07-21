@@ -231,7 +231,8 @@ scope.applyVoucher = function () {
 
 function getBackendErrorMessage(errorHtml) {
   const errorDocument = new DOMParser().parseFromString(errorHtml, "text/html");
-  return errorDocument.querySelector("#error-msg, h2")?.textContent?.trim()
+  const message = errorDocument.querySelector("#error-msg, h2")?.textContent?.trim();
+  return message?.replace(/^(?:error in script [^:]+:\s*)+/i, "").trim()
     || "Error applying voucher. Please try again.";
 }
 
