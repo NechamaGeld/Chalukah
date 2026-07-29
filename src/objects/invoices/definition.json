@@ -36,6 +36,16 @@
       "type": "is_between_text_range",
       "field_internal_name": "last_name__c",
       "field": "last_name__c"
+    },
+    {
+      "is_custom": true,
+      "type": "search_match",
+      "text": "Season",
+      "otherTable": "custom.seasons",
+      "name": "season__c",
+      "otherColumnDisplay": "name__c",
+      "field": "season__c",
+      "field_internal_name": "season__c"
     }
   ],
   "has_comments": null,
