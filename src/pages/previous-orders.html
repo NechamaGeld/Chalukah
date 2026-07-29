@@ -117,7 +117,9 @@
         try{
             const response = await fetch(`/cust_report/query/3?order_ids={}&cust_id=${state.customer.id}` );
             const data = await response.json();
-            const orders = data.rows;
+            const seasonResponse = await fetch('/cust_report/query/2');
+            const seasonData = await seasonResponse.json();
+            const orders = data.rows.filter(order => order.season__c == seasonData.rows?.[0]?.id);
             //sort orders by quote_created_at desc
             state.orders = orders.sort((a, b) => b.quote_created_at - a.quote_created_at);
             renderOrders();
