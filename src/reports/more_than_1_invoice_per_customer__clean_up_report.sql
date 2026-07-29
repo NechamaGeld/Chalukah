@@ -6,6 +6,7 @@ SELECT
 FROM customers c
 JOIN invoices i ON i.customer = c.id
 WHERE i.deleted_Ref IS NULL
+  AND (:season_id = -1 OR i.season__c = :season_id)
 GROUP BY c.id, c.name
 HAVING COUNT(i.id) > 1
 ORDER BY c.name, c.id;

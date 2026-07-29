@@ -1,7 +1,16 @@
 {
   "internal_name": "more_than_1_invoice_per_customer__clean_up_report",
   "display_name": "More than 1 Invoice per customer - Clean Up Report",
-  "params": [],
+  "params": [
+    {
+      "internal_name": "season_id",
+      "input_type": "ref",
+      "display_name": "Season",
+      "otherColumnDisplay": "name__c",
+      "otherTable": "custom.seasons",
+      "on_empty": -1
+    }
+  ],
   "report_type": "list",
   "deleted_ref": null,
   "settings": {},
