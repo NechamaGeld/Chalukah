@@ -60,6 +60,16 @@
       "otherColumnDisplay": "name",
       "field": "selected_categories__c",
       "field_internal_name": "selected_categories__c"
+    },
+    {
+      "is_custom": true,
+      "type": "search_match",
+      "text": "Season",
+      "otherTable": "custom.seasons",
+      "name": "season__c",
+      "otherColumnDisplay": "name__c",
+      "field": "season__c",
+      "field_internal_name": "season__c"
     }
   ],
   "has_comments": null,

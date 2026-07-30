@@ -1,0 +1,12 @@
+{
+  "table": "deliveries",
+  "field": "Quote #",
+  "type": "relationship",
+  "internal_name": "quote_id",
+  "related_to": "quotes",
+  "related_to_field": "id",
+  "isRef": true,
+  "otherTable": "quotes",
+  "otherColumnDisplay": "id",
+  "system": true
+}
