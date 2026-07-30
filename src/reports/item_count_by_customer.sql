@@ -47,11 +47,11 @@ LEFT JOIN custom.seasons s
     AND s.deleted_ref IS NULL
 GROUP BY
     cat.name,
-    itm.link,
+    COALESCE(itm.link, itm.name),
     c.id,
     c.last_name__c,
     c.name
 ORDER BY
     cat.name,
-    itm.link,
+    COALESCE(itm.link, itm.name),
     c.last_name__c;
