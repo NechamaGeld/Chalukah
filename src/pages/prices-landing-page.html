@@ -137,7 +137,8 @@
 
 <script>
   const state = {
-    season : null
+    season : null,
+    orderingOpen: false
   };
   const PRICE_MAP = {
             1: 1,
@@ -185,6 +186,7 @@
 
       if (this_season) {
         state.season = this_season.id;
+        state.orderingOpen = new Date() < new Date(this_season.final_edit_order_date__c);
 
         // Set new order links
         document.getElementById('coop-link-new').href = `/pages/shopping-list?price=1&season=${state.season}`;
@@ -215,12 +217,17 @@
       const oldCustomerDiv = document.getElementById('old-customer');
       const newOrderDiv = document.getElementById('new-order');
       const editLink = document.getElementById('edit-link');
+      const startNewOrderBtn = document.getElementById('start-new-order-btn');
 
       // Always hide first
       oldCustomerDiv.style.display = "none";
       newOrderDiv.style.display = "none";
 
-      if (current_orders.length === 0) {
+      if (!state.orderingOpen) {
+        oldCustomerDiv.style.display = "block";
+        editLink.style.display = "none";
+        startNewOrderBtn.style.display = "none";
+      } else if (current_orders.length === 0) {
         newOrderDiv.style.display = "block";
       } else if (current_orders.length === 1) {
         oldCustomerDiv.style.display = "block";
