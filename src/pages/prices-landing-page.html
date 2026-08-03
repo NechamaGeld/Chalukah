@@ -99,6 +99,9 @@
 
   <div id="old-customer" class="button-stl" style=" margin-bottom: 5%; display: none;">
     <h2>Welcome back <span id="cust-name"></span></h2>
+    <div id="ordering-closed" style="display: none;">
+      <h2>Ordering is closed for this season. You may view previous orders and complete outstanding payments.</h2>
+    </div>
     <div id="old-customer-buttons" style="display: flex; flex-direction: column;">
       
       <a id="edit-link" href="#"><button class="price-btn">Edit Current Order</button></a>
@@ -227,9 +230,7 @@
         oldCustomerDiv.style.display = "block";
         editLink.style.display = "none";
         startNewOrderBtn.style.display = "none";
-        const orderingClosedDiv = document.getElementById('out-of-season');
-        orderingClosedDiv.querySelector('h2').textContent = "Ordering is closed for this season. You may view previous orders and complete outstanding payments.";
-        orderingClosedDiv.style.display = "flex";
+        document.getElementById('ordering-closed').style.display = "block";
       } else if (current_orders.length === 0) {
         newOrderDiv.style.display = "block";
       } else if (current_orders.length === 1) {
