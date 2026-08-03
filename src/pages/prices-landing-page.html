@@ -227,6 +227,9 @@
         oldCustomerDiv.style.display = "block";
         editLink.style.display = "none";
         startNewOrderBtn.style.display = "none";
+        const orderingClosedDiv = document.getElementById('out-of-season');
+        orderingClosedDiv.querySelector('h2').textContent = "Ordering is closed for this season. You may view previous orders and complete outstanding payments.";
+        orderingClosedDiv.style.display = "flex";
       } else if (current_orders.length === 0) {
         newOrderDiv.style.display = "block";
       } else if (current_orders.length === 1) {
