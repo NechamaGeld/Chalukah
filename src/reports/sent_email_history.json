@@ -1,0 +1,19 @@
+{
+  "internal_name": "sent_email_history",
+  "display_name": "Sent Email History",
+  "params": [
+    {
+      "internal_name": "season_id",
+      "input_type": "ref",
+      "display_name": "Season",
+      "otherColumnDisplay": "name__c",
+      "otherTable": "custom.seasons",
+      "on_empty": -1
+    }
+  ],
+  "report_type": "list",
+  "deleted_ref": null,
+  "settings": null,
+  "to_users": null,
+  "to_user_roles": null
+}
