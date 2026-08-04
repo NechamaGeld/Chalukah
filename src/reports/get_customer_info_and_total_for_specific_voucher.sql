@@ -1,6 +1,8 @@
 SELECT 
+    c.id AS id,
     c.last_name__c AS "Last Name",
     c.name AS "Name",
+    c.email AS email,
     c.address1 AS "Address",
     c.amount_of_family_members__c AS "Amount of Members",
     aff.name__c AS Affiliations,

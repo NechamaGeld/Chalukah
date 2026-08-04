@@ -1,6 +1,8 @@
 SELECT
+    c.id AS id,
     c.last_name__c AS "Last Name",
     c.name AS "Name",
+    c.email AS email,
     c.address1 AS "Address",
     c.zip AS "Zip",
     c.phone AS "Phone",

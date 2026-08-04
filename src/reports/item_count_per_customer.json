@@ -19,7 +19,16 @@
   ],
   "report_type": "list",
   "deleted_ref": null,
-  "settings": null,
+  "settings": {
+    "actions": {
+      "view_name": "customers",
+      "menus": [
+        {
+          "internal_name": "bulk_send_email"
+        }
+      ]
+    }
+  },
   "to_users": null,
   "to_user_roles": null,
   "created_by": 2,

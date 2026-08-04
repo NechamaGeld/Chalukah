@@ -15,9 +15,10 @@ payment_totals AS (
     GROUP BY invoice_id
 )
 SELECT
+    c.id AS id,
     c.name AS "First Name",
     c.last_name__c AS "Last Name",
-    c.email AS "Email",
+    c.email AS email,
     q.id AS quote,
     c.other_affiliations__moisdes__c AS "Affiliation",
     inv.id AS "Invoice ID",
@@ -69,5 +70,5 @@ WHERE q.final = true
 AND q.deleted_ref is null
  AND (:season_id = -1 OR s.id = :season_id)
 GROUP BY 
-    q.id, c.name,c.last_name__c, pt.paid, c.email, c.other_affiliations__moisdes__c, inv.id
+    q.id, c.id, c.name,c.last_name__c, pt.paid, c.email, c.other_affiliations__moisdes__c, inv.id
 ORDER BY c.last_name__c, c.name;

@@ -19,6 +19,9 @@
       "menus": [
         {
           "internal_name": "see_order_details__c"
+        },
+        {
+          "internal_name": "bulk_send_customer_email__c"
         }
       ]
     }

@@ -1,0 +1,15 @@
+{
+  "action_name": "bulk_send_customer_email__c",
+  "action_type": "menu",
+  "table_name": "invoices",
+  "is_hidden": {
+    "grid": false,
+    "dash": true
+  },
+  "title": "Bulk Send Email",
+  "icon": "fas fa-envelope",
+  "type": "url",
+  "value": "#/open-email?email_field=email&model_name=customers&model_id={{id}}&batch_mode=true&to={{email}}",
+  "multiRowOnly": true,
+  "multiRows": true
+}
