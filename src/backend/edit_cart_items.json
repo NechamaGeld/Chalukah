@@ -10,12 +10,13 @@
   "token": null,
   "crontab": null,
   "active": true,
-  "version": 18,
+  "version": 20,
   "timeout": null,
   "modules": [
     "db",
     "callScript",
     "callReport",
-    "proposalHelper"
+    "proposalHelper",
+    "recycleBin"
   ]
 }

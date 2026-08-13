@@ -32,13 +32,24 @@ for (const { item_id, qty } of items) {
 // remove vouchers from edited order
 var updatedOrder = await callScript("remove_vouchers_from_order", { ...envData, query: {cart_id} });
 
+// Delete an empty draft in the same request that removes its final item.
+// Keeping this server-side prevents a refresh from interrupting a second delete request.
+const remainingItems = await db.read(quoteItemsTable, { quote: cart_id });
+const activeInvoice = await db.readOne("invoices", { quote: cart_id, deleted_ref: null });
+if (!activeInvoice && remainingItems.length === 0) {
+    await recycleBin.markAsDeleted("quotes", cart_id, envData.user);
+    return { ...updatedOrder, draft_deleted: true };
+}
+
+if (activeInvoice) updatedOrder.invoice_id = activeInvoice.id;
+
 if (send_confirmation) {
     // this will usually be handled from the frontend, but im putting the option here...
     callScript("send_order_confirmation_email", {...envData, query: {order_id: cart_id, subject: "Confirmation: Changes have been made to Order #" + cart_id}})
 }
 
-if (!skip_rerender && updatedOrder.invoice_id) {
-    await fullRerenderInvoice(updatedOrder.invoice_id)
+if (!skip_rerender && activeInvoice) {
+    await fullRerenderInvoice(activeInvoice.id)
 }
 
 return updatedOrder;

@@ -160,6 +160,7 @@
     <include-page url="shared-functions" />
         const state = {
             cart_items : [],
+            total: 0,
         };
         let items = [];
         let categories = [];
@@ -169,6 +170,9 @@
         let customer;
         let pendingItems = [];
         let debounceTimer = null;
+        let cartCreationPromise = null;
+        let allowBlankOrderExit = false;
+        let hasActiveInvoice = false;
         //this maps the ids of the cabinet lines - price range
         const PRICE_MAP = {
             1: 1,
@@ -254,6 +258,7 @@
                     const cartData = data.rows[0];
                     //attache data to state
                     Object.assign(state, cartData);
+                    hasActiveInvoice = Boolean(cartData.invoice_id);
 
                     const orderLocked = await checkIfDeliveryAttached(cartData.invoice_id);
                     if (orderLocked)
@@ -264,15 +269,56 @@
                     console.error("Error fetching cart items:", error);
                 }
             } else {
-                try {
-                    const data = await CRUD_HELPERS.create('quotes', {customer: customer.id, line_id : line, status__c: 'Unpaid', season__c : season, created_at: new Date()});
-                    //localStorage.setItem('cart_id', data.id);
-                    setCartId(data.id);
-                    renderItems();
-                } catch (error) {
-                    console.error("Error creating cart:", error);
-                }
+                // Do not create an order until the customer has selected an item.
+                // This guarantees that leaving a blank order cannot persist it.
+                renderItems();
             }
+        }
+
+        async function ensureCartExists() {
+            if (cartId) return cartId;
+
+            if (!cartCreationPromise) {
+                cartCreationPromise = (async () => {
+                    const priceParam = HELPER_FUNC.getUrlParam('price');
+                    const line = PRICE_MAP[priceParam];
+                    const season = HELPER_FUNC.getUrlParam('season');
+                    const data = await CRUD_HELPERS.create('quotes', {
+                        customer: customer.id,
+                        line_id: line,
+                        status__c: 'Unpaid',
+                        season__c: season,
+                        created_at: new Date()
+                    });
+
+                    cartId = data.id;
+                    setCartId(cartId);
+                    return cartId;
+                })();
+            }
+
+            const activeCreation = cartCreationPromise;
+            try {
+                return await activeCreation;
+            } finally {
+                if (cartCreationPromise === activeCreation) cartCreationPromise = null;
+            }
+        }
+
+        function isDraftOrder() {
+            return !hasActiveInvoice;
+        }
+
+        function hasCartItems() {
+            return state.cart_items?.some(item => Number(item.qty || 0) > 0) || false;
+        }
+
+        function isBlankDraftOrder() {
+            return isDraftOrder() && !hasCartItems();
+        }
+
+        async function confirmBlankOrderExit() {
+            return alertSystem.confirm("This order has no items and will not be saved. Are you sure you want to leave?");
         }
 
         
@@ -322,13 +368,13 @@
                 cartId = HELPER_FUNC.getUrlParam('cart_id');
 
 
-            document.getElementById('order-total').textContent = state.total?.toFixed(2);
+            document.getElementById('order-total').textContent = Number(state.total || 0).toFixed(2);
 
 
             //document.getElementById('checkout-link').href = `/pages/checkout-page?cart_id=${cartId}`;
             const checkoutBtn = document.querySelector(".checkout-btn");
             
-            if (state.invoice_id){
+            if (hasActiveInvoice){
                 checkoutBtn.innerHTML = "Update Order";
                 var el = document.getElementById("save-edit-warning");
                 el.textContent = "Make sure to press “Update Order” at the bottom of the page when done to save changes.";
@@ -337,7 +383,7 @@
                 
             //const checkoutLink = document.getElementById('checkout-link');
 
-            if (state.total > 0) {
+            if (hasCartItems() || hasActiveInvoice) {
                 checkoutBtn.removeAttribute("disabled"); // Enable button
 
                 checkoutBtn.onclick = async function () {
@@ -356,8 +402,28 @@
                     window.location.href = `/pages/checkout-page?cart_id=${cartId}`;
                 };
             } else {
-                checkoutBtn.setAttribute("disabled", "true"); // Disable button
-                //checkoutLink.href = "javascript:void(0);"; // Prevent navigation
+                if (isDraftOrder()) {
+                    checkoutBtn.removeAttribute("disabled");
+                    checkoutBtn.onclick = async function () {
+                        const proceed = await confirmBlankOrderExit();
+                        if (!proceed) return;
+
+                        if (pendingItems.length) {
+                            clearTimeout(debounceTimer);
+                            await saveItems(false);
+
+                            if (pendingItems.length) {
+                                alertSystem.show("error", "Unable to save changes. Please try again.", 7000);
+                                return;
+                            }
+                        }
+
+                        allowBlankOrderExit = true;
+                        window.location.href = '/pages/prices-landing-page';
+                    };
+                } else {
+                    checkoutBtn.setAttribute("disabled", "true"); // Disable button
+                }
             }
         }
 
@@ -392,7 +458,7 @@
 
             renderItems();
 
-            if(!state.invoice_id) {
+            if(!hasActiveInvoice) {
                 if(pendingItems.length) showSavingText('Saving....');
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(() => saveItems(false), 5000);
@@ -402,9 +468,16 @@
         async function saveItems(send_confirmation) {
             if (!pendingItems.length && !send_confirmation) return;
 
+            if (isBlankDraftOrder() && !cartId) {
+                pendingItems = [];
+                showSavingText('Order not saved');
+                return;
+            }
+
             try {
                 //showLoader(true);
                 if (pendingItems.length) {
+                    await ensureCartExists();
                     const response = await fetch("/scripts/run/edit_cart_items", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -416,7 +489,19 @@
 
                     const data = await response.json();
                     Object.assign(state, data);
+                    if (data.invoice_id) hasActiveInvoice = true;
                     pendingItems = [];
+
+                    if (data.draft_deleted) {
+                        cartId = null;
+                        const url = new URL(window.location.href);
+                        url.searchParams.delete('cart_id');
+                        window.history.replaceState({}, "", url);
+                        showSavingText('Order not saved');
+                        renderItems();
+                        return;
+                    }
+
                     showSavingText('Saved');
                     renderItems();
 
@@ -437,7 +522,7 @@
                         const proceed = await alertSystem.confirm(message);
                         if (!proceed) return;
                         
-                        const subject = state.invoice_id
+                        const subject = hasActiveInvoice
                             ? `Confirmation: Changes Have Been Saved To Order #${cartId}`
                             : `Confirmation: Order #${cartId} Has Been Created`;
 
@@ -472,10 +557,16 @@
         }
 
         window.addEventListener('beforeunload', (e) => {
-            if(pendingItems.length && !state.invoice_id) saveItems();
+            if (isBlankDraftOrder() && !allowBlankOrderExit) {
+                e.preventDefault();
+                e.returnValue = '';
+                return;
+            }
+
+            if(pendingItems.length && !hasActiveInvoice) saveItems();
         })
         window.addEventListener('pagehide', (e) => {
-            if(pendingItems.length && !state.invoice_id) saveItems();
+            if(pendingItems.length && !hasActiveInvoice && !isBlankDraftOrder()) saveItems();
         })
 
         function showSavingText(text){
