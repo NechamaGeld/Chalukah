@@ -233,14 +233,14 @@
 
         const result = JSON.parse(resultText);
 
-        await fetch("https://shearis-yisroel.bizmanagecrm.com/restapi/users/invite-user/" + result.id, {
+        await fetch("/restapi/users/invite-user/" + result.id, {
           headers: {
             "Content-Type": "application/json",
             'X-Api-Key': 'MW8mV:PceCDhIjokfxP];=aG7a83WiVCZkJo25C`]YT7BUTHB5'
           },
         });
         
-        window.location.href = "https://shearis-yisroel.bizmanagecrm.com/public/ext-page/thank-you";
+        window.location.href = "thank-you";
       } catch (error) {
           const messageEl = document.getElementById("formMessage");
 
