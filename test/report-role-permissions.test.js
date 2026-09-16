@@ -34,3 +34,19 @@ test("voucher customer data uses the logged-in user ID", () => {
   assert.match(sql, /FROM users\s+WHERE id = :USER_ID/i);
   assert.match(sql, /FROM customers\s+WHERE user_id = :USER_ID/i);
 });
+
+test("customer-facing SQL allows staff with an empty-string role", () => {
+  const cartSql = fs.readFileSync(
+    path.join(reportsDirectory, "get_carts_with_all_items_and_payments.sql"),
+    "utf8"
+  );
+  const voucherSql = fs.readFileSync(path.join(reportsDirectory, "get_voucher_data.sql"), "utf8");
+
+  assert.doesNotMatch(cartSql, /\bcurrent_user\b/i);
+  assert.equal(
+    [...cartSql.matchAll(/logged_in_user\.role IS NULL OR logged_in_user\.role = ''/g)].length,
+    2,
+    "Both order queries must allow staff with a blank role"
+  );
+  assert.match(voucherSql, /WHERE role IS NULL OR role = '' OR role IN \('admin', 'root'\)/);
+});

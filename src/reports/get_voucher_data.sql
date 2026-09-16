@@ -26,7 +26,7 @@ payments AS (
         EXISTS (
             SELECT 1
             FROM requesting_user
-            WHERE role IS NULL OR role IN ('admin', 'root')
+            WHERE role IS NULL OR role = '' OR role IN ('admin', 'root')
         )
         AND (:user_id = -1 OR p.customer IN (SELECT id FROM requested_customer))
     ) OR (

@@ -8,9 +8,9 @@ WITH cart_totals AS (
       AND (
           EXISTS (
               SELECT 1
-              FROM users current_user
-              WHERE current_user.id = :USER_ID
-                AND (current_user.role IS NULL OR current_user.role IN ('admin', 'root'))
+              FROM users logged_in_user
+              WHERE logged_in_user.id = :USER_ID
+                AND (logged_in_user.role IS NULL OR logged_in_user.role = '' OR logged_in_user.role IN ('admin', 'root'))
           )
           OR EXISTS (
               SELECT 1
@@ -113,9 +113,9 @@ WHERE q.deleted_ref IS NULL
   AND (
       EXISTS (
           SELECT 1
-          FROM users current_user
-          WHERE current_user.id = :USER_ID
-            AND (current_user.role IS NULL OR current_user.role IN ('admin', 'root'))
+          FROM users logged_in_user
+          WHERE logged_in_user.id = :USER_ID
+            AND (logged_in_user.role IS NULL OR logged_in_user.role = '' OR logged_in_user.role IN ('admin', 'root'))
       )
       OR EXISTS (
           SELECT 1
