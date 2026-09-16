@@ -1,4 +1,5 @@
-
+if (user.role === "customer")
+    throw new Error("This user is not allowed to run this script");
 
 const quotes = await db.read("quotes", {  });
 let res = [];
