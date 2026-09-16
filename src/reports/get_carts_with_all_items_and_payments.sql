@@ -4,7 +4,21 @@ WITH cart_totals AS (
         sum(qi.sale_price)::numeric AS total
     FROM quote_items qi
     JOIN quotes q on qi.quote = q.id
-    where qi.quote = ANY(:order_ids) OR q.customer = :cust_id
+    WHERE (qi.quote = ANY(:order_ids) OR q.customer = :cust_id)
+      AND (
+          EXISTS (
+              SELECT 1
+              FROM users current_user
+              WHERE current_user.id = :USER_ID
+                AND (current_user.role IS NULL OR current_user.role IN ('admin', 'root'))
+          )
+          OR EXISTS (
+              SELECT 1
+              FROM customers authorized_customer
+              WHERE authorized_customer.id = q.customer
+                AND authorized_customer.user_id = :USER_ID
+          )
+      )
     GROUP BY qi.quote
 ), 
 unnested_payments AS (
@@ -93,6 +107,22 @@ LEFT JOIN cart_totals ct ON ct.cart_id = q.id
 LEFT JOIN payment_totals pt ON pt.invoice_id = invoice.id
 LEFT JOIN custom.seasons s ON s.id = q.season__c
 LEFT JOIN lines l ON l.id = q.line_id
-WHERE q.deleted_ref IS NULL AND invoice.deleted_ref IS NULL AND (q.id = ANY(:order_ids) OR q.customer = :cust_id)
+WHERE q.deleted_ref IS NULL
+  AND invoice.deleted_ref IS NULL
+  AND (q.id = ANY(:order_ids) OR q.customer = :cust_id)
+  AND (
+      EXISTS (
+          SELECT 1
+          FROM users current_user
+          WHERE current_user.id = :USER_ID
+            AND (current_user.role IS NULL OR current_user.role IN ('admin', 'root'))
+      )
+      OR EXISTS (
+          SELECT 1
+          FROM customers authorized_customer
+          WHERE authorized_customer.id = q.customer
+            AND authorized_customer.user_id = :USER_ID
+      )
+  )
 GROUP BY invoice.id, q.id, q.line_id, l.name, invoice.customer, q.season__c, invoice.created_at,
          c.user_id, s.name__c, s.final_edit_order_date__c, ct.total, pt.amount_settled;

@@ -1,4 +1,9 @@
-WITH customer AS (
+WITH requesting_user AS (
+    SELECT id, role
+    FROM users
+    WHERE id = :USER_ID
+),
+requested_customer AS (
     SELECT id 
     FROM customers 
     WHERE user_id = :user_id
@@ -17,7 +22,25 @@ payments AS (
     SELECT p.*
     FROM payment_transaction p
     JOIN voucher v ON p.voucher__c = v.id
-    WHERE (:user_id = -1 OR p.customer IN (SELECT id FROM customer))
+    WHERE (
+        EXISTS (
+            SELECT 1
+            FROM requesting_user
+            WHERE role IS NULL OR role IN ('admin', 'root')
+        )
+        AND (:user_id = -1 OR p.customer IN (SELECT id FROM requested_customer))
+    ) OR (
+        EXISTS (
+            SELECT 1
+            FROM requesting_user
+            WHERE role = 'customer'
+        )
+        AND p.customer IN (
+            SELECT id
+            FROM customers
+            WHERE user_id = :USER_ID
+        )
+    )
 ),
 invoices_c AS (
     SELECT i.*

@@ -22,7 +22,7 @@ const executeScript = new AsyncFunction(
   `let { user, query, body } = envData;\n${scriptCode}`
 );
 
-function createHarness({ userId, linkedCustomerId, quoteCustomerId }) {
+function createHarness({ userId, linkedCustomerId, quoteCustomerId, role = "customer" }) {
   const writes = [];
   let quoteItemCreated = false;
 
@@ -68,7 +68,7 @@ function createHarness({ userId, linkedCustomerId, quoteCustomerId }) {
   };
 
   const envData = {
-    user: { id: userId, role: "customer" },
+    user: { id: userId, role },
     query: {},
     body: {
       cart_id: 700,
@@ -130,5 +130,22 @@ test("a customer can edit their own order", async () => {
       ({ operation, table }) => operation === "createOne" && table === "quote_items"
     ),
     "The owner's item change should be saved"
+  );
+});
+
+test("a regular staff user can edit any order", async () => {
+  const harness = createHarness({
+    userId: 60,
+    linkedCustomerId: 100,
+    quoteCustomerId: 200,
+    role: null,
+  });
+
+  await harness.run();
+  assert.ok(
+    harness.writes.some(
+      ({ operation, table }) => operation === "createOne" && table === "quote_items"
+    ),
+    "The staff user's item change should be saved"
   );
 });
