@@ -312,13 +312,18 @@ document
 async function loadOrder() {
   showLoader(true);
   try {
-    let invoice_res = await generateInvoice(cartId);
-    invoice= await invoice_res.json();
     const response = await fetch(
       `/cust_report/query/3?order_ids={${cartId}}`
     );
     const data = await response.json();
+    if (!response.ok || !data.rows?.length) {
+      showLoader(false);
+      alertSystem.show("warning", "This is not your order.", 7000);
+      return;
+    }
     const order = data.rows[0];
+    let invoice_res = await generateInvoice(cartId);
+    invoice= await invoice_res.json();
     renderCartHtml(order, order.season__c, false);
     checkIfVoucherApplied(order.payment_transactions);
   } catch (error) {
