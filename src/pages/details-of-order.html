@@ -56,6 +56,8 @@
         <h2 style=" display: flex; justify-content: center;">Order Details</h2>
     </div>
 
+    <div id="order-error" class="alert alert-danger hidden" role="alert"></div>
+
     <div class="container">
 
         <div class="row justify-content-center">
@@ -153,7 +155,12 @@
         try{
             const cartId = HELPER_FUNC.getUrlParam('cart_id');
             const response = await fetch(`/cust_report/query/3?order_ids={${cartId}}` );
-            const data = await response.json(); 
+            const data = await response.json();
+            if (!response.ok || !data.rows?.length) {
+                showOrderError("This is not your order.");
+                showLoader(false);
+                return;
+            }
             const order = data.rows[0];
             const line = PRICE_MAP[order.line_id];
             renderCartItems(order.cart_items);
@@ -163,6 +170,12 @@
             console.error("Error reading details of order")
         }
         showLoader(false);
+    }
+
+    function showOrderError(message) {
+        const orderError = document.getElementById('order-error');
+        orderError.textContent = message;
+        orderError.classList.remove('hidden');
     }
 
     function renderCartItems(cartItems){

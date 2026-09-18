@@ -255,6 +255,10 @@
                     const response = await fetch(`/cust_report/query/3?order_ids={${cartId}}` );
                     const data = await response.json();
                     showLoader(false);
+                    if (!response.ok || !data.rows?.length) {
+                        alertSystem.show("warning", "This is not your order.", 7000);
+                        return;
+                    }
                     const cartData = data.rows[0];
                     //attache data to state
                     Object.assign(state, cartData);
