@@ -1,8 +1,5 @@
 if (!envData.query.order_id) throw new Error("Order ID Required!");
 
-if (query.user_id && user.role !== "customer")
-    envData.user.id = query.user_id;
-
 let order_id = envData.query.order_id;
 
 var order = await getOrder(order_id);

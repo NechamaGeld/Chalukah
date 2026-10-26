@@ -7,6 +7,12 @@ const quote = await db.readOne("quotes", { id: cart_id });
 if (!quote) 
     throw new Error(`Quote #${cart_id} not found.`);
 
+if (user.role === "customer") {
+    const customer = await db.readOne("customers", { user_id: user.id });
+    if (!customer || customer.id !== quote.customer)
+        throw new Error("Customer mismatch for logged in user");
+}
+
 for (const { item_id, qty } of items) {
     if (!item_id || qty == null) throw new Error("Each item must have 'item_id' and 'qty'");
 

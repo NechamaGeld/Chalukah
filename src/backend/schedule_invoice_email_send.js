@@ -1,3 +1,6 @@
+if (user.role === "customer")
+    throw new Error("This user is not allowed to schedule invoice emails");
+
 if (!body.to || !body.from || !body.subject || !body.html)
     throw new Error("The email data is not valid.");
 

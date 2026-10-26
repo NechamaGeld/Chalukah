@@ -5,6 +5,9 @@
  * additional_items [Number] - array of specific item IDs out of cats to force include
  */
 
+if (user.role === "customer")
+    throw new Error("This user is not allowed to generate delivery slips");
+
 const logs = [];
 let errors = 0;
 

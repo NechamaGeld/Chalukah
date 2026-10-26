@@ -24,7 +24,12 @@
     }
   },
   "to_users": null,
-  "to_user_roles": null,
+  "to_user_roles": [
+    null,
+    "",
+    "admin",
+    "root"
+  ],
   "created_by": 2,
   "created_at": "2026-06-16T21:13:31.904Z"
 }

@@ -6,7 +6,12 @@
   "deleted_ref": null,
   "settings": null,
   "to_users": null,
-  "to_user_roles": null,
+  "to_user_roles": [
+    null,
+    "",
+    "admin",
+    "root"
+  ],
   "created_by": 2,
   "created_at": "2025-08-18T23:24:49.649Z"
 }
